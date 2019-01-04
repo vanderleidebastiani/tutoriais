@@ -1,5 +1,3 @@
-# Tutoriais
-
 Conjuntos de tutoriais para R.
 
 - Gráfico com R <https://github.com/vanderleidebastiani/tutoriais/blob/master/Aprendendo_R_em_10_minutos.html>
