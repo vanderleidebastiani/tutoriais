@@ -1,4 +1,6 @@
-# Conjunto de textos/tutoriais para R.
+# Conjunto de textos/tutoriais para R
+
+Desenvolvido por Vanderlei Júlio Debastiani <vanderleidebastiani@yahoo.com.br>
 
 * Introdução à programação - Conceitos e aplicação de Lógica
 
@@ -10,6 +12,6 @@
 
 * Documentação de resultados usando R Markdown
 
-Os arquivos podem ser baixados nesta página em formato .pdf ou visualizados [Aqui]<https://vanderleidebastiani.github.io/tutoriais/>.
+Os arquivos podem ser baixados no formato .pdf nesta página ou visualizados em [nesta página](https://vanderleidebastiani.github.io/tutoriais).
 
 Por favor, avise-me se tiver dúvidas ou sugestões sobre este texto
