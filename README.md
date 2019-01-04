@@ -1,7 +1,4 @@
----
-title: "Tutoriais"
-output: github_document
----
+# Tutoriais
 
 Conjuntos de tutoriais para R.
 
