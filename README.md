@@ -4,9 +4,9 @@ Desenvolvido por Vanderlei Júlio Debastiani <vanderleidebastiani@yahoo.com.br>
 
 * Introdução à programação - Conceitos e aplicação de Lógica
 
-* Aprendendo R em 10 minutos
+* Introdução ao R
 
-* Introdução ao R (em desenvolvimento)
+* Aprendendo R em 10 minutos
 
 * Gráficos com R
 

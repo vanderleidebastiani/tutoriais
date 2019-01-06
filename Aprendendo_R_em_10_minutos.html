@@ -1607,7 +1607,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Aprendendo R em 10 minutos</h1>
 <h4 class="author"><em>Vanderlei Júlio Debastiani (<a href="mailto:vanderleidebastiani@yahoo.com.br">vanderleidebastiani@yahoo.com.br</a>)</em></h4>
-<h4 class="date"><em>03 Janeiro 2019</em></h4>
+<h4 class="date"><em>05 Janeiro 2019</em></h4>
 
 </div>
 
@@ -2223,11 +2223,11 @@ funcao.exterior &lt;-<span class="st"> </span><span class="cf">function</span>(x
 }
 <span class="kw">funcao.exterior</span>() <span class="co"># Lista os ambientes e objetos dentro de cada ambiente</span>
 [<span class="dv">1</span>] <span class="st">&quot;Dentro da funcao.interior:&quot;</span>
-<span class="op">&lt;</span>environment<span class="op">:</span><span class="st"> </span><span class="dv">0x11430c700</span><span class="op">&gt;</span>
+<span class="op">&lt;</span>environment<span class="op">:</span><span class="st"> </span><span class="dv">0x10a92de00</span><span class="op">&gt;</span>
 [<span class="dv">1</span>] <span class="st">&quot;existe o objeto:&quot;</span>
 [<span class="dv">1</span>] <span class="st">&quot;x.interior&quot;</span>
 [<span class="dv">1</span>] <span class="st">&quot;Dentro da funcao.exterior:&quot;</span>
-<span class="op">&lt;</span>environment<span class="op">:</span><span class="st"> </span><span class="dv">0x11430c9d8</span><span class="op">&gt;</span>
+<span class="op">&lt;</span>environment<span class="op">:</span><span class="st"> </span><span class="dv">0x10a92a0b0</span><span class="op">&gt;</span>
 [<span class="dv">1</span>] <span class="st">&quot;existem os objetos:&quot;</span>
 [<span class="dv">1</span>] <span class="st">&quot;funcao.interior&quot;</span> <span class="st">&quot;x.exterior&quot;</span>     </code></pre>
 </div>
@@ -2329,6 +2329,10 @@ permute<span class="op">::</span><span class="kw">shuffle</span>(<span class="dv
 <h1>Importando e exportando arquivos</h1>
 <p>O R possui uma grande variedade de pacotes embutidos que permitem importar e exportar arquivos nos mais diversos formatos. Funções como <strong>read.table</strong>, <strong>read.csv</strong>, <strong>write.table</strong> e <strong>write.csv</strong> do pacote <em>utils</em> permitem importar (prefixo <em>read.</em>) e exportar (prefixo <em>write.</em>) tabelas de dados. As funções do pacote <em>grDevices</em> como <strong>pdf</strong>, <strong>png</strong>, <strong>tiff</strong>, <strong>jpeg</strong> permitem abrir dispositivos para exportar gráficos (a função <strong>dev.off</strong> precisa ser usada para fechar os dispositivos gráficos). Existem também funções para criar, abrir e fechar conexões com arquivos e URLs, lista completa disponível em <em>?connections</em>. O R sempre fica associado a uma diretório do computador, esse será o diretório de trabalho (<em>working directory</em>). Os arquivos que estão neste diretório podem ser carregados apenas pelo nome e qualquer arquivo exportado será salvo neste diretório caso não especificado o contrário. Os sistemas de caminhos (<em>path</em>), absolutos ou relativos, podem ser usados especificar a localização dos arquivos (por exemplo <strong>./subdiretorio</strong> e <strong>..</strong>) e a funções <strong>file.choose</strong> permitem escolher arquivos interativamente. As funções <strong>save.image</strong> e <strong>load</strong> permitem respectivamente salvar e carregar área de trabalho (<em>workspace</em>) e a função <strong>source</strong> importar arquivos de códigos em R.</p>
 </div>
+<div id="geracao-de-numeros-aletorios-e-amostragem" class="section level1">
+<h1>Geração de números aletórios e amostragem</h1>
+<p>O R possui um conjunto grande de funções ligadas às distribuições de probabilidade, simulação de distribuições e reamostragem de dados. Amostras aleatórias e permutações podem ser realizadas pela função <strong>sample</strong>. As funções de densidade/massa, distribuição cumulativa e quantílica e geração de variáveis aleatórias pode realizadas para as principais distribuições de probabilidade. A lista completa disponível em <em>?Distributions</em>.</p>
+</div>
 <div id="guia-de-ajuda-rapida" class="section level1">
 <h1>Guia de ajuda rápida</h1>
 <pre class="text"><code># - Adicionar comentário
@@ -2417,6 +2421,10 @@ try() - Funções. Tentar função envelope</code></pre>
 <div id="conclusao" class="section level1">
 <h1>Conclusão</h1>
 <p>O objetivo deste texto foi introduzir alguns conceitos básicos da linguagem R. Os principais aspectos da sintaxe, operadores, tipos de dados, estruturas dos objetos, controle de fluxo e desenvolvimento de funções foram mostradas e exemplificadas. Espero que este texto tenha sido útil e, por favor, avise-me se tiver dúvidas ou sugestões sobre este texto.</p>
+</div>
+<div id="mais-informacoes" class="section level1">
+<h1>Mais informações</h1>
+<p>Outros textos e tutoriais sobre R podem ser encontrados em <a href="https://vanderleidebastiani.github.io/tutoriais" class="uri">https://vanderleidebastiani.github.io/tutoriais</a>.</p>
 </div>
 <div id="referencias" class="section level1">
 <h1>Referências</h1>
