@@ -12,6 +12,8 @@ Desenvolvido por Vanderlei Júlio Debastiani <vanderleidebastiani@yahoo.com.br>
 
 * Documentação de resultados usando R Markdown
 
+* Estatística Básica em R
+
 Os arquivos podem ser baixados no formato .pdf nesta página ou visualizados [nesta página](https://vanderleidebastiani.github.io/tutoriais).
 
 Por favor, avise-me se tiver dúvidas ou sugestões sobre os textos.
