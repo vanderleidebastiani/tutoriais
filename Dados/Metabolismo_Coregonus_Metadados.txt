@@ -1,0 +1,12 @@
+Fonte: Wohlshag, Donald E.; 1957. Differences in Metabolic Rates of Migratory and Resident Freshwater Forms of an Arctic Whitefish. Ecology, Vol. 38, pp.502-510
+
+Descrição: Medidas metabólicas feitas em indivíduos de peixes das espécies Coregonus sardinella e C. autumnalis em dois ambientes: Elson Lagoon (marinho) e Ikroavik Lake (água doce). 
+
+Variávels inclúidas (colunas):  
+- Especie (C.sardinella ou C.autumnalis);  
+- Ambiente (Marinho ou A.doce);  
+- ConsumoO2 (Consumo de O2 em mg);  
+- Massa (g);  
+- ConsumoO2Kg (mg O2 consumido/hora/kg);  
+- Rotacao (R.P.M.);  
+- Temperatura (Celsius).
