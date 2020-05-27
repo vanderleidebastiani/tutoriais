@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 <meta name="author" content="Vanderlei Júlio Debastiani (vanderleidebastiani@yahoo.com.br)" />
@@ -80,8 +80,6 @@ overflow: auto;
 margin-left: 2%;
 position: fixed;
 border: 1px solid #ccc;
-webkit-border-radius: 6px;
-moz-border-radius: 6px;
 border-radius: 6px;
 }
 
@@ -109,9 +107,14 @@ font-size: 12px;
 .tocify-subheader .tocify-subheader {
 text-indent: 30px;
 }
-
 .tocify-subheader .tocify-subheader .tocify-subheader {
 text-indent: 40px;
+}
+.tocify-subheader .tocify-subheader .tocify-subheader .tocify-subheader {
+text-indent: 50px;
+}
+.tocify-subheader .tocify-subheader .tocify-subheader .tocify-subheader .tocify-subheader {
+text-indent: 60px;
 }
 
 .tocify .tocify-item > a, .tocify .nav-list .nav-header {
@@ -515,13 +518,13 @@ float: none;
 
           item.append($("<a/>", {
 
-            "text": self.text()
+            "html": self.html()
 
           }));
 
         } else {
 
-          item.text(self.text());
+          item.html(self.html());
 
         }
 
@@ -1353,7 +1356,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -1396,9 +1399,7 @@ h6 {
 </style>
 
 
-</head>
 
-<body>
 
 <style type="text/css">
 .main-container {
@@ -1412,7 +1413,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -1429,8 +1429,6 @@ summary {
 </style>
 
 
-
-<div class="container-fluid main-container">
 
 <!-- tabsets -->
 
@@ -1476,6 +1474,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -1488,48 +1487,9 @@ summary {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <style type="text/css">
 
@@ -1543,6 +1503,12 @@ $(document).ready(function ()  {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -1578,8 +1544,6 @@ div.tocify {
 
 .tocify-subheader .tocify-item {
   font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -1588,6 +1552,16 @@ div.tocify {
 
 
 </style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
 <div class="row-fluid">
@@ -1606,13 +1580,13 @@ div.tocify {
 
 
 <h1 class="title toc-ignore">Aprendendo R em 10 minutos</h1>
-<h4 class="author"><em>Vanderlei Júlio Debastiani (<a href="mailto:vanderleidebastiani@yahoo.com.br">vanderleidebastiani@yahoo.com.br</a>)</em></h4>
-<h4 class="date"><em>05 Janeiro 2019</em></h4>
+<h4 class="author">Vanderlei Júlio Debastiani (<a href="mailto:vanderleidebastiani@yahoo.com.br">vanderleidebastiani@yahoo.com.br</a>)</h4>
+<h4 class="date">27 Maio 2020</h4>
 
 </div>
 
 
-<div id="introducao" class="section level1">
+<div id="introdução" class="section level1">
 <h1>Introdução</h1>
 <p>R é um ambiente de programação voltado para manipulação, análise de dados e apresentação gráfica. R é um projeto em constante desenvolvimento resultado de esforços colaborativos com contribuições de todo o mundo. Disponibiliza uma ampla variedade de métodos estatísticos e gráficos, sendo ainda facilmente extensível através de pacotes ou funções desenvolvidas pelos próprios usuários. O R possue uma estrutura de código aberto (<em>open source</em>) com linguagem de programação multiparadigma, sendo que tarefas computacionais intensivas podem ser realizadas por meio de integração de códigos em C, C++, Java, Python e Fortran. O R tem a sua própria documentação em formato semelhante a LaTeX, que é usada como documentação das funções.</p>
 <p>Este texto trata dos principais aspectos da linguagem R e tentará ensinar R em 10 minutos. Obviamente que não é possível aprender uma linguagem de programação em apenas alguns minutos, para realmente aprender R é preciso programar e exercitar por um tempo. O texto mostrará alguns conceitos básicos para começar, como sintaxe, operações, tipos de dados, estruturas, declarações de controle de fluxo e funções. A ideia é que o leitor seja capaz de reproduzir os comandos aqui contidos e exercitar os conceitos apresentados. Algumas conceitos serão introduzidas diretamente no código e apenas brevemente comentados. Ao final também é apresentado um guia de ajuda rápida mostrando as principais palavras da sintaxe, operadores e funções da linguagem R apresentados aqui.</p>
@@ -1624,716 +1598,715 @@ div.tocify {
 <div id="obtendo-ajuda" class="section level1">
 <h1>Obtendo ajuda</h1>
 <p>A ajuda está sempre disponível diretamente no interface. O funcionamento da função pode ser obtido usando as funções <strong>help</strong> (atalho <strong>?</strong>). Argumentos das funções podem ser obtidos com a função <strong>args</strong>, classes dos objetos pela função <strong>class</strong> e estrutura dos objetos pela função <strong>str</strong>. Ainda é possivel pesquisar por assunto, usando a função <strong>help.search</strong> (atalho <strong>??</strong>).</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">help</span>(abs)
-<span class="kw">class</span>(<span class="dv">5</span>)
-[<span class="dv">1</span>] <span class="st">&quot;numeric&quot;</span>
-<span class="kw">str</span>(<span class="dv">5</span>)
- num <span class="dv">5</span></code></pre>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">help</span>(abs)</a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">class</span>(<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">[<span class="dv">1</span>] <span class="st">&quot;numeric&quot;</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">str</span>(<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5"> num <span class="dv">5</span></a></code></pre></div>
 </div>
 <div id="sintaxe" class="section level1">
 <h1>Sintaxe</h1>
 <p>O R não possui caracteres de terminação de instrução obrigatórios e os blocos são especificados por chaves (<strong>{}</strong>). Os comentários começam com sustenido (<strong>#</strong>) e não há sintaxe para comentários em multiplas linhas. Valores são atribuídos (na verdade, objetos são vinculados a nomes) com os sinais de <strong>“&lt;-”</strong>, <strong>“=”</strong> ou <strong>“-&gt;”</strong> (mais usado é o <strong>“&lt;-”</strong> enquanto que <strong>“=”</strong> é obrigátorio quando usado para especificar argumentos das funções). Os indentificadores das variáveis (nomes dos objetos) podem ser uma combinação de letras, dígitos, ponto (<em>.</em>) ou underline (<em>_</em>), devendo começar com letras ou digítos. Quando começam com um ponto, não poderão ser seguido por um dígito. O teste de igualdade é feito usando dois sinais de igual (<strong>“==”</strong>). Não há operadores de incremendo direto. As vírgulas (<strong>,</strong>) separam argumentos em uma função, sendo que é possível usar várias variáveis em uma linha. Outras informações sobre sintaxe são encontradas em <em>?Syntax</em>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">minha.var &lt;-<span class="st"> </span><span class="dv">2</span> <span class="co"># Separador &quot;.&quot; é preferível ao identificar os objetos</span>
-minha.var
-[<span class="dv">1</span>] <span class="dv">2</span>
-meu.string &lt;-<span class="st"> &quot;Hello&quot;</span>
-meu.string
-[<span class="dv">1</span>] <span class="st">&quot;Hello&quot;</span>
-<span class="kw">print</span>(meu.string)
-[<span class="dv">1</span>] <span class="st">&quot;Hello&quot;</span>
-<span class="co"># Isso é um comentário</span>
-minha.var &lt;-<span class="st"> </span>meu.string 
-minha.var
-[<span class="dv">1</span>] <span class="st">&quot;Hello&quot;</span></code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">minha.var &lt;-<span class="st"> </span><span class="dv">2</span> <span class="co"># Separador &quot;.&quot; é preferível ao identificar os objetos</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">minha.var</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">[<span class="dv">1</span>] <span class="dv">2</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">meu.string &lt;-<span class="st"> &quot;Hello&quot;</span></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5">meu.string</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6">[<span class="dv">1</span>] <span class="st">&quot;Hello&quot;</span></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7"><span class="kw">print</span>(meu.string)</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8">[<span class="dv">1</span>] <span class="st">&quot;Hello&quot;</span></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9"><span class="co"># Isso é um comentário</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10">minha.var &lt;-<span class="st"> </span>meu.string </a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">minha.var</a>
+<a class="sourceLine" id="cb2-12" data-line-number="12">[<span class="dv">1</span>] <span class="st">&quot;Hello&quot;</span></a></code></pre></div>
 </div>
 <div id="tipos-de-dados" class="section level1">
 <h1>Tipos de dados</h1>
 <p>Os tipos de dados podem ser numéricos (<em>numeric</em>), caracter (<em>character</em>) ou lógicos (<em>logical</em>). Os dados do tipo <em>numeric</em> são número inteiros, reais e complexos. Podem serem escritos também com notação científica, utilizando o <strong>E</strong> (ou <strong>e</strong>), se numéricas são seguidos pela letra <strong>L</strong> são considerados inteiro e se seguidos pela letra <strong>i</strong> são consideradas complexos. O tipo <em>character</em> armazena caracteres ou texto e são escritos obrigatoriamente entre aspas duplas (<strong>&quot;&quot;</strong>) ou simples (<strong>’’</strong>). As dados boleanos (verdadeiros ou falsos) são definidos como <strong>TRUE</strong> e <strong>FALSE</strong> (abreviação <strong>T</strong> e <strong>F</strong> respectivamente). A função <strong>typeof</strong> mostra o tipo de modo de armazenamento de qualquer objeto. A conversão entre tipos é livre feita pelas funções de prefixo <strong>as.</strong> (por exemplo <em>as.numeric()</em>) e a checagem lógica feita pelas funções de prefixo <strong>is.</strong> (por exemplo <em>is.numeric()</em>).</p>
-<pre class="sourceCode r"><code class="sourceCode r">var.numerica<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="fl">5.2</span>
-var.numerica<span class="fl">.1</span>
-[<span class="dv">1</span>] <span class="fl">5.2</span>
-<span class="kw">class</span>(var.numerica<span class="fl">.1</span>)
-[<span class="dv">1</span>] <span class="st">&quot;numeric&quot;</span>
-var.numerica<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="fl">5E6</span> <span class="co"># mesmo que 5e6</span>
-var.numerica<span class="fl">.2</span>
-[<span class="dv">1</span>] <span class="fl">5e+06</span>
-<span class="kw">typeof</span>(var.numerica<span class="fl">.2</span>)
-[<span class="dv">1</span>] <span class="st">&quot;double&quot;</span>
-<span class="kw">class</span>(var.numerica<span class="fl">.2</span>)
-[<span class="dv">1</span>] <span class="st">&quot;numeric&quot;</span>
-var.caracter &lt;-<span class="st"> &quot;var&quot;</span>
-var.caracter
-[<span class="dv">1</span>] <span class="st">&quot;var&quot;</span>
-<span class="kw">class</span>(var.caracter)
-[<span class="dv">1</span>] <span class="st">&quot;character&quot;</span>
-var.logica &lt;-<span class="st"> </span><span class="ot">TRUE</span>
-var.logica
-[<span class="dv">1</span>] <span class="ot">TRUE</span>
-<span class="kw">class</span>(var.logica)
-[<span class="dv">1</span>] <span class="st">&quot;logical&quot;</span>
-<span class="kw">as.character</span>(var.numerica<span class="fl">.1</span>)
-[<span class="dv">1</span>] <span class="st">&quot;5.2&quot;</span>
-<span class="kw">as.numeric</span>(var.caracter)
-Warning<span class="op">:</span><span class="st"> </span>NAs introduced by coercion
-[<span class="dv">1</span>] <span class="ot">NA</span>
-<span class="kw">is.numeric</span>(var.caracter)
-[<span class="dv">1</span>] <span class="ot">FALSE</span></code></pre>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">var.numerica<span class="fl">.1</span> &lt;-<span class="st"> </span><span class="fl">5.2</span></a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">var.numerica<span class="fl">.1</span></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3">[<span class="dv">1</span>] <span class="fl">5.2</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw">class</span>(var.numerica<span class="fl">.1</span>)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5">[<span class="dv">1</span>] <span class="st">&quot;numeric&quot;</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6">var.numerica<span class="fl">.2</span> &lt;-<span class="st"> </span><span class="fl">5E6</span> <span class="co"># mesmo que 5e6</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7">var.numerica<span class="fl">.2</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8">[<span class="dv">1</span>] <span class="fl">5e+06</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="kw">typeof</span>(var.numerica<span class="fl">.2</span>)</a>
+<a class="sourceLine" id="cb3-10" data-line-number="10">[<span class="dv">1</span>] <span class="st">&quot;double&quot;</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="kw">class</span>(var.numerica<span class="fl">.2</span>)</a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">[<span class="dv">1</span>] <span class="st">&quot;numeric&quot;</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">var.caracter &lt;-<span class="st"> &quot;var&quot;</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">var.caracter</a>
+<a class="sourceLine" id="cb3-15" data-line-number="15">[<span class="dv">1</span>] <span class="st">&quot;var&quot;</span></a>
+<a class="sourceLine" id="cb3-16" data-line-number="16"><span class="kw">class</span>(var.caracter)</a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">[<span class="dv">1</span>] <span class="st">&quot;character&quot;</span></a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">var.logica &lt;-<span class="st"> </span><span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19">var.logica</a>
+<a class="sourceLine" id="cb3-20" data-line-number="20">[<span class="dv">1</span>] <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21"><span class="kw">class</span>(var.logica)</a>
+<a class="sourceLine" id="cb3-22" data-line-number="22">[<span class="dv">1</span>] <span class="st">&quot;logical&quot;</span></a>
+<a class="sourceLine" id="cb3-23" data-line-number="23"><span class="kw">as.character</span>(var.numerica<span class="fl">.1</span>)</a>
+<a class="sourceLine" id="cb3-24" data-line-number="24">[<span class="dv">1</span>] <span class="st">&quot;5.2&quot;</span></a>
+<a class="sourceLine" id="cb3-25" data-line-number="25"><span class="kw">as.numeric</span>(var.caracter)</a>
+<a class="sourceLine" id="cb3-26" data-line-number="26">Warning<span class="op">:</span><span class="st"> </span>NAs introduced by coercion</a>
+<a class="sourceLine" id="cb3-27" data-line-number="27">[<span class="dv">1</span>] <span class="ot">NA</span></a>
+<a class="sourceLine" id="cb3-28" data-line-number="28"><span class="kw">is.numeric</span>(var.caracter)</a>
+<a class="sourceLine" id="cb3-29" data-line-number="29">[<span class="dv">1</span>] <span class="ot">FALSE</span></a></code></pre></div>
 </div>
-<div id="operacoes-aritmeticas-e-logicas" class="section level1">
+<div id="operações-aritméticas-e-lógicas" class="section level1">
 <h1>Operações aritméticas e lógicas</h1>
 <p>As operações aritméticas básicas e testes lógicos são disponíveis. Mais informações sobre operações são encontradas em <em>?Arithmetic</em>, <em>?Comparison</em> e <em>?Logic</em> .</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="dv">2</span><span class="op">+</span><span class="dv">2</span> <span class="co"># Soma</span>
-[<span class="dv">1</span>] <span class="dv">4</span>
-<span class="dv">8-3</span> <span class="co"># Subtração</span>
-[<span class="dv">1</span>] <span class="dv">5</span>
-<span class="dv">3</span><span class="op">*</span><span class="dv">8</span> <span class="co"># Multiplicação</span>
-[<span class="dv">1</span>] <span class="dv">24</span>
-<span class="dv">8</span><span class="op">/</span><span class="dv">2</span> <span class="co"># Divisão</span>
-[<span class="dv">1</span>] <span class="dv">4</span>
-<span class="dv">2</span><span class="op">^</span><span class="dv">8</span> <span class="co"># Potências</span>
-[<span class="dv">1</span>] <span class="dv">256</span>
-(<span class="dv">2</span><span class="op">+</span><span class="dv">4</span>)<span class="op">/</span><span class="dv">7</span> <span class="co"># Prioridades de solução. Diferente de 2+4/7</span>
-[<span class="dv">1</span>] <span class="fl">0.8571429</span>
-<span class="dv">10</span><span class="op">%/%</span><span class="dv">3</span> <span class="co"># Parte inteira da divisão. O inteiro da divisão de um número por outro</span>
-[<span class="dv">1</span>] <span class="dv">3</span>
-<span class="dv">10</span><span class="op">%%</span><span class="dv">3</span> <span class="co"># Módulo. O resto da divisão de um número por outro</span>
-[<span class="dv">1</span>] <span class="dv">1</span>
-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), 
-       <span class="dt">nrow =</span> <span class="dv">3</span>, 
-       <span class="dt">ncol =</span> <span class="dv">1</span>)<span class="op">%*%</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>), 
-                       <span class="dt">nrow =</span> <span class="dv">1</span>, 
-                       <span class="dt">ncol =</span> <span class="dv">3</span>) <span class="co"># Produto de matrizes</span>
-     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>]
-[<span class="dv">1</span>,]    <span class="dv">4</span>    <span class="dv">2</span>    <span class="dv">3</span>
-[<span class="dv">2</span>,]    <span class="dv">8</span>    <span class="dv">4</span>    <span class="dv">6</span>
-[<span class="dv">3</span>,]   <span class="dv">12</span>    <span class="dv">6</span>    <span class="dv">9</span>
-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), 
-       <span class="dt">nrow =</span> <span class="dv">1</span>, 
-       <span class="dt">ncol =</span> <span class="dv">3</span>)<span class="op">%o%</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>), 
-                       <span class="dt">nrow =</span> <span class="dv">1</span>, 
-                       <span class="dt">ncol =</span> <span class="dv">3</span>) <span class="co"># Produto diádico</span>
-, , <span class="dv">1</span>, <span class="dv">1</span>
-
-     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>]
-[<span class="dv">1</span>,]    <span class="dv">4</span>    <span class="dv">8</span>   <span class="dv">12</span>
-
-, , <span class="dv">1</span>, <span class="dv">2</span>
-
-     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>]
-[<span class="dv">1</span>,]    <span class="dv">2</span>    <span class="dv">4</span>    <span class="dv">6</span>
-
-, , <span class="dv">1</span>, <span class="dv">3</span>
-
-     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>]
-[<span class="dv">1</span>,]    <span class="dv">3</span>    <span class="dv">6</span>    <span class="dv">9</span>
-<span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>), 
-       <span class="dt">nrow =</span> <span class="dv">2</span>, 
-       <span class="dt">ncol =</span> <span class="dv">2</span>)<span class="op">%x%</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">7</span>), 
-                       <span class="dt">nrow =</span> <span class="dv">2</span>,
-                       <span class="dt">ncol =</span> <span class="dv">2</span>) <span class="co"># Produto de Kronecker</span>
-     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>]
-[<span class="dv">1</span>,]    <span class="dv">0</span>    <span class="dv">5</span>    <span class="dv">0</span>   <span class="dv">10</span>
-[<span class="dv">2</span>,]    <span class="dv">6</span>    <span class="dv">7</span>   <span class="dv">12</span>   <span class="dv">14</span>
-[<span class="dv">3</span>,]    <span class="dv">0</span>   <span class="dv">15</span>    <span class="dv">0</span>   <span class="dv">20</span>
-[<span class="dv">4</span>,]   <span class="dv">18</span>   <span class="dv">21</span>   <span class="dv">24</span>   <span class="dv">28</span>
-<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)<span class="op">%in%</span><span class="kw">c</span>(<span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>) <span class="co"># Operador de correspondência</span>
-[<span class="dv">1</span>] <span class="ot">FALSE</span>  <span class="ot">TRUE</span>  <span class="ot">TRUE</span>
-<span class="dv">2</span><span class="op">&lt;</span><span class="dv">3</span> <span class="co"># Comparar, menor</span>
-[<span class="dv">1</span>] <span class="ot">TRUE</span>
-<span class="dv">3</span><span class="op">&gt;</span><span class="dv">3</span> <span class="co"># Comparar, maior</span>
-[<span class="dv">1</span>] <span class="ot">FALSE</span>
-<span class="dv">3</span><span class="op">&lt;=</span><span class="dv">3</span> <span class="co"># Comparar, menor ou igual</span>
-[<span class="dv">1</span>] <span class="ot">TRUE</span>
-<span class="dv">2</span><span class="op">&gt;=</span><span class="dv">3</span> <span class="co"># Comparar, maior ou igual</span>
-[<span class="dv">1</span>] <span class="ot">FALSE</span>
-<span class="dv">3</span><span class="op">==</span><span class="dv">3</span> <span class="co"># Comparar, exatamente igual</span>
-[<span class="dv">1</span>] <span class="ot">TRUE</span>
-<span class="dv">2</span><span class="op">!=</span><span class="dv">3</span> <span class="co"># Comparar, diferente </span>
-[<span class="dv">1</span>] <span class="ot">TRUE</span>
-<span class="op">!</span><span class="dv">3</span><span class="op">==</span><span class="dv">3</span> <span class="co"># Lógico, NÃO. Inverter resultado de teste lógico</span>
-[<span class="dv">1</span>] <span class="ot">FALSE</span>
-<span class="dv">3</span><span class="op">==</span><span class="dv">3</span> <span class="op">&amp;</span><span class="st"> </span><span class="dv">3</span><span class="op">!=</span><span class="dv">3</span> <span class="co"># Lógico, critério aditivo E. Operação elementar</span>
-[<span class="dv">1</span>] <span class="ot">FALSE</span>
-<span class="dv">3</span><span class="op">==</span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span><span class="dv">3</span><span class="op">!=</span><span class="dv">3</span> <span class="co"># Lógico, critério aditivo OU. Operação elementar</span>
-[<span class="dv">1</span>] <span class="ot">TRUE</span>
-<span class="dv">3</span><span class="op">==</span><span class="dv">3</span> <span class="op">&amp;&amp;</span><span class="st"> </span><span class="dv">3</span><span class="op">!=</span><span class="dv">3</span> <span class="co"># Lógico, E.</span>
-[<span class="dv">1</span>] <span class="ot">FALSE</span>
-<span class="dv">3</span><span class="op">==</span><span class="dv">3</span> <span class="op">||</span><span class="st"> </span><span class="dv">3</span><span class="op">!=</span><span class="dv">3</span> <span class="co"># Lógico, OU.</span>
-[<span class="dv">1</span>] <span class="ot">TRUE</span></code></pre>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="dv">2</span><span class="op">+</span><span class="dv">2</span> <span class="co"># Soma</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">[<span class="dv">1</span>] <span class="dv">4</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="dv">8-3</span> <span class="co"># Subtração</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">[<span class="dv">1</span>] <span class="dv">5</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="dv">3</span><span class="op">*</span><span class="dv">8</span> <span class="co"># Multiplicação</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6">[<span class="dv">1</span>] <span class="dv">24</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="dv">8</span><span class="op">/</span><span class="dv">2</span> <span class="co"># Divisão</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">[<span class="dv">1</span>] <span class="dv">4</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="dv">2</span><span class="op">^</span><span class="dv">8</span> <span class="co"># Potências</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">[<span class="dv">1</span>] <span class="dv">256</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">(<span class="dv">2</span><span class="op">+</span><span class="dv">4</span>)<span class="op">/</span><span class="dv">7</span> <span class="co"># Prioridades de solução. Diferente de 2+4/7</span></a>
+<a class="sourceLine" id="cb4-12" data-line-number="12">[<span class="dv">1</span>] <span class="fl">0.8571429</span></a>
+<a class="sourceLine" id="cb4-13" data-line-number="13"><span class="dv">10</span><span class="op">%/%</span><span class="dv">3</span> <span class="co"># Parte inteira da divisão. O inteiro da divisão de um número por outro</span></a>
+<a class="sourceLine" id="cb4-14" data-line-number="14">[<span class="dv">1</span>] <span class="dv">3</span></a>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="dv">10</span><span class="op">%%</span><span class="dv">3</span> <span class="co"># Módulo. O resto da divisão de um número por outro</span></a>
+<a class="sourceLine" id="cb4-16" data-line-number="16">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb4-17" data-line-number="17"><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </a>
+<a class="sourceLine" id="cb4-18" data-line-number="18">       <span class="dt">nrow =</span> <span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb4-19" data-line-number="19">       <span class="dt">ncol =</span> <span class="dv">1</span>)<span class="op">%*%</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>), </a>
+<a class="sourceLine" id="cb4-20" data-line-number="20">                       <span class="dt">nrow =</span> <span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb4-21" data-line-number="21">                       <span class="dt">ncol =</span> <span class="dv">3</span>) <span class="co"># Produto de matrizes</span></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22">     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb4-23" data-line-number="23">[<span class="dv">1</span>,]    <span class="dv">4</span>    <span class="dv">2</span>    <span class="dv">3</span></a>
+<a class="sourceLine" id="cb4-24" data-line-number="24">[<span class="dv">2</span>,]    <span class="dv">8</span>    <span class="dv">4</span>    <span class="dv">6</span></a>
+<a class="sourceLine" id="cb4-25" data-line-number="25">[<span class="dv">3</span>,]   <span class="dv">12</span>    <span class="dv">6</span>    <span class="dv">9</span></a>
+<a class="sourceLine" id="cb4-26" data-line-number="26"><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>), </a>
+<a class="sourceLine" id="cb4-27" data-line-number="27">       <span class="dt">nrow =</span> <span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb4-28" data-line-number="28">       <span class="dt">ncol =</span> <span class="dv">3</span>)<span class="op">%o%</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>), </a>
+<a class="sourceLine" id="cb4-29" data-line-number="29">                       <span class="dt">nrow =</span> <span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb4-30" data-line-number="30">                       <span class="dt">ncol =</span> <span class="dv">3</span>) <span class="co"># Produto diádico</span></a>
+<a class="sourceLine" id="cb4-31" data-line-number="31">, , <span class="dv">1</span>, <span class="dv">1</span></a>
+<a class="sourceLine" id="cb4-32" data-line-number="32"></a>
+<a class="sourceLine" id="cb4-33" data-line-number="33">     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb4-34" data-line-number="34">[<span class="dv">1</span>,]    <span class="dv">4</span>    <span class="dv">8</span>   <span class="dv">12</span></a>
+<a class="sourceLine" id="cb4-35" data-line-number="35"></a>
+<a class="sourceLine" id="cb4-36" data-line-number="36">, , <span class="dv">1</span>, <span class="dv">2</span></a>
+<a class="sourceLine" id="cb4-37" data-line-number="37"></a>
+<a class="sourceLine" id="cb4-38" data-line-number="38">     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb4-39" data-line-number="39">[<span class="dv">1</span>,]    <span class="dv">2</span>    <span class="dv">4</span>    <span class="dv">6</span></a>
+<a class="sourceLine" id="cb4-40" data-line-number="40"></a>
+<a class="sourceLine" id="cb4-41" data-line-number="41">, , <span class="dv">1</span>, <span class="dv">3</span></a>
+<a class="sourceLine" id="cb4-42" data-line-number="42"></a>
+<a class="sourceLine" id="cb4-43" data-line-number="43">     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>]</a>
+<a class="sourceLine" id="cb4-44" data-line-number="44">[<span class="dv">1</span>,]    <span class="dv">3</span>    <span class="dv">6</span>    <span class="dv">9</span></a>
+<a class="sourceLine" id="cb4-45" data-line-number="45"><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">4</span>), </a>
+<a class="sourceLine" id="cb4-46" data-line-number="46">       <span class="dt">nrow =</span> <span class="dv">2</span>, </a>
+<a class="sourceLine" id="cb4-47" data-line-number="47">       <span class="dt">ncol =</span> <span class="dv">2</span>)<span class="op">%x%</span><span class="kw">matrix</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">5</span>, <span class="dv">7</span>), </a>
+<a class="sourceLine" id="cb4-48" data-line-number="48">                       <span class="dt">nrow =</span> <span class="dv">2</span>,</a>
+<a class="sourceLine" id="cb4-49" data-line-number="49">                       <span class="dt">ncol =</span> <span class="dv">2</span>) <span class="co"># Produto de Kronecker</span></a>
+<a class="sourceLine" id="cb4-50" data-line-number="50">     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb4-51" data-line-number="51">[<span class="dv">1</span>,]    <span class="dv">0</span>    <span class="dv">5</span>    <span class="dv">0</span>   <span class="dv">10</span></a>
+<a class="sourceLine" id="cb4-52" data-line-number="52">[<span class="dv">2</span>,]    <span class="dv">6</span>    <span class="dv">7</span>   <span class="dv">12</span>   <span class="dv">14</span></a>
+<a class="sourceLine" id="cb4-53" data-line-number="53">[<span class="dv">3</span>,]    <span class="dv">0</span>   <span class="dv">15</span>    <span class="dv">0</span>   <span class="dv">20</span></a>
+<a class="sourceLine" id="cb4-54" data-line-number="54">[<span class="dv">4</span>,]   <span class="dv">18</span>   <span class="dv">21</span>   <span class="dv">24</span>   <span class="dv">28</span></a>
+<a class="sourceLine" id="cb4-55" data-line-number="55"><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>)<span class="op">%in%</span><span class="kw">c</span>(<span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>) <span class="co"># Operador de correspondência</span></a>
+<a class="sourceLine" id="cb4-56" data-line-number="56">[<span class="dv">1</span>] <span class="ot">FALSE</span>  <span class="ot">TRUE</span>  <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb4-57" data-line-number="57"><span class="dv">2</span><span class="op">&lt;</span><span class="dv">3</span> <span class="co"># Comparar, menor</span></a>
+<a class="sourceLine" id="cb4-58" data-line-number="58">[<span class="dv">1</span>] <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb4-59" data-line-number="59"><span class="dv">3</span><span class="op">&gt;</span><span class="dv">3</span> <span class="co"># Comparar, maior</span></a>
+<a class="sourceLine" id="cb4-60" data-line-number="60">[<span class="dv">1</span>] <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb4-61" data-line-number="61"><span class="dv">3</span><span class="op">&lt;=</span><span class="dv">3</span> <span class="co"># Comparar, menor ou igual</span></a>
+<a class="sourceLine" id="cb4-62" data-line-number="62">[<span class="dv">1</span>] <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb4-63" data-line-number="63"><span class="dv">2</span><span class="op">&gt;=</span><span class="dv">3</span> <span class="co"># Comparar, maior ou igual</span></a>
+<a class="sourceLine" id="cb4-64" data-line-number="64">[<span class="dv">1</span>] <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb4-65" data-line-number="65"><span class="dv">3</span><span class="op">==</span><span class="dv">3</span> <span class="co"># Comparar, exatamente igual</span></a>
+<a class="sourceLine" id="cb4-66" data-line-number="66">[<span class="dv">1</span>] <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb4-67" data-line-number="67"><span class="dv">2</span><span class="op">!=</span><span class="dv">3</span> <span class="co"># Comparar, diferente </span></a>
+<a class="sourceLine" id="cb4-68" data-line-number="68">[<span class="dv">1</span>] <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb4-69" data-line-number="69"><span class="op">!</span><span class="dv">3</span><span class="op">==</span><span class="dv">3</span> <span class="co"># Lógico, NÃO. Inverter resultado de teste lógico</span></a>
+<a class="sourceLine" id="cb4-70" data-line-number="70">[<span class="dv">1</span>] <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb4-71" data-line-number="71"><span class="dv">3</span><span class="op">==</span><span class="dv">3</span> <span class="op">&amp;</span><span class="st"> </span><span class="dv">3</span><span class="op">!=</span><span class="dv">3</span> <span class="co"># Lógico, critério aditivo E. Operação elementar</span></a>
+<a class="sourceLine" id="cb4-72" data-line-number="72">[<span class="dv">1</span>] <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb4-73" data-line-number="73"><span class="dv">3</span><span class="op">==</span><span class="dv">3</span> <span class="op">|</span><span class="st"> </span><span class="dv">3</span><span class="op">!=</span><span class="dv">3</span> <span class="co"># Lógico, critério aditivo OU. Operação elementar</span></a>
+<a class="sourceLine" id="cb4-74" data-line-number="74">[<span class="dv">1</span>] <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb4-75" data-line-number="75"><span class="dv">3</span><span class="op">==</span><span class="dv">3</span> <span class="op">&amp;&amp;</span><span class="st"> </span><span class="dv">3</span><span class="op">!=</span><span class="dv">3</span> <span class="co"># Lógico, E.</span></a>
+<a class="sourceLine" id="cb4-76" data-line-number="76">[<span class="dv">1</span>] <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb4-77" data-line-number="77"><span class="dv">3</span><span class="op">==</span><span class="dv">3</span> <span class="op">||</span><span class="st"> </span><span class="dv">3</span><span class="op">!=</span><span class="dv">3</span> <span class="co"># Lógico, OU.</span></a>
+<a class="sourceLine" id="cb4-78" data-line-number="78">[<span class="dv">1</span>] <span class="ot">TRUE</span></a></code></pre></div>
 <p>Operadores <strong>&amp;</strong> e <strong>|</strong> fazem a operação elementar produzindo resultados de comprimento do operador mais longo. Já <strong>&amp;&amp;</strong> e <strong>||</strong> examinam apenas o primeiro elemento dos operadores e como resultado apenas um único valor lógico é retornado. Zero é sempre considerado <em>FALSE</em> e números diferentes de zero são considerados <em>TRUE</em>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="dv">0</span>, <span class="dv">6</span>)
-x
-[<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">6</span>
-y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)
-y
-[<span class="dv">1</span>] <span class="ot">FALSE</span>  <span class="ot">TRUE</span> <span class="ot">FALSE</span>  <span class="ot">TRUE</span>
-<span class="op">!</span>x
-[<span class="dv">1</span>] <span class="ot">FALSE</span>  <span class="ot">TRUE</span>  <span class="ot">TRUE</span> <span class="ot">FALSE</span>
-x<span class="op">&amp;</span>y
-[<span class="dv">1</span>] <span class="ot">FALSE</span> <span class="ot">FALSE</span> <span class="ot">FALSE</span>  <span class="ot">TRUE</span>
-x<span class="op">&amp;&amp;</span>y
-[<span class="dv">1</span>] <span class="ot">FALSE</span>
-x<span class="op">|</span>y
-[<span class="dv">1</span>]  <span class="ot">TRUE</span>  <span class="ot">TRUE</span> <span class="ot">FALSE</span>  <span class="ot">TRUE</span>
-x<span class="op">||</span>y
-[<span class="dv">1</span>] <span class="ot">TRUE</span></code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="dv">0</span>, <span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2">x</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3">[<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">0</span> <span class="dv">0</span> <span class="dv">6</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb5-5" data-line-number="5">y</a>
+<a class="sourceLine" id="cb5-6" data-line-number="6">[<span class="dv">1</span>] <span class="ot">FALSE</span>  <span class="ot">TRUE</span> <span class="ot">FALSE</span>  <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="op">!</span>x</a>
+<a class="sourceLine" id="cb5-8" data-line-number="8">[<span class="dv">1</span>] <span class="ot">FALSE</span>  <span class="ot">TRUE</span>  <span class="ot">TRUE</span> <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9">x<span class="op">&amp;</span>y</a>
+<a class="sourceLine" id="cb5-10" data-line-number="10">[<span class="dv">1</span>] <span class="ot">FALSE</span> <span class="ot">FALSE</span> <span class="ot">FALSE</span>  <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb5-11" data-line-number="11">x<span class="op">&amp;&amp;</span>y</a>
+<a class="sourceLine" id="cb5-12" data-line-number="12">[<span class="dv">1</span>] <span class="ot">FALSE</span></a>
+<a class="sourceLine" id="cb5-13" data-line-number="13">x<span class="op">|</span>y</a>
+<a class="sourceLine" id="cb5-14" data-line-number="14">[<span class="dv">1</span>]  <span class="ot">TRUE</span>  <span class="ot">TRUE</span> <span class="ot">FALSE</span>  <span class="ot">TRUE</span></a>
+<a class="sourceLine" id="cb5-15" data-line-number="15">x<span class="op">||</span>y</a>
+<a class="sourceLine" id="cb5-16" data-line-number="16">[<span class="dv">1</span>] <span class="ot">TRUE</span></a></code></pre></div>
 </div>
 <div id="tipos-de-estruturas" class="section level1">
 <h1>Tipos de estruturas</h1>
-<p>As estruturas básicas de dados disponíveis são vetores (<em>vector</em>), fatores (<em>factor</em>), data.frames (<em>data.frame</em>), matrizes (<em>matrix</em>) e listas (<em>list</em>). Os vetores e fatores são conjuntos de dados unidimensionais do mesmo tipo. Os vetores podem conter dados lógicos (<em>logical</em>), inteiros (<em>integer</em>), reais (<em>double</em>), caracteres (<em>character</em>) ou complexos (<em>complex</em>), são geralmente concatenados pela função (<strong>c</strong>) e sempre separados por vírgulas (<strong>,</strong>). Os fatores são estruturas de dados usada para dados (<em>numeric</em> ou <em>character</em>) com um número finito (predefinido) de categorias, podendo estas serem ordenadas ou não. Fatores são definidos pelas função <strong>factor</strong> e <strong>ordered</strong>. Os data.frames são conjuntos bidimensionais de vetores de mesmo comprimento sendo que cada vetor pode ser de tipos diferentes. Os data.frames são criados pela função (<strong>data.frame</strong>) onde os vetores são agrupados nas coluna e o conteúdo dos vetores formam as linhas. Por padrão, a função converte os vetores de caracteres (<em>character</em>) em fatores não ordenados (<em>factor</em>). As matrizes também são conjuntos bidimensionais de dados do mesmo tipo, podem ser criadas com a função <strong>matrix</strong> ou com a combinação de vetores com as função <strong>cbind</strong> e <strong>rbind</strong> (concatena os vetores por coluna ou por linhas respectivamente). A listas são conjuntos de dados de qualquer tipo (incluindo listas de listas), são criadas com a função <strong>list</strong>. Vetores, fatores e listas podem conter nomes (acessados ou atribuidos pela função <strong>names</strong>) e possuem como atributo o comprimento (obetidos pela função <strong>length</strong>). Os data.frames e matrizes podem conter nomes para linhas e colunas (acessados ou atribuidos pelas funções <strong>rownames</strong> e <strong>colnames</strong>, respectivamente) e contêm como atributos os números de colunas e linhas (obetidos pelas funções <strong>ncol</strong> e <strong>nrow</strong>, respectivamente). O índice do primeiro item é sempre o zero (0). Os intervalos das estruturas podem ser acessadas usando dois pontos (<strong>:</strong>). Os índice com números negativos retornam todos menos os especificados. A indexação também ser realizada com vetores lógicos e com nomes nos casos de estruturas nomeadas. A função <strong>str</strong> exibir resumidamente a estrutura interna dos objeto no R. A conversão entre estruturas é livre feita pelas funções de prefixo <strong>as.</strong> (por exemplo <em>as.matrix()</em>) e a checagem lógica feita pelas funções de prefixo <strong>is.</strong> (por exemplo <em>is.data.frame()</em>).</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Estruturas</span>
-vetor &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>) 
-vetor
-[<span class="dv">1</span>] <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span> <span class="st">&quot;d&quot;</span>
-<span class="kw">class</span>(vetor)
-[<span class="dv">1</span>] <span class="st">&quot;character&quot;</span>
-<span class="kw">names</span>(vetor)
-<span class="ot">NULL</span>
-<span class="kw">names</span>(vetor) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;letra1&quot;</span>, <span class="st">&quot;letra2&quot;</span>, <span class="st">&quot;letra3&quot;</span>, <span class="st">&quot;letra4&quot;</span>)
-vetor
-letra1 letra2 letra3 letra4 
-   <span class="st">&quot;a&quot;</span>    <span class="st">&quot;b&quot;</span>    <span class="st">&quot;c&quot;</span>    <span class="st">&quot;d&quot;</span> 
-fator &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))
-fator
-[<span class="dv">1</span>] a b c
-Levels<span class="op">:</span><span class="st"> </span>a b c
-<span class="kw">levels</span>(fator)
-[<span class="dv">1</span>] <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span>
-fator.ordenado &lt;-<span class="st"> </span><span class="kw">ordered</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))
-fator.ordenado
-[<span class="dv">1</span>] a b c
-Levels<span class="op">:</span><span class="st"> </span>a <span class="op">&lt;</span><span class="st"> </span>b <span class="op">&lt;</span><span class="st"> </span>c
-dataframe &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">vetor.de.caracteres =</span> vetor, <span class="dt">vetor.numerico =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)
-dataframe
-       vetor.de.caracteres vetor.numerico
-letra1                   a              <span class="dv">1</span>
-letra2                   b              <span class="dv">2</span>
-letra3                   c              <span class="dv">3</span>
-letra4                   d              <span class="dv">4</span>
-<span class="kw">str</span>(dataframe) <span class="co"># Por padrão a função converte vetores de caracteres em fatores</span>
-<span class="st">'data.frame'</span><span class="op">:</span><span class="st">   </span><span class="dv">4</span> obs. of  <span class="dv">2</span> variables<span class="op">:</span>
-<span class="st"> </span><span class="er">$</span><span class="st"> </span>vetor.de.caracteres<span class="op">:</span><span class="st"> </span>Factor w<span class="op">/</span><span class="st"> </span><span class="dv">4</span> levels <span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span><span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>
- <span class="op">$</span><span class="st"> </span>vetor.numerico     <span class="op">:</span><span class="st"> </span>int  <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>
-<span class="kw">ncol</span>(dataframe)
-[<span class="dv">1</span>] <span class="dv">2</span>
-<span class="kw">nrow</span>(dataframe)
-[<span class="dv">1</span>] <span class="dv">4</span>
-matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">4</span>) <span class="co"># cbind e rbind também podem ser usadas</span>
-matriz <span class="co"># Por padrão os dados são organizados por colunas</span>
-     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>]
-[<span class="dv">1</span>,]    <span class="dv">1</span>    <span class="dv">6</span>   <span class="dv">11</span>   <span class="dv">16</span>
-[<span class="dv">2</span>,]    <span class="dv">2</span>    <span class="dv">7</span>   <span class="dv">12</span>   <span class="dv">17</span>
-[<span class="dv">3</span>,]    <span class="dv">3</span>    <span class="dv">8</span>   <span class="dv">13</span>   <span class="dv">18</span>
-[<span class="dv">4</span>,]    <span class="dv">4</span>    <span class="dv">9</span>   <span class="dv">14</span>   <span class="dv">19</span>
-[<span class="dv">5</span>,]    <span class="dv">5</span>   <span class="dv">10</span>   <span class="dv">15</span>   <span class="dv">20</span>
-<span class="kw">str</span>(matriz) <span class="co"># Apenas uma tipo de dado é permitido</span>
- int [<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span> <span class="dv">10</span> ...
-lista &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, dataframe, matriz, <span class="kw">list</span>(<span class="st">&quot;outra&quot;</span>, <span class="st">&quot;lista&quot;</span>))
-lista
-[[<span class="dv">1</span>]]
-[<span class="dv">1</span>] <span class="dv">1</span>
-
-[[<span class="dv">2</span>]]
-       vetor.de.caracteres vetor.numerico
-letra1                   a              <span class="dv">1</span>
-letra2                   b              <span class="dv">2</span>
-letra3                   c              <span class="dv">3</span>
-letra4                   d              <span class="dv">4</span>
-
-[[<span class="dv">3</span>]]
-     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>]
-[<span class="dv">1</span>,]    <span class="dv">1</span>    <span class="dv">6</span>   <span class="dv">11</span>   <span class="dv">16</span>
-[<span class="dv">2</span>,]    <span class="dv">2</span>    <span class="dv">7</span>   <span class="dv">12</span>   <span class="dv">17</span>
-[<span class="dv">3</span>,]    <span class="dv">3</span>    <span class="dv">8</span>   <span class="dv">13</span>   <span class="dv">18</span>
-[<span class="dv">4</span>,]    <span class="dv">4</span>    <span class="dv">9</span>   <span class="dv">14</span>   <span class="dv">19</span>
-[<span class="dv">5</span>,]    <span class="dv">5</span>   <span class="dv">10</span>   <span class="dv">15</span>   <span class="dv">20</span>
-
-[[<span class="dv">4</span>]]
-[[<span class="dv">4</span>]][[<span class="dv">1</span>]]
-[<span class="dv">1</span>] <span class="st">&quot;outra&quot;</span>
-
-[[<span class="dv">4</span>]][[<span class="dv">2</span>]]
-[<span class="dv">1</span>] <span class="st">&quot;lista&quot;</span>
-<span class="kw">names</span>(lista)
-<span class="ot">NULL</span>
-<span class="kw">names</span>(lista) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l2&quot;</span>, <span class="st">&quot;l3&quot;</span>, <span class="st">&quot;l4&quot;</span>)
-lista
-<span class="op">$</span>l1
-[<span class="dv">1</span>] <span class="dv">1</span>
-
-<span class="op">$</span>l2
-       vetor.de.caracteres vetor.numerico
-letra1                   a              <span class="dv">1</span>
-letra2                   b              <span class="dv">2</span>
-letra3                   c              <span class="dv">3</span>
-letra4                   d              <span class="dv">4</span>
-
-<span class="op">$</span>l3
-     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>]
-[<span class="dv">1</span>,]    <span class="dv">1</span>    <span class="dv">6</span>   <span class="dv">11</span>   <span class="dv">16</span>
-[<span class="dv">2</span>,]    <span class="dv">2</span>    <span class="dv">7</span>   <span class="dv">12</span>   <span class="dv">17</span>
-[<span class="dv">3</span>,]    <span class="dv">3</span>    <span class="dv">8</span>   <span class="dv">13</span>   <span class="dv">18</span>
-[<span class="dv">4</span>,]    <span class="dv">4</span>    <span class="dv">9</span>   <span class="dv">14</span>   <span class="dv">19</span>
-[<span class="dv">5</span>,]    <span class="dv">5</span>   <span class="dv">10</span>   <span class="dv">15</span>   <span class="dv">20</span>
-
-<span class="op">$</span>l4
-<span class="op">$</span>l4[[<span class="dv">1</span>]]
-[<span class="dv">1</span>] <span class="st">&quot;outra&quot;</span>
-
-<span class="op">$</span>l4[[<span class="dv">2</span>]]
-[<span class="dv">1</span>] <span class="st">&quot;lista&quot;</span>
-<span class="kw">length</span>(lista)
-[<span class="dv">1</span>] <span class="dv">4</span>
-
-<span class="co"># Indexação das estruturas</span>
-vetor[<span class="dv">1</span>] <span class="co"># Primeiro elemento</span>
-letra1 
-   <span class="st">&quot;a&quot;</span> 
-vetor[<span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)] <span class="co"># Indexação com valores lógicos</span>
-letra3 
-   <span class="st">&quot;c&quot;</span> 
-vetor[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="co"># Primeiro a terceiro elementos</span>
-letra1 letra2 letra3 
-   <span class="st">&quot;a&quot;</span>    <span class="st">&quot;b&quot;</span>    <span class="st">&quot;c&quot;</span> 
-vetor[] <span class="co"># Todos</span>
-letra1 letra2 letra3 letra4 
-   <span class="st">&quot;a&quot;</span>    <span class="st">&quot;b&quot;</span>    <span class="st">&quot;c&quot;</span>    <span class="st">&quot;d&quot;</span> 
-vetor[<span class="op">-</span><span class="dv">1</span>] <span class="co"># Todos, exceto o primeito elemento</span>
-letra2 letra3 letra4 
-   <span class="st">&quot;b&quot;</span>    <span class="st">&quot;c&quot;</span>    <span class="st">&quot;d&quot;</span> 
-vetor[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>)] <span class="co"># vetor[1, 4] não funciona</span>
-letra1 letra4 
-   <span class="st">&quot;a&quot;</span>    <span class="st">&quot;d&quot;</span> 
-vetor[<span class="st">&quot;letra4&quot;</span>] <span class="co"># Pelo nome</span>
-letra4 
-   <span class="st">&quot;d&quot;</span> 
-vetor[<span class="dv">1</span>] &lt;-<span class="st"> &quot;z&quot;</span> <span class="co"># muda o valor do item 1</span>
-vetor
-letra1 letra2 letra3 letra4 
-   <span class="st">&quot;z&quot;</span>    <span class="st">&quot;b&quot;</span>    <span class="st">&quot;c&quot;</span>    <span class="st">&quot;d&quot;</span> 
-vetor &lt;-<span class="st"> </span><span class="ot">NULL</span> <span class="co"># Vetor deletado</span>
-vetor
-<span class="ot">NULL</span>
-
-fator
-[<span class="dv">1</span>] a b c
-Levels<span class="op">:</span><span class="st"> </span>a b c
-fator[<span class="dv">1</span>] &lt;-<span class="st"> &quot;c&quot;</span> <span class="co"># mudar de fator</span>
-fator <span class="co"># nívels permanecem</span>
-[<span class="dv">1</span>] c b c
-Levels<span class="op">:</span><span class="st"> </span>a b c
-fator[<span class="dv">1</span>] &lt;-<span class="st"> &quot;z&quot;</span> <span class="co"># fator inválido</span>
-Warning <span class="cf">in</span> <span class="st">`</span><span class="dt">[&lt;-.factor</span><span class="st">`</span>(<span class="st">`</span><span class="dt">*tmp*</span><span class="st">`</span>, <span class="dv">1</span>, <span class="dt">value =</span> <span class="st">&quot;z&quot;</span>)<span class="op">:</span><span class="st"> </span>invalid factor level, <span class="ot">NA</span>
-generated
-fator <span class="co"># NA é gerado</span>
-[<span class="dv">1</span>] <span class="op">&lt;</span><span class="ot">NA</span><span class="op">&gt;</span><span class="st"> </span>b    c   
-Levels<span class="op">:</span><span class="st"> </span>a b c
-
-dataframe[<span class="dv">1</span>] <span class="co"># Mostra primeiro vetor (coluna)</span>
-       vetor.de.caracteres
-letra1                   a
-letra2                   b
-letra3                   c
-letra4                   d
-dataframe<span class="op">$</span>vetor.de.caracteres <span class="co"># Indexação pelo nome</span>
-[<span class="dv">1</span>] a b c d
-Levels<span class="op">:</span><span class="st"> </span>a b c d
-dataframe[<span class="dv">1</span>, ] <span class="co"># Linha</span>
-       vetor.de.caracteres vetor.numerico
-letra1                   a              <span class="dv">1</span>
-dataframe[, <span class="dv">2</span>] <span class="co"># Coluna. Por padrão a estrutura é convenvertida em vetor...</span>
-[<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>
-dataframe[, <span class="dv">2</span>, drop =<span class="st"> </span><span class="ot">FALSE</span>] <span class="co"># ... Mantém a estrutura de data.frame</span>
-       vetor.numerico
-letra1              <span class="dv">1</span>
-letra2              <span class="dv">2</span>
-letra3              <span class="dv">3</span>
-letra4              <span class="dv">4</span>
-dataframe[,] <span class="co"># Tudo</span>
-       vetor.de.caracteres vetor.numerico
-letra1                   a              <span class="dv">1</span>
-letra2                   b              <span class="dv">2</span>
-letra3                   c              <span class="dv">3</span>
-letra4                   d              <span class="dv">4</span>
-dataframe[, <span class="dv">2</span>] &lt;-<span class="st"> </span><span class="ot">NULL</span> <span class="co"># Apenas colunas podem ser deletadas</span>
-dataframe<span class="op">$</span>novo.vetor &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>) <span class="co"># Adicionar vetor...</span>
-<span class="kw">str</span>(dataframe) <span class="co"># ... nesse caso a classe permanece</span>
-<span class="st">'data.frame'</span><span class="op">:</span><span class="st">   </span><span class="dv">4</span> obs. of  <span class="dv">2</span> variables<span class="op">:</span>
-<span class="st"> </span><span class="er">$</span><span class="st"> </span>vetor.de.caracteres<span class="op">:</span><span class="st"> </span>Factor w<span class="op">/</span><span class="st"> </span><span class="dv">4</span> levels <span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span><span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>
- <span class="op">$</span><span class="st"> </span>novo.vetor         <span class="op">:</span><span class="st"> </span>chr  <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span> <span class="st">&quot;d&quot;</span>
-
-matriz[<span class="dv">1</span>, ]
-[<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">6</span> <span class="dv">11</span> <span class="dv">16</span>
-matriz[, <span class="dv">2</span>]
-[<span class="dv">1</span>]  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span>
-matriz[, <span class="dv">2</span>, drop =<span class="st"> </span><span class="ot">FALSE</span>] <span class="co"># Matriz 1x5, não um vetor</span>
-     [,<span class="dv">1</span>]
-[<span class="dv">1</span>,]    <span class="dv">6</span>
-[<span class="dv">2</span>,]    <span class="dv">7</span>
-[<span class="dv">3</span>,]    <span class="dv">8</span>
-[<span class="dv">4</span>,]    <span class="dv">9</span>
-[<span class="dv">5</span>,]   <span class="dv">10</span>
-matriz[<span class="dv">1</span>, <span class="dv">4</span>] <span class="co"># Um elemento da matriz</span>
-[<span class="dv">1</span>] <span class="dv">16</span>
-matriz[<span class="dv">1</span>, <span class="dv">4</span>] &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># Nada pode ser deletado, apenas alterado de valor (incluindo NA)</span>
-
-<span class="kw">str</span>(lista)
-List of <span class="dv">4</span>
- <span class="op">$</span><span class="st"> </span>l1<span class="op">:</span><span class="st"> </span>num <span class="dv">1</span>
- <span class="op">$</span><span class="st"> </span>l2<span class="op">:</span><span class="st">'data.frame'</span><span class="op">:</span><span class="st"> </span><span class="dv">4</span> obs. of  <span class="dv">2</span> variables<span class="op">:</span>
-<span class="st">  </span>..<span class="op">$</span><span class="st"> </span>vetor.de.caracteres<span class="op">:</span><span class="st"> </span>Factor w<span class="op">/</span><span class="st"> </span><span class="dv">4</span> levels <span class="st">&quot;a&quot;</span>,<span class="st">&quot;b&quot;</span>,<span class="st">&quot;c&quot;</span>,<span class="st">&quot;d&quot;</span><span class="op">:</span><span class="st"> </span><span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>
-  ..<span class="op">$</span><span class="st"> </span>vetor.numerico     <span class="op">:</span><span class="st"> </span>int [<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span>
- <span class="op">$</span><span class="st"> </span>l3<span class="op">:</span><span class="st"> </span>int [<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span> <span class="dv">10</span> ...
- <span class="op">$</span><span class="st"> </span>l4<span class="op">:</span>List of <span class="dv">2</span>
-  ..<span class="op">$</span><span class="st"> </span><span class="er">:</span><span class="st"> </span>chr <span class="st">&quot;outra&quot;</span>
-  ..<span class="op">$</span><span class="st"> </span><span class="er">:</span><span class="st"> </span>chr <span class="st">&quot;lista&quot;</span>
-lista[<span class="dv">2</span>] <span class="co"># Acessar sublista</span>
-<span class="op">$</span>l2
-       vetor.de.caracteres vetor.numerico
-letra1                   a              <span class="dv">1</span>
-letra2                   b              <span class="dv">2</span>
-letra3                   c              <span class="dv">3</span>
-letra4                   d              <span class="dv">4</span>
-lista[[<span class="dv">2</span>]] <span class="co"># Acessar conteúdo da lista</span>
-       vetor.de.caracteres vetor.numerico
-letra1                   a              <span class="dv">1</span>
-letra2                   b              <span class="dv">2</span>
-letra3                   c              <span class="dv">3</span>
-letra4                   d              <span class="dv">4</span>
-lista[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="co"># Acessar várias sublistas. lista[[1:3]] não funciona</span>
-<span class="op">$</span>l1
-[<span class="dv">1</span>] <span class="dv">1</span>
-
-<span class="op">$</span>l2
-       vetor.de.caracteres vetor.numerico
-letra1                   a              <span class="dv">1</span>
-letra2                   b              <span class="dv">2</span>
-letra3                   c              <span class="dv">3</span>
-letra4                   d              <span class="dv">4</span>
-
-<span class="op">$</span>l3
-     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>]
-[<span class="dv">1</span>,]    <span class="dv">1</span>    <span class="dv">6</span>   <span class="dv">11</span>   <span class="dv">16</span>
-[<span class="dv">2</span>,]    <span class="dv">2</span>    <span class="dv">7</span>   <span class="dv">12</span>   <span class="dv">17</span>
-[<span class="dv">3</span>,]    <span class="dv">3</span>    <span class="dv">8</span>   <span class="dv">13</span>   <span class="dv">18</span>
-[<span class="dv">4</span>,]    <span class="dv">4</span>    <span class="dv">9</span>   <span class="dv">14</span>   <span class="dv">19</span>
-[<span class="dv">5</span>,]    <span class="dv">5</span>   <span class="dv">10</span>   <span class="dv">15</span>   <span class="dv">20</span>
-lista[[<span class="st">&quot;l3&quot;</span>]][<span class="dv">1</span>,<span class="dv">3</span>] <span class="co"># Usando nomes e elemento da matriz</span>
-[<span class="dv">1</span>] <span class="dv">11</span>
-lista[[<span class="st">&quot;l3&quot;</span>]] &lt;-<span class="st"> </span><span class="ot">NULL</span> <span class="co"># Deletar item da lista. Mesmo que lista[&quot;l3&quot;], lista[3], lista[[3]]</span>
-lista<span class="op">$</span>novoitem &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span> <span class="co"># Adicionar item a lista</span>
-lista
-<span class="op">$</span>l1
-[<span class="dv">1</span>] <span class="dv">1</span>
-
-<span class="op">$</span>l2
-       vetor.de.caracteres vetor.numerico
-letra1                   a              <span class="dv">1</span>
-letra2                   b              <span class="dv">2</span>
-letra3                   c              <span class="dv">3</span>
-letra4                   d              <span class="dv">4</span>
-
-<span class="op">$</span>l4
-<span class="op">$</span>l4[[<span class="dv">1</span>]]
-[<span class="dv">1</span>] <span class="st">&quot;outra&quot;</span>
-
-<span class="op">$</span>l4[[<span class="dv">2</span>]]
-[<span class="dv">1</span>] <span class="st">&quot;lista&quot;</span>
-
-
-<span class="op">$</span>novoitem
-[<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></code></pre>
+<p>As estruturas básicas de dados disponíveis são vetores (<em>vector</em>), fatores (<em>factor</em>), data.frames (<em>data.frame</em>), matrizes (<em>matrix</em>) e listas (<em>list</em>). Os vetores e fatores são conjuntos de dados unidimensionais do mesmo tipo. Os vetores podem conter dados lógicos (<em>logical</em>), inteiros (<em>integer</em>), reais (<em>double</em>), caracteres (<em>character</em>) ou complexos (<em>complex</em>), são geralmente concatenados pela função (<strong>c</strong>) e sempre separados por vírgulas (<strong>,</strong>). Os fatores são estruturas de dados usada para dados (<em>numeric</em> ou <em>character</em>) com um número finito (predefinido) de categorias, podendo estas serem ordenadas ou não. Fatores são definidos pelas função <strong>factor</strong> e <strong>ordered</strong>. Os data.frames são conjuntos bidimensionais de vetores de mesmo comprimento sendo que cada vetor pode ser de tipos diferentes. Os data.frames são criados pela função (<strong>data.frame</strong>) onde os vetores são agrupados nas coluna e o conteúdo dos vetores formam as linhas. As matrizes também são conjuntos bidimensionais de dados do mesmo tipo, podem ser criadas com a função <strong>matrix</strong> ou com a combinação de vetores com as função <strong>cbind</strong> e <strong>rbind</strong> (concatena os vetores por coluna ou por linhas respectivamente). A listas são conjuntos de dados de qualquer tipo (incluindo listas de listas), são criadas com a função <strong>list</strong>. Vetores, fatores e listas podem conter nomes (acessados ou atribuidos pela função <strong>names</strong>) e possuem como atributo o comprimento (obetidos pela função <strong>length</strong>). Os data.frames e matrizes podem conter nomes para linhas e colunas (acessados ou atribuidos pelas funções <strong>rownames</strong> e <strong>colnames</strong>, respectivamente) e contêm como atributos os números de colunas e linhas (obetidos pelas funções <strong>ncol</strong> e <strong>nrow</strong>, respectivamente). O índice do primeiro item é sempre o um (1). Os intervalos das estruturas podem ser acessadas usando dois pontos (<strong>:</strong>). Os índice com números negativos retornam todos menos os especificados. A indexação também ser realizada com vetores lógicos e com nomes nos casos de estruturas nomeadas. A função <strong>str</strong> exibir resumidamente a estrutura interna dos objeto no R. A conversão entre estruturas é livre feita pelas funções de prefixo <strong>as.</strong> (por exemplo <em>as.matrix()</em>) e a checagem lógica feita pelas funções de prefixo <strong>is.</strong> (por exemplo <em>is.data.frame()</em>).</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="co"># Estruturas</span></a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">vetor &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>) </a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">vetor</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">[<span class="dv">1</span>] <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span> <span class="st">&quot;d&quot;</span></a>
+<a class="sourceLine" id="cb6-5" data-line-number="5"><span class="kw">class</span>(vetor)</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">[<span class="dv">1</span>] <span class="st">&quot;character&quot;</span></a>
+<a class="sourceLine" id="cb6-7" data-line-number="7"><span class="kw">names</span>(vetor)</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8"><span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb6-9" data-line-number="9"><span class="kw">names</span>(vetor) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;letra1&quot;</span>, <span class="st">&quot;letra2&quot;</span>, <span class="st">&quot;letra3&quot;</span>, <span class="st">&quot;letra4&quot;</span>)</a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">vetor</a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">letra1 letra2 letra3 letra4 </a>
+<a class="sourceLine" id="cb6-12" data-line-number="12">   <span class="st">&quot;a&quot;</span>    <span class="st">&quot;b&quot;</span>    <span class="st">&quot;c&quot;</span>    <span class="st">&quot;d&quot;</span> </a>
+<a class="sourceLine" id="cb6-13" data-line-number="13">fator &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))</a>
+<a class="sourceLine" id="cb6-14" data-line-number="14">fator</a>
+<a class="sourceLine" id="cb6-15" data-line-number="15">[<span class="dv">1</span>] a b c</a>
+<a class="sourceLine" id="cb6-16" data-line-number="16">Levels<span class="op">:</span><span class="st"> </span>a b c</a>
+<a class="sourceLine" id="cb6-17" data-line-number="17"><span class="kw">levels</span>(fator)</a>
+<a class="sourceLine" id="cb6-18" data-line-number="18">[<span class="dv">1</span>] <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span></a>
+<a class="sourceLine" id="cb6-19" data-line-number="19">fator.ordenado &lt;-<span class="st"> </span><span class="kw">ordered</span>(<span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>))</a>
+<a class="sourceLine" id="cb6-20" data-line-number="20">fator.ordenado</a>
+<a class="sourceLine" id="cb6-21" data-line-number="21">[<span class="dv">1</span>] a b c</a>
+<a class="sourceLine" id="cb6-22" data-line-number="22">Levels<span class="op">:</span><span class="st"> </span>a <span class="op">&lt;</span><span class="st"> </span>b <span class="op">&lt;</span><span class="st"> </span>c</a>
+<a class="sourceLine" id="cb6-23" data-line-number="23">dataframe &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">vetor.de.caracteres =</span> vetor, <span class="dt">vetor.numerico =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb6-24" data-line-number="24">dataframe</a>
+<a class="sourceLine" id="cb6-25" data-line-number="25">       vetor.de.caracteres vetor.numerico</a>
+<a class="sourceLine" id="cb6-26" data-line-number="26">letra1                   a              <span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-27" data-line-number="27">letra2                   b              <span class="dv">2</span></a>
+<a class="sourceLine" id="cb6-28" data-line-number="28">letra3                   c              <span class="dv">3</span></a>
+<a class="sourceLine" id="cb6-29" data-line-number="29">letra4                   d              <span class="dv">4</span></a>
+<a class="sourceLine" id="cb6-30" data-line-number="30"><span class="kw">str</span>(dataframe) </a>
+<a class="sourceLine" id="cb6-31" data-line-number="31"><span class="st">'data.frame'</span><span class="op">:</span><span class="st">   </span><span class="dv">4</span> obs. of  <span class="dv">2</span> variables<span class="op">:</span></a>
+<a class="sourceLine" id="cb6-32" data-line-number="32"><span class="st"> </span><span class="er">$</span><span class="st"> </span>vetor.de.caracteres<span class="op">:</span><span class="st"> </span>chr  <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span> <span class="st">&quot;d&quot;</span></a>
+<a class="sourceLine" id="cb6-33" data-line-number="33"> <span class="op">$</span><span class="st"> </span>vetor.numerico     <span class="op">:</span><span class="st"> </span>int  <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb6-34" data-line-number="34"><span class="kw">ncol</span>(dataframe)</a>
+<a class="sourceLine" id="cb6-35" data-line-number="35">[<span class="dv">1</span>] <span class="dv">2</span></a>
+<a class="sourceLine" id="cb6-36" data-line-number="36"><span class="kw">nrow</span>(dataframe)</a>
+<a class="sourceLine" id="cb6-37" data-line-number="37">[<span class="dv">1</span>] <span class="dv">4</span></a>
+<a class="sourceLine" id="cb6-38" data-line-number="38">matriz &lt;-<span class="st"> </span><span class="kw">matrix</span>(<span class="dt">data =</span> <span class="dv">1</span><span class="op">:</span><span class="dv">20</span>, <span class="dt">nrow =</span> <span class="dv">5</span>, <span class="dt">ncol =</span> <span class="dv">4</span>) <span class="co"># cbind e rbind também podem ser usadas</span></a>
+<a class="sourceLine" id="cb6-39" data-line-number="39">matriz <span class="co"># Por padrão os dados são organizados por colunas</span></a>
+<a class="sourceLine" id="cb6-40" data-line-number="40">     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb6-41" data-line-number="41">[<span class="dv">1</span>,]    <span class="dv">1</span>    <span class="dv">6</span>   <span class="dv">11</span>   <span class="dv">16</span></a>
+<a class="sourceLine" id="cb6-42" data-line-number="42">[<span class="dv">2</span>,]    <span class="dv">2</span>    <span class="dv">7</span>   <span class="dv">12</span>   <span class="dv">17</span></a>
+<a class="sourceLine" id="cb6-43" data-line-number="43">[<span class="dv">3</span>,]    <span class="dv">3</span>    <span class="dv">8</span>   <span class="dv">13</span>   <span class="dv">18</span></a>
+<a class="sourceLine" id="cb6-44" data-line-number="44">[<span class="dv">4</span>,]    <span class="dv">4</span>    <span class="dv">9</span>   <span class="dv">14</span>   <span class="dv">19</span></a>
+<a class="sourceLine" id="cb6-45" data-line-number="45">[<span class="dv">5</span>,]    <span class="dv">5</span>   <span class="dv">10</span>   <span class="dv">15</span>   <span class="dv">20</span></a>
+<a class="sourceLine" id="cb6-46" data-line-number="46"><span class="kw">str</span>(matriz) <span class="co"># Apenas uma tipo de dado é permitido</span></a>
+<a class="sourceLine" id="cb6-47" data-line-number="47"> int [<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span> <span class="dv">10</span> ...</a>
+<a class="sourceLine" id="cb6-48" data-line-number="48">lista &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">1</span>, dataframe, matriz, <span class="kw">list</span>(<span class="st">&quot;outra&quot;</span>, <span class="st">&quot;lista&quot;</span>))</a>
+<a class="sourceLine" id="cb6-49" data-line-number="49">lista</a>
+<a class="sourceLine" id="cb6-50" data-line-number="50">[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb6-51" data-line-number="51">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-52" data-line-number="52"></a>
+<a class="sourceLine" id="cb6-53" data-line-number="53">[[<span class="dv">2</span>]]</a>
+<a class="sourceLine" id="cb6-54" data-line-number="54">       vetor.de.caracteres vetor.numerico</a>
+<a class="sourceLine" id="cb6-55" data-line-number="55">letra1                   a              <span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-56" data-line-number="56">letra2                   b              <span class="dv">2</span></a>
+<a class="sourceLine" id="cb6-57" data-line-number="57">letra3                   c              <span class="dv">3</span></a>
+<a class="sourceLine" id="cb6-58" data-line-number="58">letra4                   d              <span class="dv">4</span></a>
+<a class="sourceLine" id="cb6-59" data-line-number="59"></a>
+<a class="sourceLine" id="cb6-60" data-line-number="60">[[<span class="dv">3</span>]]</a>
+<a class="sourceLine" id="cb6-61" data-line-number="61">     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb6-62" data-line-number="62">[<span class="dv">1</span>,]    <span class="dv">1</span>    <span class="dv">6</span>   <span class="dv">11</span>   <span class="dv">16</span></a>
+<a class="sourceLine" id="cb6-63" data-line-number="63">[<span class="dv">2</span>,]    <span class="dv">2</span>    <span class="dv">7</span>   <span class="dv">12</span>   <span class="dv">17</span></a>
+<a class="sourceLine" id="cb6-64" data-line-number="64">[<span class="dv">3</span>,]    <span class="dv">3</span>    <span class="dv">8</span>   <span class="dv">13</span>   <span class="dv">18</span></a>
+<a class="sourceLine" id="cb6-65" data-line-number="65">[<span class="dv">4</span>,]    <span class="dv">4</span>    <span class="dv">9</span>   <span class="dv">14</span>   <span class="dv">19</span></a>
+<a class="sourceLine" id="cb6-66" data-line-number="66">[<span class="dv">5</span>,]    <span class="dv">5</span>   <span class="dv">10</span>   <span class="dv">15</span>   <span class="dv">20</span></a>
+<a class="sourceLine" id="cb6-67" data-line-number="67"></a>
+<a class="sourceLine" id="cb6-68" data-line-number="68">[[<span class="dv">4</span>]]</a>
+<a class="sourceLine" id="cb6-69" data-line-number="69">[[<span class="dv">4</span>]][[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb6-70" data-line-number="70">[<span class="dv">1</span>] <span class="st">&quot;outra&quot;</span></a>
+<a class="sourceLine" id="cb6-71" data-line-number="71"></a>
+<a class="sourceLine" id="cb6-72" data-line-number="72">[[<span class="dv">4</span>]][[<span class="dv">2</span>]]</a>
+<a class="sourceLine" id="cb6-73" data-line-number="73">[<span class="dv">1</span>] <span class="st">&quot;lista&quot;</span></a>
+<a class="sourceLine" id="cb6-74" data-line-number="74"><span class="kw">names</span>(lista)</a>
+<a class="sourceLine" id="cb6-75" data-line-number="75"><span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb6-76" data-line-number="76"><span class="kw">names</span>(lista) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;l1&quot;</span>, <span class="st">&quot;l2&quot;</span>, <span class="st">&quot;l3&quot;</span>, <span class="st">&quot;l4&quot;</span>)</a>
+<a class="sourceLine" id="cb6-77" data-line-number="77">lista</a>
+<a class="sourceLine" id="cb6-78" data-line-number="78"><span class="op">$</span>l1</a>
+<a class="sourceLine" id="cb6-79" data-line-number="79">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-80" data-line-number="80"></a>
+<a class="sourceLine" id="cb6-81" data-line-number="81"><span class="op">$</span>l2</a>
+<a class="sourceLine" id="cb6-82" data-line-number="82">       vetor.de.caracteres vetor.numerico</a>
+<a class="sourceLine" id="cb6-83" data-line-number="83">letra1                   a              <span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-84" data-line-number="84">letra2                   b              <span class="dv">2</span></a>
+<a class="sourceLine" id="cb6-85" data-line-number="85">letra3                   c              <span class="dv">3</span></a>
+<a class="sourceLine" id="cb6-86" data-line-number="86">letra4                   d              <span class="dv">4</span></a>
+<a class="sourceLine" id="cb6-87" data-line-number="87"></a>
+<a class="sourceLine" id="cb6-88" data-line-number="88"><span class="op">$</span>l3</a>
+<a class="sourceLine" id="cb6-89" data-line-number="89">     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb6-90" data-line-number="90">[<span class="dv">1</span>,]    <span class="dv">1</span>    <span class="dv">6</span>   <span class="dv">11</span>   <span class="dv">16</span></a>
+<a class="sourceLine" id="cb6-91" data-line-number="91">[<span class="dv">2</span>,]    <span class="dv">2</span>    <span class="dv">7</span>   <span class="dv">12</span>   <span class="dv">17</span></a>
+<a class="sourceLine" id="cb6-92" data-line-number="92">[<span class="dv">3</span>,]    <span class="dv">3</span>    <span class="dv">8</span>   <span class="dv">13</span>   <span class="dv">18</span></a>
+<a class="sourceLine" id="cb6-93" data-line-number="93">[<span class="dv">4</span>,]    <span class="dv">4</span>    <span class="dv">9</span>   <span class="dv">14</span>   <span class="dv">19</span></a>
+<a class="sourceLine" id="cb6-94" data-line-number="94">[<span class="dv">5</span>,]    <span class="dv">5</span>   <span class="dv">10</span>   <span class="dv">15</span>   <span class="dv">20</span></a>
+<a class="sourceLine" id="cb6-95" data-line-number="95"></a>
+<a class="sourceLine" id="cb6-96" data-line-number="96"><span class="op">$</span>l4</a>
+<a class="sourceLine" id="cb6-97" data-line-number="97"><span class="op">$</span>l4[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb6-98" data-line-number="98">[<span class="dv">1</span>] <span class="st">&quot;outra&quot;</span></a>
+<a class="sourceLine" id="cb6-99" data-line-number="99"></a>
+<a class="sourceLine" id="cb6-100" data-line-number="100"><span class="op">$</span>l4[[<span class="dv">2</span>]]</a>
+<a class="sourceLine" id="cb6-101" data-line-number="101">[<span class="dv">1</span>] <span class="st">&quot;lista&quot;</span></a>
+<a class="sourceLine" id="cb6-102" data-line-number="102"><span class="kw">length</span>(lista)</a>
+<a class="sourceLine" id="cb6-103" data-line-number="103">[<span class="dv">1</span>] <span class="dv">4</span></a>
+<a class="sourceLine" id="cb6-104" data-line-number="104"></a>
+<a class="sourceLine" id="cb6-105" data-line-number="105"><span class="co"># Indexação das estruturas</span></a>
+<a class="sourceLine" id="cb6-106" data-line-number="106">vetor[<span class="dv">1</span>] <span class="co"># Primeiro elemento</span></a>
+<a class="sourceLine" id="cb6-107" data-line-number="107">letra1 </a>
+<a class="sourceLine" id="cb6-108" data-line-number="108">   <span class="st">&quot;a&quot;</span> </a>
+<a class="sourceLine" id="cb6-109" data-line-number="109">vetor[<span class="kw">c</span>(<span class="ot">FALSE</span>, <span class="ot">FALSE</span>, <span class="ot">TRUE</span>, <span class="ot">FALSE</span>)] <span class="co"># Indexação com valores lógicos</span></a>
+<a class="sourceLine" id="cb6-110" data-line-number="110">letra3 </a>
+<a class="sourceLine" id="cb6-111" data-line-number="111">   <span class="st">&quot;c&quot;</span> </a>
+<a class="sourceLine" id="cb6-112" data-line-number="112">vetor[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="co"># Primeiro a terceiro elementos</span></a>
+<a class="sourceLine" id="cb6-113" data-line-number="113">letra1 letra2 letra3 </a>
+<a class="sourceLine" id="cb6-114" data-line-number="114">   <span class="st">&quot;a&quot;</span>    <span class="st">&quot;b&quot;</span>    <span class="st">&quot;c&quot;</span> </a>
+<a class="sourceLine" id="cb6-115" data-line-number="115">vetor[] <span class="co"># Todos</span></a>
+<a class="sourceLine" id="cb6-116" data-line-number="116">letra1 letra2 letra3 letra4 </a>
+<a class="sourceLine" id="cb6-117" data-line-number="117">   <span class="st">&quot;a&quot;</span>    <span class="st">&quot;b&quot;</span>    <span class="st">&quot;c&quot;</span>    <span class="st">&quot;d&quot;</span> </a>
+<a class="sourceLine" id="cb6-118" data-line-number="118">vetor[<span class="op">-</span><span class="dv">1</span>] <span class="co"># Todos, exceto o primeito elemento</span></a>
+<a class="sourceLine" id="cb6-119" data-line-number="119">letra2 letra3 letra4 </a>
+<a class="sourceLine" id="cb6-120" data-line-number="120">   <span class="st">&quot;b&quot;</span>    <span class="st">&quot;c&quot;</span>    <span class="st">&quot;d&quot;</span> </a>
+<a class="sourceLine" id="cb6-121" data-line-number="121">vetor[<span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">4</span>)] <span class="co"># vetor[1, 4] não funciona</span></a>
+<a class="sourceLine" id="cb6-122" data-line-number="122">letra1 letra4 </a>
+<a class="sourceLine" id="cb6-123" data-line-number="123">   <span class="st">&quot;a&quot;</span>    <span class="st">&quot;d&quot;</span> </a>
+<a class="sourceLine" id="cb6-124" data-line-number="124">vetor[<span class="st">&quot;letra4&quot;</span>] <span class="co"># Pelo nome</span></a>
+<a class="sourceLine" id="cb6-125" data-line-number="125">letra4 </a>
+<a class="sourceLine" id="cb6-126" data-line-number="126">   <span class="st">&quot;d&quot;</span> </a>
+<a class="sourceLine" id="cb6-127" data-line-number="127">vetor[<span class="dv">1</span>] &lt;-<span class="st"> &quot;z&quot;</span> <span class="co"># muda o valor do item 1</span></a>
+<a class="sourceLine" id="cb6-128" data-line-number="128">vetor</a>
+<a class="sourceLine" id="cb6-129" data-line-number="129">letra1 letra2 letra3 letra4 </a>
+<a class="sourceLine" id="cb6-130" data-line-number="130">   <span class="st">&quot;z&quot;</span>    <span class="st">&quot;b&quot;</span>    <span class="st">&quot;c&quot;</span>    <span class="st">&quot;d&quot;</span> </a>
+<a class="sourceLine" id="cb6-131" data-line-number="131">vetor &lt;-<span class="st"> </span><span class="ot">NULL</span> <span class="co"># Vetor deletado</span></a>
+<a class="sourceLine" id="cb6-132" data-line-number="132">vetor</a>
+<a class="sourceLine" id="cb6-133" data-line-number="133"><span class="ot">NULL</span></a>
+<a class="sourceLine" id="cb6-134" data-line-number="134"></a>
+<a class="sourceLine" id="cb6-135" data-line-number="135">fator</a>
+<a class="sourceLine" id="cb6-136" data-line-number="136">[<span class="dv">1</span>] a b c</a>
+<a class="sourceLine" id="cb6-137" data-line-number="137">Levels<span class="op">:</span><span class="st"> </span>a b c</a>
+<a class="sourceLine" id="cb6-138" data-line-number="138">fator[<span class="dv">1</span>] &lt;-<span class="st"> &quot;c&quot;</span> <span class="co"># mudar de fator</span></a>
+<a class="sourceLine" id="cb6-139" data-line-number="139">fator <span class="co"># nívels permanecem</span></a>
+<a class="sourceLine" id="cb6-140" data-line-number="140">[<span class="dv">1</span>] c b c</a>
+<a class="sourceLine" id="cb6-141" data-line-number="141">Levels<span class="op">:</span><span class="st"> </span>a b c</a>
+<a class="sourceLine" id="cb6-142" data-line-number="142">fator[<span class="dv">1</span>] &lt;-<span class="st"> &quot;z&quot;</span> <span class="co"># fator inválido</span></a>
+<a class="sourceLine" id="cb6-143" data-line-number="143">Warning <span class="cf">in</span> <span class="st">`</span><span class="dt">[&lt;-.factor</span><span class="st">`</span>(<span class="st">`</span><span class="dt">*tmp*</span><span class="st">`</span>, <span class="dv">1</span>, <span class="dt">value =</span> <span class="st">&quot;z&quot;</span>)<span class="op">:</span><span class="st"> </span>invalid factor level, <span class="ot">NA</span> generated</a>
+<a class="sourceLine" id="cb6-144" data-line-number="144">fator <span class="co"># NA é gerado</span></a>
+<a class="sourceLine" id="cb6-145" data-line-number="145">[<span class="dv">1</span>] <span class="op">&lt;</span><span class="ot">NA</span><span class="op">&gt;</span><span class="st"> </span>b    c   </a>
+<a class="sourceLine" id="cb6-146" data-line-number="146">Levels<span class="op">:</span><span class="st"> </span>a b c</a>
+<a class="sourceLine" id="cb6-147" data-line-number="147"></a>
+<a class="sourceLine" id="cb6-148" data-line-number="148">dataframe[<span class="dv">1</span>] <span class="co"># Mostra primeiro vetor (coluna)</span></a>
+<a class="sourceLine" id="cb6-149" data-line-number="149">       vetor.de.caracteres</a>
+<a class="sourceLine" id="cb6-150" data-line-number="150">letra1                   a</a>
+<a class="sourceLine" id="cb6-151" data-line-number="151">letra2                   b</a>
+<a class="sourceLine" id="cb6-152" data-line-number="152">letra3                   c</a>
+<a class="sourceLine" id="cb6-153" data-line-number="153">letra4                   d</a>
+<a class="sourceLine" id="cb6-154" data-line-number="154">dataframe<span class="op">$</span>vetor.de.caracteres <span class="co"># Indexação pelo nome</span></a>
+<a class="sourceLine" id="cb6-155" data-line-number="155">[<span class="dv">1</span>] <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span> <span class="st">&quot;d&quot;</span></a>
+<a class="sourceLine" id="cb6-156" data-line-number="156">dataframe[<span class="dv">1</span>, ] <span class="co"># Linha</span></a>
+<a class="sourceLine" id="cb6-157" data-line-number="157">       vetor.de.caracteres vetor.numerico</a>
+<a class="sourceLine" id="cb6-158" data-line-number="158">letra1                   a              <span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-159" data-line-number="159">dataframe[, <span class="dv">2</span>] <span class="co"># Coluna. Por padrão a estrutura é convenvertida em vetor...</span></a>
+<a class="sourceLine" id="cb6-160" data-line-number="160">[<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb6-161" data-line-number="161">dataframe[, <span class="dv">2</span>, drop =<span class="st"> </span><span class="ot">FALSE</span>] <span class="co"># ... Mantém a estrutura de data.frame</span></a>
+<a class="sourceLine" id="cb6-162" data-line-number="162">       vetor.numerico</a>
+<a class="sourceLine" id="cb6-163" data-line-number="163">letra1              <span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-164" data-line-number="164">letra2              <span class="dv">2</span></a>
+<a class="sourceLine" id="cb6-165" data-line-number="165">letra3              <span class="dv">3</span></a>
+<a class="sourceLine" id="cb6-166" data-line-number="166">letra4              <span class="dv">4</span></a>
+<a class="sourceLine" id="cb6-167" data-line-number="167">dataframe[,] <span class="co"># Tudo</span></a>
+<a class="sourceLine" id="cb6-168" data-line-number="168">       vetor.de.caracteres vetor.numerico</a>
+<a class="sourceLine" id="cb6-169" data-line-number="169">letra1                   a              <span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-170" data-line-number="170">letra2                   b              <span class="dv">2</span></a>
+<a class="sourceLine" id="cb6-171" data-line-number="171">letra3                   c              <span class="dv">3</span></a>
+<a class="sourceLine" id="cb6-172" data-line-number="172">letra4                   d              <span class="dv">4</span></a>
+<a class="sourceLine" id="cb6-173" data-line-number="173">dataframe[, <span class="dv">2</span>] &lt;-<span class="st"> </span><span class="ot">NULL</span> <span class="co"># Apenas colunas podem ser deletadas</span></a>
+<a class="sourceLine" id="cb6-174" data-line-number="174">dataframe<span class="op">$</span>novo.vetor &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;a&quot;</span>, <span class="st">&quot;b&quot;</span>, <span class="st">&quot;c&quot;</span>, <span class="st">&quot;d&quot;</span>) <span class="co"># Adicionar vetor...</span></a>
+<a class="sourceLine" id="cb6-175" data-line-number="175"><span class="kw">str</span>(dataframe) <span class="co"># ... nesse caso a classe permanece</span></a>
+<a class="sourceLine" id="cb6-176" data-line-number="176"><span class="st">'data.frame'</span><span class="op">:</span><span class="st">   </span><span class="dv">4</span> obs. of  <span class="dv">2</span> variables<span class="op">:</span></a>
+<a class="sourceLine" id="cb6-177" data-line-number="177"><span class="st"> </span><span class="er">$</span><span class="st"> </span>vetor.de.caracteres<span class="op">:</span><span class="st"> </span>chr  <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span> <span class="st">&quot;d&quot;</span></a>
+<a class="sourceLine" id="cb6-178" data-line-number="178"> <span class="op">$</span><span class="st"> </span>novo.vetor         <span class="op">:</span><span class="st"> </span>chr  <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span> <span class="st">&quot;d&quot;</span></a>
+<a class="sourceLine" id="cb6-179" data-line-number="179"></a>
+<a class="sourceLine" id="cb6-180" data-line-number="180">matriz[<span class="dv">1</span>, ]</a>
+<a class="sourceLine" id="cb6-181" data-line-number="181">[<span class="dv">1</span>]  <span class="dv">1</span>  <span class="dv">6</span> <span class="dv">11</span> <span class="dv">16</span></a>
+<a class="sourceLine" id="cb6-182" data-line-number="182">matriz[, <span class="dv">2</span>]</a>
+<a class="sourceLine" id="cb6-183" data-line-number="183">[<span class="dv">1</span>]  <span class="dv">6</span>  <span class="dv">7</span>  <span class="dv">8</span>  <span class="dv">9</span> <span class="dv">10</span></a>
+<a class="sourceLine" id="cb6-184" data-line-number="184">matriz[, <span class="dv">2</span>, drop =<span class="st"> </span><span class="ot">FALSE</span>] <span class="co"># Matriz 1x5, não um vetor</span></a>
+<a class="sourceLine" id="cb6-185" data-line-number="185">     [,<span class="dv">1</span>]</a>
+<a class="sourceLine" id="cb6-186" data-line-number="186">[<span class="dv">1</span>,]    <span class="dv">6</span></a>
+<a class="sourceLine" id="cb6-187" data-line-number="187">[<span class="dv">2</span>,]    <span class="dv">7</span></a>
+<a class="sourceLine" id="cb6-188" data-line-number="188">[<span class="dv">3</span>,]    <span class="dv">8</span></a>
+<a class="sourceLine" id="cb6-189" data-line-number="189">[<span class="dv">4</span>,]    <span class="dv">9</span></a>
+<a class="sourceLine" id="cb6-190" data-line-number="190">[<span class="dv">5</span>,]   <span class="dv">10</span></a>
+<a class="sourceLine" id="cb6-191" data-line-number="191">matriz[<span class="dv">1</span>, <span class="dv">4</span>] <span class="co"># Um elemento da matriz</span></a>
+<a class="sourceLine" id="cb6-192" data-line-number="192">[<span class="dv">1</span>] <span class="dv">16</span></a>
+<a class="sourceLine" id="cb6-193" data-line-number="193">matriz[<span class="dv">1</span>, <span class="dv">4</span>] &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># Nada pode ser deletado, apenas alterado de valor (incluindo NA)</span></a>
+<a class="sourceLine" id="cb6-194" data-line-number="194"></a>
+<a class="sourceLine" id="cb6-195" data-line-number="195"><span class="kw">str</span>(lista)</a>
+<a class="sourceLine" id="cb6-196" data-line-number="196">List of <span class="dv">4</span></a>
+<a class="sourceLine" id="cb6-197" data-line-number="197"> <span class="op">$</span><span class="st"> </span>l1<span class="op">:</span><span class="st"> </span>num <span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-198" data-line-number="198"> <span class="op">$</span><span class="st"> </span>l2<span class="op">:</span><span class="st">'data.frame'</span><span class="op">:</span><span class="st"> </span><span class="dv">4</span> obs. of  <span class="dv">2</span> variables<span class="op">:</span></a>
+<a class="sourceLine" id="cb6-199" data-line-number="199"><span class="st">  </span>..<span class="op">$</span><span class="st"> </span>vetor.de.caracteres<span class="op">:</span><span class="st"> </span>chr [<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>] <span class="st">&quot;a&quot;</span> <span class="st">&quot;b&quot;</span> <span class="st">&quot;c&quot;</span> <span class="st">&quot;d&quot;</span></a>
+<a class="sourceLine" id="cb6-200" data-line-number="200">  ..<span class="op">$</span><span class="st"> </span>vetor.numerico     <span class="op">:</span><span class="st"> </span>int [<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span></a>
+<a class="sourceLine" id="cb6-201" data-line-number="201"> <span class="op">$</span><span class="st"> </span>l3<span class="op">:</span><span class="st"> </span>int [<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">4</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span> <span class="dv">4</span> <span class="dv">5</span> <span class="dv">6</span> <span class="dv">7</span> <span class="dv">8</span> <span class="dv">9</span> <span class="dv">10</span> ...</a>
+<a class="sourceLine" id="cb6-202" data-line-number="202"> <span class="op">$</span><span class="st"> </span>l4<span class="op">:</span>List of <span class="dv">2</span></a>
+<a class="sourceLine" id="cb6-203" data-line-number="203">  ..<span class="op">$</span><span class="st"> </span><span class="er">:</span><span class="st"> </span>chr <span class="st">&quot;outra&quot;</span></a>
+<a class="sourceLine" id="cb6-204" data-line-number="204">  ..<span class="op">$</span><span class="st"> </span><span class="er">:</span><span class="st"> </span>chr <span class="st">&quot;lista&quot;</span></a>
+<a class="sourceLine" id="cb6-205" data-line-number="205">lista[<span class="dv">2</span>] <span class="co"># Acessar sublista</span></a>
+<a class="sourceLine" id="cb6-206" data-line-number="206"><span class="op">$</span>l2</a>
+<a class="sourceLine" id="cb6-207" data-line-number="207">       vetor.de.caracteres vetor.numerico</a>
+<a class="sourceLine" id="cb6-208" data-line-number="208">letra1                   a              <span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-209" data-line-number="209">letra2                   b              <span class="dv">2</span></a>
+<a class="sourceLine" id="cb6-210" data-line-number="210">letra3                   c              <span class="dv">3</span></a>
+<a class="sourceLine" id="cb6-211" data-line-number="211">letra4                   d              <span class="dv">4</span></a>
+<a class="sourceLine" id="cb6-212" data-line-number="212">lista[[<span class="dv">2</span>]] <span class="co"># Acessar conteúdo da lista</span></a>
+<a class="sourceLine" id="cb6-213" data-line-number="213">       vetor.de.caracteres vetor.numerico</a>
+<a class="sourceLine" id="cb6-214" data-line-number="214">letra1                   a              <span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-215" data-line-number="215">letra2                   b              <span class="dv">2</span></a>
+<a class="sourceLine" id="cb6-216" data-line-number="216">letra3                   c              <span class="dv">3</span></a>
+<a class="sourceLine" id="cb6-217" data-line-number="217">letra4                   d              <span class="dv">4</span></a>
+<a class="sourceLine" id="cb6-218" data-line-number="218">lista[<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>] <span class="co"># Acessar várias sublistas. lista[[1:3]] não funciona</span></a>
+<a class="sourceLine" id="cb6-219" data-line-number="219"><span class="op">$</span>l1</a>
+<a class="sourceLine" id="cb6-220" data-line-number="220">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-221" data-line-number="221"></a>
+<a class="sourceLine" id="cb6-222" data-line-number="222"><span class="op">$</span>l2</a>
+<a class="sourceLine" id="cb6-223" data-line-number="223">       vetor.de.caracteres vetor.numerico</a>
+<a class="sourceLine" id="cb6-224" data-line-number="224">letra1                   a              <span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-225" data-line-number="225">letra2                   b              <span class="dv">2</span></a>
+<a class="sourceLine" id="cb6-226" data-line-number="226">letra3                   c              <span class="dv">3</span></a>
+<a class="sourceLine" id="cb6-227" data-line-number="227">letra4                   d              <span class="dv">4</span></a>
+<a class="sourceLine" id="cb6-228" data-line-number="228"></a>
+<a class="sourceLine" id="cb6-229" data-line-number="229"><span class="op">$</span>l3</a>
+<a class="sourceLine" id="cb6-230" data-line-number="230">     [,<span class="dv">1</span>] [,<span class="dv">2</span>] [,<span class="dv">3</span>] [,<span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb6-231" data-line-number="231">[<span class="dv">1</span>,]    <span class="dv">1</span>    <span class="dv">6</span>   <span class="dv">11</span>   <span class="dv">16</span></a>
+<a class="sourceLine" id="cb6-232" data-line-number="232">[<span class="dv">2</span>,]    <span class="dv">2</span>    <span class="dv">7</span>   <span class="dv">12</span>   <span class="dv">17</span></a>
+<a class="sourceLine" id="cb6-233" data-line-number="233">[<span class="dv">3</span>,]    <span class="dv">3</span>    <span class="dv">8</span>   <span class="dv">13</span>   <span class="dv">18</span></a>
+<a class="sourceLine" id="cb6-234" data-line-number="234">[<span class="dv">4</span>,]    <span class="dv">4</span>    <span class="dv">9</span>   <span class="dv">14</span>   <span class="dv">19</span></a>
+<a class="sourceLine" id="cb6-235" data-line-number="235">[<span class="dv">5</span>,]    <span class="dv">5</span>   <span class="dv">10</span>   <span class="dv">15</span>   <span class="dv">20</span></a>
+<a class="sourceLine" id="cb6-236" data-line-number="236">lista[[<span class="st">&quot;l3&quot;</span>]][<span class="dv">1</span>,<span class="dv">3</span>] <span class="co"># Usando nomes e elemento da matriz</span></a>
+<a class="sourceLine" id="cb6-237" data-line-number="237">[<span class="dv">1</span>] <span class="dv">11</span></a>
+<a class="sourceLine" id="cb6-238" data-line-number="238">lista[[<span class="st">&quot;l3&quot;</span>]] &lt;-<span class="st"> </span><span class="ot">NULL</span> <span class="co"># Deletar item da lista. Mesmo que lista[&quot;l3&quot;], lista[3], lista[[3]]</span></a>
+<a class="sourceLine" id="cb6-239" data-line-number="239">lista<span class="op">$</span>novoitem &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">3</span> <span class="co"># Adicionar item a lista</span></a>
+<a class="sourceLine" id="cb6-240" data-line-number="240">lista</a>
+<a class="sourceLine" id="cb6-241" data-line-number="241"><span class="op">$</span>l1</a>
+<a class="sourceLine" id="cb6-242" data-line-number="242">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-243" data-line-number="243"></a>
+<a class="sourceLine" id="cb6-244" data-line-number="244"><span class="op">$</span>l2</a>
+<a class="sourceLine" id="cb6-245" data-line-number="245">       vetor.de.caracteres vetor.numerico</a>
+<a class="sourceLine" id="cb6-246" data-line-number="246">letra1                   a              <span class="dv">1</span></a>
+<a class="sourceLine" id="cb6-247" data-line-number="247">letra2                   b              <span class="dv">2</span></a>
+<a class="sourceLine" id="cb6-248" data-line-number="248">letra3                   c              <span class="dv">3</span></a>
+<a class="sourceLine" id="cb6-249" data-line-number="249">letra4                   d              <span class="dv">4</span></a>
+<a class="sourceLine" id="cb6-250" data-line-number="250"></a>
+<a class="sourceLine" id="cb6-251" data-line-number="251"><span class="op">$</span>l4</a>
+<a class="sourceLine" id="cb6-252" data-line-number="252"><span class="op">$</span>l4[[<span class="dv">1</span>]]</a>
+<a class="sourceLine" id="cb6-253" data-line-number="253">[<span class="dv">1</span>] <span class="st">&quot;outra&quot;</span></a>
+<a class="sourceLine" id="cb6-254" data-line-number="254"></a>
+<a class="sourceLine" id="cb6-255" data-line-number="255"><span class="op">$</span>l4[[<span class="dv">2</span>]]</a>
+<a class="sourceLine" id="cb6-256" data-line-number="256">[<span class="dv">1</span>] <span class="st">&quot;lista&quot;</span></a>
+<a class="sourceLine" id="cb6-257" data-line-number="257"></a>
+<a class="sourceLine" id="cb6-258" data-line-number="258"></a>
+<a class="sourceLine" id="cb6-259" data-line-number="259"><span class="op">$</span>novoitem</a>
+<a class="sourceLine" id="cb6-260" data-line-number="260">[<span class="dv">1</span>] <span class="dv">1</span> <span class="dv">2</span> <span class="dv">3</span></a></code></pre></div>
 </div>
-<div id="declaracoes-de-controle-de-fluxo" class="section level1">
+<div id="declarações-de-controle-de-fluxo" class="section level1">
 <h1>Declarações de controle de fluxo</h1>
 <p>As declarações de controle de fluxo são realizadas por <strong>if</strong>, <strong>else</strong>, <strong>while</strong>, <strong>repeat</strong>, <strong>for</strong>, <strong>break</strong> e <strong>next</strong>. As funções <strong>ifelse</strong> e <strong>switch</strong> também podem ser utilizadas para controle de fluxo. Sequências de inteiros podem ser obtidas pelas funções, <strong>seq</strong>, <strong>rep</strong> ou <strong>seq_len</strong> ou usando <strong>:</strong> (por exemplo <em>seq_len(8)</em> ou <em>1:8</em> para uma sequencia de 1 a 8). Outras informações sobre controle de fluxo são encontradas em <em>?Control</em>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">minha.var &lt;-<span class="st"> </span><span class="dv">-10</span>
-minha.var
-[<span class="dv">1</span>] <span class="dv">-10</span>
-
-<span class="cf">if</span>(minha.var <span class="op">==</span><span class="st"> </span><span class="dv">-10</span>) <span class="co"># Condicional SE</span>
-  <span class="co"># Se a condição só tiver uma linha não precisa das chaves {}</span>
-  <span class="co"># Linhas de comentários não entram na contagem</span>
-  <span class="kw">print</span>(<span class="st">&quot;minha.var é -10&quot;</span>)
-[<span class="dv">1</span>] <span class="st">&quot;minha.var é -10&quot;</span>
-  
-
-<span class="cf">if</span>(minha.var<span class="op">&gt;=</span><span class="dv">0</span>){ <span class="co"># Condicional SE...</span>
-  <span class="kw">print</span>(<span class="st">&quot;minha.var é positiva ou zero&quot;</span>)
-} <span class="cf">else</span> { <span class="co"># ... SENÃO (caso contário)</span>
-  <span class="kw">print</span>(<span class="st">&quot;minha.var é negativa&quot;</span>)
-} <span class="co"># Melhor usar chaves {} em todas as afirmações</span>
-[<span class="dv">1</span>] <span class="st">&quot;minha.var é negativa&quot;</span>
-
-
-minha.var
-[<span class="dv">1</span>] <span class="dv">-10</span>
-<span class="cf">while</span>(minha.var<span class="op">&lt;</span><span class="dv">50</span>){ <span class="co"># Repete ENQUANTO afirmação não for TRUE (verdadeira)</span>
-  minha.var &lt;-<span class="st"> </span>minha.var<span class="op">+</span><span class="dv">1</span>
-}
-minha.var
-[<span class="dv">1</span>] <span class="dv">50</span>
-
-
-<span class="cf">repeat</span> { <span class="co"># REPETIR até ...</span>
-  minha.var &lt;-<span class="st"> </span>minha.var<span class="op">+</span><span class="dv">1</span>
-  <span class="cf">if</span>(minha.var<span class="op">&gt;</span><span class="dv">100</span>) {
-    <span class="cf">break</span> <span class="co"># PARAR</span>
-  }
-}
-minha.var
-[<span class="dv">1</span>] <span class="dv">101</span>
-
-
-<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>){ <span class="co"># LOOP (LAÇOS). A sequêancia pode ser outra variável</span>
-  <span class="kw">print</span>(i)
-}
-[<span class="dv">1</span>] <span class="dv">1</span>
-[<span class="dv">1</span>] <span class="dv">2</span>
-[<span class="dv">1</span>] <span class="dv">3</span>
-[<span class="dv">1</span>] <span class="dv">4</span>
-[<span class="dv">1</span>] <span class="dv">5</span>
-
-<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>){
-  <span class="cf">if</span>(i <span class="op">==</span><span class="st"> </span><span class="dv">3</span>)
-    <span class="cf">next</span> <span class="co"># PASSA para a próxima sequência do loop</span>
-  <span class="kw">print</span>(i)
-}
-[<span class="dv">1</span>] <span class="dv">1</span>
-[<span class="dv">1</span>] <span class="dv">2</span>
-[<span class="dv">1</span>] <span class="dv">4</span>
-[<span class="dv">1</span>] <span class="dv">5</span>
-
-<span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>){
-  <span class="cf">if</span>(i <span class="op">==</span><span class="st"> </span><span class="dv">3</span>)
-    <span class="cf">break</span> <span class="co"># PARAR loop</span>
-  <span class="kw">print</span>(i)
-}
-[<span class="dv">1</span>] <span class="dv">1</span>
-[<span class="dv">1</span>] <span class="dv">2</span></code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">minha.var &lt;-<span class="st"> </span><span class="dv">-10</span></a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">minha.var</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">[<span class="dv">1</span>] <span class="dv">-10</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="cf">if</span>(minha.var <span class="op">==</span><span class="st"> </span><span class="dv">-10</span>) <span class="co"># Condicional SE</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">  <span class="co"># Se a condição só tiver uma linha não precisa das chaves {}</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">  <span class="co"># Linhas de comentários não entram na contagem</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">  <span class="kw">print</span>(<span class="st">&quot;minha.var é -10&quot;</span>)</a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">[<span class="dv">1</span>] <span class="st">&quot;minha.var é -10&quot;</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">  </a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12"><span class="cf">if</span>(minha.var<span class="op">&gt;=</span><span class="dv">0</span>){ <span class="co"># Condicional SE...</span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13">  <span class="kw">print</span>(<span class="st">&quot;minha.var é positiva ou zero&quot;</span>)</a>
+<a class="sourceLine" id="cb7-14" data-line-number="14">} <span class="cf">else</span> { <span class="co"># ... SENÃO (caso contário)</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15">  <span class="kw">print</span>(<span class="st">&quot;minha.var é negativa&quot;</span>)</a>
+<a class="sourceLine" id="cb7-16" data-line-number="16">} <span class="co"># Melhor usar chaves {} em todas as afirmações</span></a>
+<a class="sourceLine" id="cb7-17" data-line-number="17">[<span class="dv">1</span>] <span class="st">&quot;minha.var é negativa&quot;</span></a>
+<a class="sourceLine" id="cb7-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb7-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb7-20" data-line-number="20">minha.var</a>
+<a class="sourceLine" id="cb7-21" data-line-number="21">[<span class="dv">1</span>] <span class="dv">-10</span></a>
+<a class="sourceLine" id="cb7-22" data-line-number="22"><span class="cf">while</span>(minha.var<span class="op">&lt;</span><span class="dv">50</span>){ <span class="co"># Repete ENQUANTO afirmação não for TRUE (verdadeira)</span></a>
+<a class="sourceLine" id="cb7-23" data-line-number="23">  minha.var &lt;-<span class="st"> </span>minha.var<span class="op">+</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb7-24" data-line-number="24">}</a>
+<a class="sourceLine" id="cb7-25" data-line-number="25">minha.var</a>
+<a class="sourceLine" id="cb7-26" data-line-number="26">[<span class="dv">1</span>] <span class="dv">50</span></a>
+<a class="sourceLine" id="cb7-27" data-line-number="27"></a>
+<a class="sourceLine" id="cb7-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb7-29" data-line-number="29"><span class="cf">repeat</span> { <span class="co"># REPETIR até ...</span></a>
+<a class="sourceLine" id="cb7-30" data-line-number="30">  minha.var &lt;-<span class="st"> </span>minha.var<span class="op">+</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb7-31" data-line-number="31">  <span class="cf">if</span>(minha.var<span class="op">&gt;</span><span class="dv">100</span>) {</a>
+<a class="sourceLine" id="cb7-32" data-line-number="32">    <span class="cf">break</span> <span class="co"># PARAR</span></a>
+<a class="sourceLine" id="cb7-33" data-line-number="33">  }</a>
+<a class="sourceLine" id="cb7-34" data-line-number="34">}</a>
+<a class="sourceLine" id="cb7-35" data-line-number="35">minha.var</a>
+<a class="sourceLine" id="cb7-36" data-line-number="36">[<span class="dv">1</span>] <span class="dv">101</span></a>
+<a class="sourceLine" id="cb7-37" data-line-number="37"></a>
+<a class="sourceLine" id="cb7-38" data-line-number="38"></a>
+<a class="sourceLine" id="cb7-39" data-line-number="39"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>){ <span class="co"># LOOP (LAÇOS). A sequêancia pode ser outra variável</span></a>
+<a class="sourceLine" id="cb7-40" data-line-number="40">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb7-41" data-line-number="41">}</a>
+<a class="sourceLine" id="cb7-42" data-line-number="42">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb7-43" data-line-number="43">[<span class="dv">1</span>] <span class="dv">2</span></a>
+<a class="sourceLine" id="cb7-44" data-line-number="44">[<span class="dv">1</span>] <span class="dv">3</span></a>
+<a class="sourceLine" id="cb7-45" data-line-number="45">[<span class="dv">1</span>] <span class="dv">4</span></a>
+<a class="sourceLine" id="cb7-46" data-line-number="46">[<span class="dv">1</span>] <span class="dv">5</span></a>
+<a class="sourceLine" id="cb7-47" data-line-number="47"></a>
+<a class="sourceLine" id="cb7-48" data-line-number="48"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>){</a>
+<a class="sourceLine" id="cb7-49" data-line-number="49">  <span class="cf">if</span>(i <span class="op">==</span><span class="st"> </span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb7-50" data-line-number="50">    <span class="cf">next</span> <span class="co"># PASSA para a próxima sequência do loop</span></a>
+<a class="sourceLine" id="cb7-51" data-line-number="51">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb7-52" data-line-number="52">}</a>
+<a class="sourceLine" id="cb7-53" data-line-number="53">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb7-54" data-line-number="54">[<span class="dv">1</span>] <span class="dv">2</span></a>
+<a class="sourceLine" id="cb7-55" data-line-number="55">[<span class="dv">1</span>] <span class="dv">4</span></a>
+<a class="sourceLine" id="cb7-56" data-line-number="56">[<span class="dv">1</span>] <span class="dv">5</span></a>
+<a class="sourceLine" id="cb7-57" data-line-number="57"></a>
+<a class="sourceLine" id="cb7-58" data-line-number="58"><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">5</span>){</a>
+<a class="sourceLine" id="cb7-59" data-line-number="59">  <span class="cf">if</span>(i <span class="op">==</span><span class="st"> </span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb7-60" data-line-number="60">    <span class="cf">break</span> <span class="co"># PARAR loop</span></a>
+<a class="sourceLine" id="cb7-61" data-line-number="61">  <span class="kw">print</span>(i)</a>
+<a class="sourceLine" id="cb7-62" data-line-number="62">}</a>
+<a class="sourceLine" id="cb7-63" data-line-number="63">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb7-64" data-line-number="64">[<span class="dv">1</span>] <span class="dv">2</span></a></code></pre></div>
 </div>
-<div id="funcoes" class="section level1">
+<div id="funções" class="section level1">
 <h1>Funções</h1>
 <p>As funções são declaradas com a palavra <strong>function</strong>. Outros argumentos, obrigatórios ou opcionais, são definidos na declaração da função entre parênteses (<strong>()</strong>), podendo estes conter valores predefinidos (<em>default</em>). Os argumentos das funções seguem a ordem especificada na declaração da função, podendo ou não ser nomeados ao atributi o valor. Se argumentos são nomeados não precisam seguir a ordem predefinida. A função <strong>return</strong> especifica o que é retornado. A função só pode retornar um objeto, mas pode ser uma lista com vários valores. Uma função pode ser recursiva (<em>recursive</em>), chama a si mesma, podendo ser usada para resolver problemas dividindo-os em subproblemas menores e mais simples. É possível definir operações com notação infixa (<em>infix operator</em>). Para definição de operações infixas a definição das funções devem iniciar e terminar <strong>%</strong> e devem ser usadas aspas simples (<strong>’’</strong>) para indicar notação de símbolo especial. Mais informações sobre funções são encontradas em <em>?“function”</em>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">minha.funcao &lt;-<span class="st"> </span><span class="cf">function</span>(x){
-  x &lt;-<span class="st"> </span>x<span class="op">+</span><span class="dv">1</span>
-  <span class="kw">return</span>(x) 
-}
-<span class="kw">minha.funcao</span>(<span class="dv">3</span>) <span class="co"># mesmo que minha.funcao(x = 3)</span>
-[<span class="dv">1</span>] <span class="dv">4</span>
-
-<span class="co"># Os argumentos somar e subtrair são opcionais.</span>
-<span class="co"># Ambos possuem 0 como valor predefinido (default)</span>
-minha.segunda.funcao &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">somar =</span> <span class="dv">0</span>, <span class="dt">subtrair =</span> <span class="dv">0</span>){
-  x.somado &lt;-<span class="st"> </span>x<span class="op">+</span>somar
-  x.subtraido &lt;-<span class="st"> </span>x<span class="op">-</span>subtrair
-  res &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">x =</span> x, <span class="dt">somado =</span> x.somado, <span class="dt">subtraido =</span> x.subtraido) 
-  <span class="kw">return</span>(res) <span class="co"># Retorna apenas um valor, no exemplo a lista</span>
-}
-<span class="kw">minha.segunda.funcao</span>(<span class="dv">1</span>)
-<span class="op">$</span>x
-[<span class="dv">1</span>] <span class="dv">1</span>
-
-<span class="op">$</span>somado
-[<span class="dv">1</span>] <span class="dv">1</span>
-
-<span class="op">$</span>subtraido
-[<span class="dv">1</span>] <span class="dv">1</span>
-<span class="kw">minha.segunda.funcao</span>(<span class="dt">x =</span> <span class="dv">1</span>, 
-                     <span class="dt">soma =</span> <span class="dv">2</span>, 
-                     <span class="dt">subtrair =</span> <span class="dv">0</span>) <span class="co"># mesmo que minha.segunda.funcao(1, 2, 0)</span>
-<span class="op">$</span>x
-[<span class="dv">1</span>] <span class="dv">1</span>
-
-<span class="op">$</span>somado
-[<span class="dv">1</span>] <span class="dv">3</span>
-
-<span class="op">$</span>subtraido
-[<span class="dv">1</span>] <span class="dv">1</span>
-
-<span class="co"># Quando especificados os argumentos não precisam seguir a ordem predefinida</span>
-<span class="kw">minha.segunda.funcao</span>(<span class="dv">1</span>, 
-                     <span class="dt">subtrair =</span> <span class="dv">3</span>) 
-<span class="op">$</span>x
-[<span class="dv">1</span>] <span class="dv">1</span>
-
-<span class="op">$</span>somado
-[<span class="dv">1</span>] <span class="dv">1</span>
-
-<span class="op">$</span>subtraido
-[<span class="dv">1</span>] <span class="dv">-2</span>
-
-<span class="st">`</span><span class="dt">%divisible%</span><span class="st">`</span> &lt;-<span class="st"> </span><span class="cf">function</span>(x,y)
-{
-  <span class="cf">if</span> (x<span class="op">%%</span>y <span class="op">==</span><span class="dv">0</span>) <span class="kw">return</span> (<span class="ot">TRUE</span>)
-  <span class="cf">else</span>          <span class="kw">return</span> (<span class="ot">FALSE</span>)
-}
-
-<span class="dv">6</span><span class="op">%divisible%</span><span class="dv">3</span>
-[<span class="dv">1</span>] <span class="ot">TRUE</span></code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">minha.funcao &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2">  x &lt;-<span class="st"> </span>x<span class="op">+</span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">  <span class="kw">return</span>(x) </a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">}</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="kw">minha.funcao</span>(<span class="dv">3</span>) <span class="co"># mesmo que minha.funcao(x = 3)</span></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6">[<span class="dv">1</span>] <span class="dv">4</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co"># Os argumentos somar e subtrair são opcionais.</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co"># Ambos possuem 0 como valor predefinido (default)</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10">minha.segunda.funcao &lt;-<span class="st"> </span><span class="cf">function</span>(x, <span class="dt">somar =</span> <span class="dv">0</span>, <span class="dt">subtrair =</span> <span class="dv">0</span>){</a>
+<a class="sourceLine" id="cb8-11" data-line-number="11">  x.somado &lt;-<span class="st"> </span>x<span class="op">+</span>somar</a>
+<a class="sourceLine" id="cb8-12" data-line-number="12">  x.subtraido &lt;-<span class="st"> </span>x<span class="op">-</span>subtrair</a>
+<a class="sourceLine" id="cb8-13" data-line-number="13">  res &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">x =</span> x, <span class="dt">somado =</span> x.somado, <span class="dt">subtraido =</span> x.subtraido) </a>
+<a class="sourceLine" id="cb8-14" data-line-number="14">  <span class="kw">return</span>(res) <span class="co"># Retorna apenas um valor, no exemplo a lista</span></a>
+<a class="sourceLine" id="cb8-15" data-line-number="15">}</a>
+<a class="sourceLine" id="cb8-16" data-line-number="16"><span class="kw">minha.segunda.funcao</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb8-17" data-line-number="17"><span class="op">$</span>x</a>
+<a class="sourceLine" id="cb8-18" data-line-number="18">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-19" data-line-number="19"></a>
+<a class="sourceLine" id="cb8-20" data-line-number="20"><span class="op">$</span>somado</a>
+<a class="sourceLine" id="cb8-21" data-line-number="21">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb8-23" data-line-number="23"><span class="op">$</span>subtraido</a>
+<a class="sourceLine" id="cb8-24" data-line-number="24">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-25" data-line-number="25"><span class="kw">minha.segunda.funcao</span>(<span class="dt">x =</span> <span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb8-26" data-line-number="26">                     <span class="dt">soma =</span> <span class="dv">2</span>, </a>
+<a class="sourceLine" id="cb8-27" data-line-number="27">                     <span class="dt">subtrair =</span> <span class="dv">0</span>) <span class="co"># mesmo que minha.segunda.funcao(1, 2, 0)</span></a>
+<a class="sourceLine" id="cb8-28" data-line-number="28"><span class="op">$</span>x</a>
+<a class="sourceLine" id="cb8-29" data-line-number="29">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-30" data-line-number="30"></a>
+<a class="sourceLine" id="cb8-31" data-line-number="31"><span class="op">$</span>somado</a>
+<a class="sourceLine" id="cb8-32" data-line-number="32">[<span class="dv">1</span>] <span class="dv">3</span></a>
+<a class="sourceLine" id="cb8-33" data-line-number="33"></a>
+<a class="sourceLine" id="cb8-34" data-line-number="34"><span class="op">$</span>subtraido</a>
+<a class="sourceLine" id="cb8-35" data-line-number="35">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-36" data-line-number="36"></a>
+<a class="sourceLine" id="cb8-37" data-line-number="37"><span class="co"># Quando especificados os argumentos não precisam seguir a ordem predefinida</span></a>
+<a class="sourceLine" id="cb8-38" data-line-number="38"><span class="kw">minha.segunda.funcao</span>(<span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb8-39" data-line-number="39">                     <span class="dt">subtrair =</span> <span class="dv">3</span>) </a>
+<a class="sourceLine" id="cb8-40" data-line-number="40"><span class="op">$</span>x</a>
+<a class="sourceLine" id="cb8-41" data-line-number="41">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-42" data-line-number="42"></a>
+<a class="sourceLine" id="cb8-43" data-line-number="43"><span class="op">$</span>somado</a>
+<a class="sourceLine" id="cb8-44" data-line-number="44">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb8-45" data-line-number="45"></a>
+<a class="sourceLine" id="cb8-46" data-line-number="46"><span class="op">$</span>subtraido</a>
+<a class="sourceLine" id="cb8-47" data-line-number="47">[<span class="dv">1</span>] <span class="dv">-2</span></a>
+<a class="sourceLine" id="cb8-48" data-line-number="48"></a>
+<a class="sourceLine" id="cb8-49" data-line-number="49"><span class="st">`</span><span class="dt">%divisible%</span><span class="st">`</span> &lt;-<span class="st"> </span><span class="cf">function</span>(x,y)</a>
+<a class="sourceLine" id="cb8-50" data-line-number="50">{</a>
+<a class="sourceLine" id="cb8-51" data-line-number="51">  <span class="cf">if</span> (x<span class="op">%%</span>y <span class="op">==</span><span class="dv">0</span>) <span class="kw">return</span> (<span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb8-52" data-line-number="52">  <span class="cf">else</span>          <span class="kw">return</span> (<span class="ot">FALSE</span>)</a>
+<a class="sourceLine" id="cb8-53" data-line-number="53">}</a>
+<a class="sourceLine" id="cb8-54" data-line-number="54"></a>
+<a class="sourceLine" id="cb8-55" data-line-number="55"><span class="dv">6</span><span class="op">%divisible%</span><span class="dv">3</span></a>
+<a class="sourceLine" id="cb8-56" data-line-number="56">[<span class="dv">1</span>] <span class="ot">TRUE</span></a></code></pre></div>
 </div>
-<div id="ambiente-e-escopo-das-variavels" class="section level1">
+<div id="ambiente-e-escopo-das-variávels" class="section level1">
 <h1>Ambiente e escopo das variávels</h1>
 <p>O R usa o conceito de ambiente (<em>environment</em>) para armazenar as variáveis (objetos e funções por exemplo). O principal ambiente (global) é denominado <em>R_GlobalEnv</em> (<em>.GlobalEnv</em> nos códigos) e definido automaticamente ao abrir o programa. Podem existir múltiplos ambientes simultaneamente, sendo que na definição de novas funções um novo ambiente é criado para armazenar as variáveis locais. Existe uma distinção entre variáveis globais e locais, que são armazenadas em diferentes ambientes. Variáveis globais são aquelas variáveis que existem durante a execução de um programa, podem ser alteradas e acessadas por qualquer parte do programa. Variáveis locais são aquelas que existem apenas dentro de uma certa parte de um programa, são criadas e destruídas quando a função termina. No entanto, variáveis globais e locais dependem da perspectiva de uma função, já que os ambientes podem estar alinhadas dentro de outros ambientes. A função <strong>ls</strong> lista os objetos do ambiente atual e a função <strong>rm</strong> remove os objetos. As variáveis globais podem ser lidas mas não podem ser atribuídas com a atribuição padrão (<strong>&lt;-</strong>). A atribuição padrão serve apenas para atribuir variáveis locais. Para fazer atribuições a variáveis globais, o operador de super atribuição (<strong>&lt;&lt;-</strong>) é usado. Ao usar este operador dentro de uma função, ele procura pela variável no ambiente do nível superior, se não for encontrado, continua procurando o próximo nível até atingir o ambiente global. Se a variável ainda não for encontrada, ela será criada e atribuída no nível global.</p>
-<pre class="sourceCode r"><code class="sourceCode r">var1 &lt;-<span class="st"> </span><span class="dv">1</span>
-var2 &lt;-<span class="st"> </span><span class="dv">2</span>
-funcao &lt;-<span class="st"> </span><span class="cf">function</span>(x) {
-    x &lt;-<span class="st"> </span><span class="dv">0</span>
-    <span class="kw">return</span>(x)
-}
-<span class="kw">ls</span>() <span class="co"># O objeto x (arguemnto da função) não esta no ambiente global, é uma variável local</span>
-[<span class="dv">1</span>] <span class="st">&quot;funcao&quot;</span> <span class="st">&quot;var1&quot;</span>   <span class="st">&quot;var2&quot;</span>  
-<span class="kw">environment</span>()
-<span class="op">&lt;</span>environment<span class="op">:</span><span class="st"> </span>R_GlobalEnv<span class="op">&gt;</span>
-
-var1 &lt;-<span class="st"> </span><span class="dv">1</span>
-funcao &lt;-<span class="st"> </span><span class="cf">function</span>() {
-    var1 &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># Uma nova variável local var1 é criada</span>
-    <span class="kw">print</span>(var1)
-}
-<span class="kw">funcao</span>() <span class="co"># Mostra valor da variável local (var1) dentro da função</span>
-[<span class="dv">1</span>] <span class="dv">0</span>
-var1 <span class="co"># Valor da variável var1 fora da função (global) não é alterado</span>
-[<span class="dv">1</span>] <span class="dv">1</span>
-
-funcao &lt;-<span class="st"> </span><span class="cf">function</span>() {
-    var1 &lt;&lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># Atribuir o valor zero para a variável global</span>
-    var3 &lt;&lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># Se variavel global não exisi, uma é criada</span>
-    <span class="kw">print</span>(var1)
-}
-<span class="kw">funcao</span>() <span class="co"># Mostra valor da variável local (var1) dentro da função</span>
-[<span class="dv">1</span>] <span class="dv">0</span>
-var1 <span class="co"># Note que o valor da variável var1 fora da função (global) foi alterado</span>
-[<span class="dv">1</span>] <span class="dv">0</span>
-var3 <span class="co"># Variável var3 não existiam, mas foi criada pela função</span>
-[<span class="dv">1</span>] <span class="dv">0</span>
-
-funcao.exterior &lt;-<span class="st"> </span><span class="cf">function</span>(x.exterior){
-    funcao.interior &lt;-<span class="st"> </span><span class="cf">function</span>(x.interior){
-        <span class="kw">print</span>(<span class="st">&quot;Dentro da funcao.interior:&quot;</span>)
-        <span class="kw">print</span>(<span class="kw">environment</span>())
-        <span class="kw">print</span>(<span class="st">&quot;existe o objeto:&quot;</span>)
-        <span class="kw">print</span>(<span class="kw">ls</span>())
-    }
-    <span class="kw">funcao.interior</span>(<span class="dv">5</span>)
-    <span class="kw">print</span>(<span class="st">&quot;Dentro da funcao.exterior:&quot;</span>)
-    <span class="kw">print</span>(<span class="kw">environment</span>())
-    <span class="kw">print</span>(<span class="st">&quot;existem os objetos:&quot;</span>)
-    <span class="kw">print</span>(<span class="kw">ls</span>())
-}
-<span class="kw">funcao.exterior</span>() <span class="co"># Lista os ambientes e objetos dentro de cada ambiente</span>
-[<span class="dv">1</span>] <span class="st">&quot;Dentro da funcao.interior:&quot;</span>
-<span class="op">&lt;</span>environment<span class="op">:</span><span class="st"> </span><span class="dv">0x10a92de00</span><span class="op">&gt;</span>
-[<span class="dv">1</span>] <span class="st">&quot;existe o objeto:&quot;</span>
-[<span class="dv">1</span>] <span class="st">&quot;x.interior&quot;</span>
-[<span class="dv">1</span>] <span class="st">&quot;Dentro da funcao.exterior:&quot;</span>
-<span class="op">&lt;</span>environment<span class="op">:</span><span class="st"> </span><span class="dv">0x10a92a0b0</span><span class="op">&gt;</span>
-[<span class="dv">1</span>] <span class="st">&quot;existem os objetos:&quot;</span>
-[<span class="dv">1</span>] <span class="st">&quot;funcao.interior&quot;</span> <span class="st">&quot;x.exterior&quot;</span>     </code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">var1 &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb9-2" data-line-number="2">var2 &lt;-<span class="st"> </span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">funcao &lt;-<span class="st"> </span><span class="cf">function</span>(x) {</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4">    x &lt;-<span class="st"> </span><span class="dv">0</span></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5">    <span class="kw">return</span>(x)</a>
+<a class="sourceLine" id="cb9-6" data-line-number="6">}</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="kw">ls</span>() <span class="co"># O objeto x (arguemnto da função) não esta no ambiente global, é uma variável local</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8">[<span class="dv">1</span>] <span class="st">&quot;funcao&quot;</span> <span class="st">&quot;var1&quot;</span>   <span class="st">&quot;var2&quot;</span>  </a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="kw">environment</span>()</a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="op">&lt;</span>environment<span class="op">:</span><span class="st"> </span>R_GlobalEnv<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12">var1 &lt;-<span class="st"> </span><span class="dv">1</span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13">funcao &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
+<a class="sourceLine" id="cb9-14" data-line-number="14">    var1 &lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># Uma nova variável local var1 é criada</span></a>
+<a class="sourceLine" id="cb9-15" data-line-number="15">    <span class="kw">print</span>(var1)</a>
+<a class="sourceLine" id="cb9-16" data-line-number="16">}</a>
+<a class="sourceLine" id="cb9-17" data-line-number="17"><span class="kw">funcao</span>() <span class="co"># Mostra valor da variável local (var1) dentro da função</span></a>
+<a class="sourceLine" id="cb9-18" data-line-number="18">[<span class="dv">1</span>] <span class="dv">0</span></a>
+<a class="sourceLine" id="cb9-19" data-line-number="19">var1 <span class="co"># Valor da variável var1 fora da função (global) não é alterado</span></a>
+<a class="sourceLine" id="cb9-20" data-line-number="20">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb9-21" data-line-number="21"></a>
+<a class="sourceLine" id="cb9-22" data-line-number="22">funcao &lt;-<span class="st"> </span><span class="cf">function</span>() {</a>
+<a class="sourceLine" id="cb9-23" data-line-number="23">    var1 &lt;&lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># Atribuir o valor zero para a variável global</span></a>
+<a class="sourceLine" id="cb9-24" data-line-number="24">    var3 &lt;&lt;-<span class="st"> </span><span class="dv">0</span> <span class="co"># Se variavel global não exisi, uma é criada</span></a>
+<a class="sourceLine" id="cb9-25" data-line-number="25">    <span class="kw">print</span>(var1)</a>
+<a class="sourceLine" id="cb9-26" data-line-number="26">}</a>
+<a class="sourceLine" id="cb9-27" data-line-number="27"><span class="kw">funcao</span>() <span class="co"># Mostra valor da variável local (var1) dentro da função</span></a>
+<a class="sourceLine" id="cb9-28" data-line-number="28">[<span class="dv">1</span>] <span class="dv">0</span></a>
+<a class="sourceLine" id="cb9-29" data-line-number="29">var1 <span class="co"># Note que o valor da variável var1 fora da função (global) foi alterado</span></a>
+<a class="sourceLine" id="cb9-30" data-line-number="30">[<span class="dv">1</span>] <span class="dv">0</span></a>
+<a class="sourceLine" id="cb9-31" data-line-number="31">var3 <span class="co"># Variável var3 não existiam, mas foi criada pela função</span></a>
+<a class="sourceLine" id="cb9-32" data-line-number="32">[<span class="dv">1</span>] <span class="dv">0</span></a>
+<a class="sourceLine" id="cb9-33" data-line-number="33"></a>
+<a class="sourceLine" id="cb9-34" data-line-number="34">funcao.exterior &lt;-<span class="st"> </span><span class="cf">function</span>(x.exterior){</a>
+<a class="sourceLine" id="cb9-35" data-line-number="35">    funcao.interior &lt;-<span class="st"> </span><span class="cf">function</span>(x.interior){</a>
+<a class="sourceLine" id="cb9-36" data-line-number="36">        <span class="kw">print</span>(<span class="st">&quot;Dentro da funcao.interior:&quot;</span>)</a>
+<a class="sourceLine" id="cb9-37" data-line-number="37">        <span class="kw">print</span>(<span class="kw">environment</span>())</a>
+<a class="sourceLine" id="cb9-38" data-line-number="38">        <span class="kw">print</span>(<span class="st">&quot;existe o objeto:&quot;</span>)</a>
+<a class="sourceLine" id="cb9-39" data-line-number="39">        <span class="kw">print</span>(<span class="kw">ls</span>())</a>
+<a class="sourceLine" id="cb9-40" data-line-number="40">    }</a>
+<a class="sourceLine" id="cb9-41" data-line-number="41">    <span class="kw">funcao.interior</span>(<span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb9-42" data-line-number="42">    <span class="kw">print</span>(<span class="st">&quot;Dentro da funcao.exterior:&quot;</span>)</a>
+<a class="sourceLine" id="cb9-43" data-line-number="43">    <span class="kw">print</span>(<span class="kw">environment</span>())</a>
+<a class="sourceLine" id="cb9-44" data-line-number="44">    <span class="kw">print</span>(<span class="st">&quot;existem os objetos:&quot;</span>)</a>
+<a class="sourceLine" id="cb9-45" data-line-number="45">    <span class="kw">print</span>(<span class="kw">ls</span>())</a>
+<a class="sourceLine" id="cb9-46" data-line-number="46">}</a>
+<a class="sourceLine" id="cb9-47" data-line-number="47"><span class="kw">funcao.exterior</span>() <span class="co"># Lista os ambientes e objetos dentro de cada ambiente</span></a>
+<a class="sourceLine" id="cb9-48" data-line-number="48">[<span class="dv">1</span>] <span class="st">&quot;Dentro da funcao.interior:&quot;</span></a>
+<a class="sourceLine" id="cb9-49" data-line-number="49"><span class="op">&lt;</span>environment<span class="op">:</span><span class="st"> </span><span class="dv">0x7fdd4c776d58</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-50" data-line-number="50">[<span class="dv">1</span>] <span class="st">&quot;existe o objeto:&quot;</span></a>
+<a class="sourceLine" id="cb9-51" data-line-number="51">[<span class="dv">1</span>] <span class="st">&quot;x.interior&quot;</span></a>
+<a class="sourceLine" id="cb9-52" data-line-number="52">[<span class="dv">1</span>] <span class="st">&quot;Dentro da funcao.exterior:&quot;</span></a>
+<a class="sourceLine" id="cb9-53" data-line-number="53"><span class="op">&lt;</span>environment<span class="op">:</span><span class="st"> </span><span class="dv">0x7fdd4c776b98</span><span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb9-54" data-line-number="54">[<span class="dv">1</span>] <span class="st">&quot;existem os objetos:&quot;</span></a>
+<a class="sourceLine" id="cb9-55" data-line-number="55">[<span class="dv">1</span>] <span class="st">&quot;funcao.interior&quot;</span> <span class="st">&quot;x.exterior&quot;</span>     </a></code></pre></div>
 </div>
 <div id="classes" class="section level1">
 <h1>Classes</h1>
 <p>R possui um mecanismo de classes e métodos que aplicam as funções de acordo com as classes herdadas dos objetos, no estilo de programação orientada por objetos. Existem três sistemas de classes, <em>S3</em>, <em>S4</em> e <em>Reference Class</em>. A classe <em>S3</em> é a mais simples, sem qualquer definição formal. Os objetos dessa classe pode ser criado simplesmente adicionando um atributo de classe usando a função <strong>class</strong>. Uma vez atribuidas os objetos passam a herdar a classe (checados pela função <strong>inherits</strong>), sendo que os objetos podem herdar mais de uma classe. Na classe S3 os métodos pertencem à funções genéricas junto com outras funções genéricas predefinidas (por exemplo <em>print</em>, <em>summary</em> e <em>plot</em>) que aplicam os métodos de acordo com as classes herdadas dos objetos. Quando uma função genérica é aplicada a um objeto de uma classe (por exemplo <em>“minhaclasse”</em>), o sistema procura por uma função compatível com a classe (por exemplo <em>“funcao.minhaclasse”</em>), se a encontrar aplica o método ao objeto. Se tal função não for encontrada a classe implícita ou método padrão serão tentados. É possível derivar novas classes das classes existentes e adicionar novos métodos ou criar funções genéricas próprias.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Classe S3</span>
-<span class="co"># Função construtora da classe &quot;minhaclasse&quot;</span>
-minhaclasse &lt;-<span class="st"> </span><span class="cf">function</span>(sp, atributo){
-  <span class="cf">if</span>(atributo<span class="op">&lt;</span><span class="dv">0</span>)  <span class="kw">stop</span>(<span class="st">&quot;atributo deve ser maior ou igual a zero&quot;</span>)
-  res &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sp =</span> sp, <span class="dt">atributo =</span> atributo)
-  <span class="kw">class</span>(res) &lt;-<span class="st"> &quot;minhaclasse&quot;</span> <span class="co"># pode ser usado a função attr()</span>
-  <span class="kw">return</span>(res)
-}
-
-
-sp1 &lt;-<span class="st"> </span><span class="kw">minhaclasse</span>(<span class="st">&quot;Sp.1&quot;</span>, <span class="dt">atributo =</span> <span class="dv">4</span>)
-sp1
-<span class="op">$</span>sp
-[<span class="dv">1</span>] <span class="st">&quot;Sp.1&quot;</span>
-
-<span class="op">$</span>atributo
-[<span class="dv">1</span>] <span class="dv">4</span>
-
-<span class="kw">attr</span>(,<span class="st">&quot;class&quot;</span>)
-[<span class="dv">1</span>] <span class="st">&quot;minhaclasse&quot;</span>
-sp1<span class="op">$</span>atributo &lt;-<span class="st"> </span><span class="dv">-9</span> <span class="co"># A checagem só funciona quando usado função construtora</span>
-
-
-<span class="co"># A função print() é uma função genérica usada para mostrar os objetos na tela</span>
-<span class="co"># A função chama métodos particulares que dependem da classe do primeiro argumento</span>
-<span class="co"># É importante que o nome da função genérica seja separado da classe </span>
-<span class="co"># pelo símbolo de ponto (&quot;.&quot;).</span>
-
-print.minhaclasse &lt;-<span class="st"> </span><span class="cf">function</span>(obj) {
-  <span class="kw">cat</span>(<span class="st">&quot;A espécie é&quot;</span>, obj<span class="op">$</span>sp, <span class="st">&quot;com atributo&quot;</span>, obj<span class="op">$</span>atributo) <span class="co"># método próprio para print</span>
-}
-
-sp1 <span class="co"># mesmo que print(sp1), chama a função print.minhaclasse()</span>
-A espécie é Sp<span class="fl">.1</span> com atributo <span class="dv">-9</span></code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="co"># Classe S3</span></a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co"># Função construtora da classe &quot;minhaclasse&quot;</span></a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">minhaclasse &lt;-<span class="st"> </span><span class="cf">function</span>(sp, atributo){</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">  <span class="cf">if</span>(atributo<span class="op">&lt;</span><span class="dv">0</span>)  <span class="kw">stop</span>(<span class="st">&quot;atributo deve ser maior ou igual a zero&quot;</span>)</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">  res &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">sp =</span> sp, <span class="dt">atributo =</span> atributo)</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">  <span class="kw">class</span>(res) &lt;-<span class="st"> &quot;minhaclasse&quot;</span> <span class="co"># pode ser usado a função attr()</span></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">  <span class="kw">return</span>(res)</a>
+<a class="sourceLine" id="cb10-8" data-line-number="8">}</a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11">sp1 &lt;-<span class="st"> </span><span class="kw">minhaclasse</span>(<span class="st">&quot;Sp.1&quot;</span>, <span class="dt">atributo =</span> <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb10-12" data-line-number="12">sp1</a>
+<a class="sourceLine" id="cb10-13" data-line-number="13"><span class="op">$</span>sp</a>
+<a class="sourceLine" id="cb10-14" data-line-number="14">[<span class="dv">1</span>] <span class="st">&quot;Sp.1&quot;</span></a>
+<a class="sourceLine" id="cb10-15" data-line-number="15"></a>
+<a class="sourceLine" id="cb10-16" data-line-number="16"><span class="op">$</span>atributo</a>
+<a class="sourceLine" id="cb10-17" data-line-number="17">[<span class="dv">1</span>] <span class="dv">4</span></a>
+<a class="sourceLine" id="cb10-18" data-line-number="18"></a>
+<a class="sourceLine" id="cb10-19" data-line-number="19"><span class="kw">attr</span>(,<span class="st">&quot;class&quot;</span>)</a>
+<a class="sourceLine" id="cb10-20" data-line-number="20">[<span class="dv">1</span>] <span class="st">&quot;minhaclasse&quot;</span></a>
+<a class="sourceLine" id="cb10-21" data-line-number="21">sp1<span class="op">$</span>atributo &lt;-<span class="st"> </span><span class="dv">-9</span> <span class="co"># A checagem só funciona quando usado função construtora</span></a>
+<a class="sourceLine" id="cb10-22" data-line-number="22"></a>
+<a class="sourceLine" id="cb10-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb10-24" data-line-number="24"><span class="co"># A função print() é uma função genérica usada para mostrar os objetos na tela</span></a>
+<a class="sourceLine" id="cb10-25" data-line-number="25"><span class="co"># A função chama métodos particulares que dependem da classe do primeiro argumento</span></a>
+<a class="sourceLine" id="cb10-26" data-line-number="26"><span class="co"># É importante que o nome da função genérica seja separado da classe </span></a>
+<a class="sourceLine" id="cb10-27" data-line-number="27"><span class="co"># pelo símbolo de ponto (&quot;.&quot;).</span></a>
+<a class="sourceLine" id="cb10-28" data-line-number="28"></a>
+<a class="sourceLine" id="cb10-29" data-line-number="29">print.minhaclasse &lt;-<span class="st"> </span><span class="cf">function</span>(obj) {</a>
+<a class="sourceLine" id="cb10-30" data-line-number="30">  <span class="kw">cat</span>(<span class="st">&quot;A espécie é&quot;</span>, obj<span class="op">$</span>sp, <span class="st">&quot;com atributo&quot;</span>, obj<span class="op">$</span>atributo) <span class="co"># método próprio para print</span></a>
+<a class="sourceLine" id="cb10-31" data-line-number="31">}</a>
+<a class="sourceLine" id="cb10-32" data-line-number="32"></a>
+<a class="sourceLine" id="cb10-33" data-line-number="33">sp1 <span class="co"># mesmo que print(sp1), chama a função print.minhaclasse()</span></a>
+<a class="sourceLine" id="cb10-34" data-line-number="34">A espécie é Sp<span class="fl">.1</span> com atributo <span class="dv">-9</span></a></code></pre></div>
 </div>
-<div id="excecoes" class="section level1">
+<div id="exceções" class="section level1">
 <h1>Exceções</h1>
 <p>O R oferece funções para lidar com condições incomuns, incluindo erros e avisos. As funções <strong>message</strong> e <strong>warning</strong> são usadas para mostrar mensagens de diagnóstico e advertência respectivamente. Erros que interompem a execução do código podem ser atribuidos pela função <strong>stop</strong>. A função <strong>try</strong> pode ser usada como uma funçõe envelope (wrapper function) para executar uma função que pode falhar, permitindo a recuperação de erros. A função retorna o resultado normal da função caso executada sem erro, mas um objeto da classe <em>“try-error”</em> contendo a mensagem de erro e a condição de erro é retornado caso houver alguma falha. Outras funções sobre condições incomuns são encontradas em <em>?conditions</em>.</p>
-<pre class="sourceCode r"><code class="sourceCode r">funcao &lt;-<span class="st"> </span><span class="cf">function</span>(x){
-    <span class="cf">if</span>(x<span class="op">==</span><span class="dv">0</span>){
-        <span class="kw">message</span>(<span class="st">&quot;mensagens de diagnóstico.&quot;</span>)
-    }
-    <span class="cf">if</span>(x<span class="op">==</span><span class="dv">1</span>){
-        <span class="kw">warning</span>(<span class="st">&quot;uma mensagem de advertência.&quot;</span>)  
-    }
-    <span class="cf">if</span>(x<span class="op">&gt;</span><span class="dv">10</span>){
-        <span class="kw">stop</span>(<span class="st">&quot;uma mensagem de erro.&quot;</span>) <span class="co"># mensagem de erro fatal</span>
-    }
-    <span class="kw">return</span>(x)
-}
-
-
-<span class="kw">funcao</span>(<span class="dv">0</span>)
-mensagens de diagnóstico.
-[<span class="dv">1</span>] <span class="dv">0</span>
-<span class="kw">funcao</span>(<span class="dv">1</span>)
-Warning <span class="cf">in</span> <span class="kw">funcao</span>(<span class="dv">1</span>)<span class="op">:</span><span class="st"> </span>uma mensagem de advertência.
-[<span class="dv">1</span>] <span class="dv">1</span>
-<span class="kw">funcao</span>(<span class="dv">11</span>)
-Error <span class="cf">in</span> <span class="kw">funcao</span>(<span class="dv">11</span>)<span class="op">:</span><span class="st"> </span>uma mensagem de erro.
-
-<span class="kw">try</span>(<span class="kw">funcao</span>(<span class="dv">2</span>))
-[<span class="dv">1</span>] <span class="dv">2</span>
-
-res &lt;-<span class="st"> </span><span class="kw">try</span>(<span class="kw">funcao</span>(<span class="dv">11</span>))
-res
-[<span class="dv">1</span>] <span class="st">&quot;Error in funcao(11) : uma mensagem de erro.</span><span class="ch">\n</span><span class="st">&quot;</span>
-<span class="kw">attr</span>(,<span class="st">&quot;class&quot;</span>)
-[<span class="dv">1</span>] <span class="st">&quot;try-error&quot;</span>
-<span class="kw">attr</span>(,<span class="st">&quot;condition&quot;</span>)
-<span class="op">&lt;</span>simpleError <span class="cf">in</span> <span class="kw">funcao</span>(<span class="dv">11</span>)<span class="op">:</span><span class="st"> </span>uma mensagem de erro.<span class="op">&gt;</span>
-<span class="kw">class</span>(res)
-[<span class="dv">1</span>] <span class="st">&quot;try-error&quot;</span></code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">funcao &lt;-<span class="st"> </span><span class="cf">function</span>(x){</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">    <span class="cf">if</span>(x<span class="op">==</span><span class="dv">0</span>){</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">        <span class="kw">message</span>(<span class="st">&quot;mensagens de diagnóstico.&quot;</span>)</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4">    }</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">    <span class="cf">if</span>(x<span class="op">==</span><span class="dv">1</span>){</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">        <span class="kw">warning</span>(<span class="st">&quot;uma mensagem de advertência.&quot;</span>)  </a>
+<a class="sourceLine" id="cb11-7" data-line-number="7">    }</a>
+<a class="sourceLine" id="cb11-8" data-line-number="8">    <span class="cf">if</span>(x<span class="op">&gt;</span><span class="dv">10</span>){</a>
+<a class="sourceLine" id="cb11-9" data-line-number="9">        <span class="kw">stop</span>(<span class="st">&quot;uma mensagem de erro.&quot;</span>) <span class="co"># mensagem de erro fatal</span></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10">    }</a>
+<a class="sourceLine" id="cb11-11" data-line-number="11">    <span class="kw">return</span>(x)</a>
+<a class="sourceLine" id="cb11-12" data-line-number="12">}</a>
+<a class="sourceLine" id="cb11-13" data-line-number="13"></a>
+<a class="sourceLine" id="cb11-14" data-line-number="14"></a>
+<a class="sourceLine" id="cb11-15" data-line-number="15"><span class="kw">funcao</span>(<span class="dv">0</span>)</a>
+<a class="sourceLine" id="cb11-16" data-line-number="16">mensagens de diagnóstico.</a>
+<a class="sourceLine" id="cb11-17" data-line-number="17">[<span class="dv">1</span>] <span class="dv">0</span></a>
+<a class="sourceLine" id="cb11-18" data-line-number="18"><span class="kw">funcao</span>(<span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb11-19" data-line-number="19">Warning <span class="cf">in</span> <span class="kw">funcao</span>(<span class="dv">1</span>)<span class="op">:</span><span class="st"> </span>uma mensagem de advertência.</a>
+<a class="sourceLine" id="cb11-20" data-line-number="20">[<span class="dv">1</span>] <span class="dv">1</span></a>
+<a class="sourceLine" id="cb11-21" data-line-number="21"><span class="kw">funcao</span>(<span class="dv">11</span>)</a>
+<a class="sourceLine" id="cb11-22" data-line-number="22">Error <span class="cf">in</span> <span class="kw">funcao</span>(<span class="dv">11</span>)<span class="op">:</span><span class="st"> </span>uma mensagem de erro.</a>
+<a class="sourceLine" id="cb11-23" data-line-number="23"></a>
+<a class="sourceLine" id="cb11-24" data-line-number="24"><span class="kw">try</span>(<span class="kw">funcao</span>(<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb11-25" data-line-number="25">[<span class="dv">1</span>] <span class="dv">2</span></a>
+<a class="sourceLine" id="cb11-26" data-line-number="26"></a>
+<a class="sourceLine" id="cb11-27" data-line-number="27">res &lt;-<span class="st"> </span><span class="kw">try</span>(<span class="kw">funcao</span>(<span class="dv">11</span>))</a>
+<a class="sourceLine" id="cb11-28" data-line-number="28">Error <span class="cf">in</span> <span class="kw">funcao</span>(<span class="dv">11</span>) <span class="op">:</span><span class="st"> </span>uma mensagem de erro.</a>
+<a class="sourceLine" id="cb11-29" data-line-number="29">res</a>
+<a class="sourceLine" id="cb11-30" data-line-number="30">[<span class="dv">1</span>] <span class="st">&quot;Error in funcao(11) : uma mensagem de erro.</span><span class="ch">\n</span><span class="st">&quot;</span></a>
+<a class="sourceLine" id="cb11-31" data-line-number="31"><span class="kw">attr</span>(,<span class="st">&quot;class&quot;</span>)</a>
+<a class="sourceLine" id="cb11-32" data-line-number="32">[<span class="dv">1</span>] <span class="st">&quot;try-error&quot;</span></a>
+<a class="sourceLine" id="cb11-33" data-line-number="33"><span class="kw">attr</span>(,<span class="st">&quot;condition&quot;</span>)</a>
+<a class="sourceLine" id="cb11-34" data-line-number="34"><span class="op">&lt;</span>simpleError <span class="cf">in</span> <span class="kw">funcao</span>(<span class="dv">11</span>)<span class="op">:</span><span class="st"> </span>uma mensagem de erro.<span class="op">&gt;</span></a>
+<a class="sourceLine" id="cb11-35" data-line-number="35"><span class="kw">class</span>(res)</a>
+<a class="sourceLine" id="cb11-36" data-line-number="36">[<span class="dv">1</span>] <span class="st">&quot;try-error&quot;</span></a></code></pre></div>
 </div>
 <div id="paravras-reservadas" class="section level1">
 <h1>Paravras reservadas</h1>
 <p>Além das palavras usadas no controle de fluxo, as principais palavras reservadas no R estão listados a seguir. Lista completa disponível em <em>?reserved</em>.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="ot">NA</span> <span class="co"># Indeterminado (Not Avaiable)</span>
-<span class="ot">NaN</span> <span class="co"># Indeterminado (Not a Number)</span>
-<span class="ot">Inf</span> <span class="co"># Infinito</span>
-<span class="ot">TRUE</span> <span class="co"># Variável lógica para verdadeiro, ou abreviação T</span>
-<span class="ot">FALSE</span> <span class="co"># Variável lógica para falso, ou abreviação F</span>
-<span class="ot">NULL</span> <span class="co"># Usado para especificar algo nulo ou vazio</span>
-... <span class="co"># Corresponde a zero, um ou mais argumentos reais (portanto, objetos).</span></code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="ot">NA</span> <span class="co"># Indeterminado (Not Avaiable)</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="ot">NaN</span> <span class="co"># Indeterminado (Not a Number)</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="ot">Inf</span> <span class="co"># Infinito</span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="ot">TRUE</span> <span class="co"># Variável lógica para verdadeiro, ou abreviação T</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="ot">FALSE</span> <span class="co"># Variável lógica para falso, ou abreviação F</span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="ot">NULL</span> <span class="co"># Usado para especificar algo nulo ou vazio</span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7">... <span class="co"># Corresponde a zero, um ou mais argumentos reais (portanto, objetos).</span></a></code></pre></div>
 </div>
 <div id="importando" class="section level1">
 <h1>Importando</h1>
 <p>Bibliotecas externas (chamados de pacotes ou <em>packages</em>) podem ser instaladas (função <strong>install.packages</strong>) e carregadas com a função <strong>require</strong> ou <strong>library</strong>. É possível usar funções individuais usando <strong>::</strong> para chamar funções dos <em>namespaces</em> dos pacotes instalados.</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(MASS)
-permute<span class="op">::</span><span class="kw">shuffle</span>(<span class="dv">4</span>)</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">require</span>(MASS)</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2">permute<span class="op">::</span><span class="kw">shuffle</span>(<span class="dv">4</span>)</a></code></pre></div>
 </div>
 <div id="importando-e-exportando-arquivos" class="section level1">
 <h1>Importando e exportando arquivos</h1>
 <p>O R possui uma grande variedade de pacotes embutidos que permitem importar e exportar arquivos nos mais diversos formatos. Funções como <strong>read.table</strong>, <strong>read.csv</strong>, <strong>write.table</strong> e <strong>write.csv</strong> do pacote <em>utils</em> permitem importar (prefixo <em>read.</em>) e exportar (prefixo <em>write.</em>) tabelas de dados. As funções do pacote <em>grDevices</em> como <strong>pdf</strong>, <strong>png</strong>, <strong>tiff</strong>, <strong>jpeg</strong> permitem abrir dispositivos para exportar gráficos (a função <strong>dev.off</strong> precisa ser usada para fechar os dispositivos gráficos). Existem também funções para criar, abrir e fechar conexões com arquivos e URLs, lista completa disponível em <em>?connections</em>. O R sempre fica associado a uma diretório do computador, esse será o diretório de trabalho (<em>working directory</em>). Os arquivos que estão neste diretório podem ser carregados apenas pelo nome e qualquer arquivo exportado será salvo neste diretório caso não especificado o contrário. Os sistemas de caminhos (<em>path</em>), absolutos ou relativos, podem ser usados especificar a localização dos arquivos (por exemplo <strong>./subdiretorio</strong> e <strong>..</strong>) e a funções <strong>file.choose</strong> permitem escolher arquivos interativamente. As funções <strong>save.image</strong> e <strong>load</strong> permitem respectivamente salvar e carregar área de trabalho (<em>workspace</em>) e a função <strong>source</strong> importar arquivos de códigos em R.</p>
 </div>
-<div id="geracao-de-numeros-aletorios-e-amostragem" class="section level1">
+<div id="geração-de-números-aletórios-e-amostragem" class="section level1">
 <h1>Geração de números aletórios e amostragem</h1>
 <p>O R possui um conjunto grande de funções ligadas às distribuições de probabilidade, simulação de distribuições e reamostragem de dados. Amostras aleatórias e permutações podem ser realizadas pela função <strong>sample</strong>. As funções de densidade/massa, distribuição cumulativa e quantílica e geração de variáveis aleatórias pode realizadas para as principais distribuições de probabilidade. A lista completa disponível em <em>?Distributions</em>.</p>
 </div>
-<div id="guia-de-ajuda-rapida" class="section level1">
+<div id="guia-de-ajuda-rápida" class="section level1">
 <h1>Guia de ajuda rápida</h1>
 <pre class="text"><code># - Adicionar comentário
 ? - Obter ajuda de função
@@ -2418,15 +2391,15 @@ warning() - Funções. Criar mensagens de advertência
 stop() - Funções. Criar mensagens de erro
 try() - Funções. Tentar função envelope</code></pre>
 </div>
-<div id="conclusao" class="section level1">
+<div id="conclusão" class="section level1">
 <h1>Conclusão</h1>
 <p>O objetivo deste texto foi introduzir alguns conceitos básicos da linguagem R. Os principais aspectos da sintaxe, operadores, tipos de dados, estruturas dos objetos, controle de fluxo e desenvolvimento de funções foram mostradas e exemplificadas. Espero que este texto tenha sido útil e, por favor, avise-me se tiver dúvidas ou sugestões sobre este texto.</p>
 </div>
-<div id="mais-informacoes" class="section level1">
+<div id="mais-informações" class="section level1">
 <h1>Mais informações</h1>
 <p>Outros textos e tutoriais sobre R podem ser encontrados em <a href="https://vanderleidebastiani.github.io/tutoriais" class="uri">https://vanderleidebastiani.github.io/tutoriais</a>.</p>
 </div>
-<div id="referencias" class="section level1">
+<div id="referências" class="section level1">
 <h1>Referências</h1>
 <ul>
 <li><p>Crawley, Michael J. 2007. <strong>The R book</strong>. John Wiley &amp; Sons, Chichester.</p></li>
@@ -2453,6 +2426,49 @@ $(document).ready(function () {
 });
 
 
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
 </script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->

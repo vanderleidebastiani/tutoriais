@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 <meta name="author" content="Vanderlei Júlio Debastiani (vanderleidebastiani@yahoo.com.br)" />
@@ -281,7 +281,6 @@ code {
 }
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -343,6 +342,7 @@ summary {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -354,18 +354,6 @@ summary {
   display: none;
 }
 </style>
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
 
 <!-- code folding -->
 
@@ -387,31 +375,31 @@ $(document).ready(function () {
 
 
 <h1 class="title toc-ignore">Conjunto de textos/tutoriais para R</h1>
-<h4 class="author">Vanderlei Júlio Debastiani (<a href="mailto:vanderleidebastiani@yahoo.com.br">vanderleidebastiani@yahoo.com.br</a>)</h4>
+<h4 class="author">Vanderlei Júlio Debastiani (<a href="mailto:vanderleidebastiani@yahoo.com.br" class="email">vanderleidebastiani@yahoo.com.br</a>)</h4>
 
 </div>
 
 
-<div id="programa-de-pos-graduacao-em-ecologia---universidade-federal-do-rio-grande-do-sul" class="section level6">
+<div id="programa-de-pós-graduação-em-ecologia---universidade-federal-do-rio-grande-do-sul" class="section level6">
 <h6>Programa de Pós-Graduação em Ecologia - Universidade Federal do Rio Grande do Sul</h6>
 </div>
-<div id="apresentacao" class="section level5">
+<div id="apresentação" class="section level5">
 <h5>Apresentação</h5>
-<p><a href="https://www.r-project.org">R</a> é um ambiente de programação voltado para manipulação, análise de dados e apresentação gráfica que tem se tornado muito popular em diversas áreas da ciência. Trata-se de um projeto em constante desenvolvimento, resultado de um esforço colaborativo com contribuições de todo o mundo. Os textos disponibilizados aqui visam agregar conteúdos que possam servir como uma introdução à estrutura e uso da linguagem R. Os textos são independentes entre si e abordam tanto tópicos gerais quanto assuntos mais específicos. As versões em <em>.pdf</em> dos textos podem ser baixadas na página do projeto no <a href="https://github.com/vanderleidebastiani/tutoriais">GitHub</a>. Por favor, avise-me se tiver dúvidas ou sugestões sobre estes textos.</p>
+<p><a href="https://www.r-project.org">R</a> é um ambiente de programação voltado para processamento, análise de dados e apresentação gráfica que tem se tornado muito popular em diversas áreas da ciência. Trata-se de um projeto em constante desenvolvimento, resultado de um esforço colaborativo com contribuições de todo o mundo. Os textos disponibilizados aqui visam agregar conteúdos que possam servir como uma introdução à estrutura e uso da linguagem R. Os textos são independentes entre si e abordam tanto tópicos gerais quanto assuntos mais específicos. As versões em <em>.pdf</em> dos textos podem ser baixadas na página do projeto no <a href="https://github.com/vanderleidebastiani/tutoriais">GitHub</a>. Por favor, avise-me se tiver dúvidas ou sugestões sobre estes textos.</p>
 <ul>
 <li><p><a href="https://vanderleidebastiani.github.io/tutoriais/Introducao_a_programacao_Conceitos_e_aplicacao_de_Logica.html">Introdução à programação - Conceitos e aplicação de Lógica</a></p></li>
 <li><p><a href="https://vanderleidebastiani.github.io/tutoriais/Introducao_ao_R.html">Introdução ao R</a></p></li>
 <li><p><a href="https://vanderleidebastiani.github.io/tutoriais/Aprendendo_R_em_10_minutos.html">Aprendendo R em 10 minutos</a></p></li>
 <li><p><a href="https://vanderleidebastiani.github.io/tutoriais/Graficos_com_R.html">Gráficos com R</a></p></li>
+<li><p><a href="https://vanderleidebastiani.github.io/tutoriais/Familia_de_funcoes_Apply.html">Família de funcões Apply</a></p></li>
+<li><p><a href="https://vanderleidebastiani.github.io/tutoriais/Processamento_de_dados_usando_dplyr.html">Processamento de dados usando dplyr</a></p></li>
+<li><p><a href="https://vanderleidebastiani.github.io/tutoriais/Processamento_paralelo_Uma_breve_introducao.html">Processamento paralelo - Uma breve introdução</a></p></li>
 <li><p><a href="https://vanderleidebastiani.github.io/tutoriais/Documentacao_de_resultados_usando_R_Markdown.html">Documentação de resultados usando R Markdown</a></p></li>
 <li><p><a href="https://vanderleidebastiani.github.io/tutoriais/Estatistica_Basica_em_R.html">Estatística básica em R</a></p></li>
 </ul>
 </div>
 <div id="projeto-no-github" class="section level5">
 <h5><a href="https://github.com/vanderleidebastiani/tutoriais">Projeto no GitHub</a></h5>
-<div id="hospedado-em-github-pages" class="section level6">
-<h6>Hospedado em <a href="https://pages.github.com">GitHub Pages</a></h6>
-</div>
 </div>
 
 
@@ -431,6 +419,23 @@ $(document).ready(function () {
 
 
 </script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

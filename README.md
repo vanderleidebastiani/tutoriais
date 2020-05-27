@@ -10,10 +10,16 @@ Desenvolvido por Vanderlei Júlio Debastiani <vanderleidebastiani@yahoo.com.br>
 
 * Gráficos com R
 
+* Família de funcões Apply
+
+* Processamento de dados usando dplyr
+
+* Processamento paralelo - Uma breve introdução
+
 * Documentação de resultados usando R Markdown
 
-* Estatística Básica em R
+* Estatística básica em R
 
-Os arquivos podem ser baixados no formato .pdf nesta página ou visualizados [nesta página](https://vanderleidebastiani.github.io/tutoriais).
+Os arquivos podem ser baixados no formato .pdf na pasta PDFs acima ou visualizados [nesta página](https://vanderleidebastiani.github.io/tutoriais).
 
 Por favor, avise-me se tiver dúvidas ou sugestões sobre os textos.
