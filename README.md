@@ -1,4 +1,4 @@
-# Conjunto de textos/tutoriais para R
+# Tutoriais para R
 
 Desenvolvido por Vanderlei Júlio Debastiani <vanderleidebastiani@yahoo.com.br>
 
