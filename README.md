@@ -10,7 +10,7 @@ Desenvolvido por Vanderlei Júlio Debastiani <vanderleidebastiani@yahoo.com.br>
 
 * Gráficos com R
 
-* Família de funcões Apply
+* Família de funções Apply
 
 * Processamento de dados usando dplyr
 
