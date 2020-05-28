@@ -1,5 +1,9 @@
 # Tutoriais para R
-##### Vanderlei Júlio Debastiani
+### Vanderlei Júlio Debastiani
+
+[R](https://www.r-project.org) é um ambiente de programação voltado para processamento, análise de dados e apresentação gráfica que tem se tornado muito popular em diversas áreas da ciência. 
+
+Os textos disponibilizados visam agregar conteúdos que possam servir como uma introdução à estrutura e uso da linguagem R. 
 
 * Introdução à programação - Conceitos e aplicação de Lógica
 
