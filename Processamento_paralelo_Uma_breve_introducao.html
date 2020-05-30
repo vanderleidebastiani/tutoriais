@@ -1581,16 +1581,16 @@ div.tocify {
 
 <h1 class="title toc-ignore">Processamento paralelo - Uma breve introdução</h1>
 <h4 class="author">Vanderlei Júlio Debastiani (<a href="mailto:vanderleidebastiani@yahoo.com.br">vanderleidebastiani@yahoo.com.br</a>)</h4>
-<h4 class="date">27 Maio 2020</h4>
+<h4 class="date">30 Maio 2020</h4>
 
 </div>
 
 
 <div id="introdução" class="section level1">
 <h1>Introdução</h1>
-<p>O pacote <em>parallel</em> é parte integrante do <strong>R</strong> e permite a execução de tarefas de maneira paralelizada usando múltiplos processos. Um exemplo típico de tarefas que podem ser realizadas de maneira paralela são simulações. Geralmente as simulações envolvem a geração de números aleatórios, então um conjunto de <em>n</em> simulações deve ser realizada usando os mesmos parâmetros. Ainda, conjuntos muito grandes de dados, que podem ser analisados separadamente, também podem ser analisados de maneira paralelizada. O ponto importante é que essas tarefas, ou blocos de códigos, não sejam relacionadas, ou seja, não precisam se comunicar de nenhuma maneira para serem concluídas e geralmente levam aproximadamente o mesmo período de tempo para serem finalizadas.</p>
+<p>O pacote <em>parallel</em> é parte integrante do <strong>R</strong> e permite a execução de tarefas de maneira paralelizada usando múltiplos processadores, de um ou mais computadores. Um exemplo típico de tarefas que podem ser realizadas de maneira paralela são simulações. Geralmente as simulações envolvem a geração de números aleatórios, então um conjunto de <em>n</em> simulações deve ser realizada usando os mesmos parâmetros. Ainda, conjuntos muito grandes de dados, que podem ser analisados separadamente, também podem ser analisados de maneira paralelizada. O ponto importante é que essas tarefas, ou blocos de códigos, não sejam relacionadas, ou seja, não precisam se comunicar de nenhuma maneira para serem concluídas e geralmente levam aproximadamente o mesmo período de tempo para serem finalizadas.</p>
 <p>Computadores modernos, incluindo <em>laptops</em>, podem estar equipados como CPU (Unidade Central de Processamento - <em>Central Processing Unit</em>) capazes de realizar múltiplas tarefas. O número de processos que podem ser executados paralelamente depende do computador, mas mesmo computador com apenas um processador físico podem estar equipados com mais de um núcleo lógico. Teoricamente, cada um desses núcleos lógicos podem ser utilizados para realizar tarefas de maneira paralela.</p>
-<p>O tutorial requer conhecimento sobre <strong>R</strong> e sobre função da família <em>Apply</em>. Os código são apenas brevemente comentados sendo que a ideia é que o leitor seja capaz de reproduzir os comandos aqui contidos, e busque mais informações sobre os argumentos extras nas páginas de ajuda de cada função. O texto apresneta apenas uma breve introdução ao processamento paralelo, ao final é apresentado um guia de ajuda rápida mostrando as principais funções apresentadas.</p>
+<p>O tutorial requer conhecimento sobre <strong>R</strong> e sobre função da família <em>Apply</em>. Os código são apenas brevemente comentados sendo que a ideia é que o leitor seja capaz de reproduzir os comandos aqui contidos, e busque mais informações sobre os argumentos extras nas páginas de ajuda de cada função. O texto apresenta apenas uma breve introdução ao processamento paralelo, ao final é apresentado um guia de ajuda rápida mostrando as principais funções apresentadas.</p>
 </div>
 <div id="terminologia-e-fluxo-computacional" class="section level1">
 <h1>Terminologia e fluxo computacional</h1>
@@ -1664,31 +1664,31 @@ div.tocify {
 <a class="sourceLine" id="cb3-8" data-line-number="8">LISTA.TESTE.PAR</a>
 <a class="sourceLine" id="cb3-9" data-line-number="9">[[<span class="dv">1</span>]]</a>
 <a class="sourceLine" id="cb3-10" data-line-number="10">           [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]</a>
-<a class="sourceLine" id="cb3-11" data-line-number="11">[<span class="dv">1</span>,] <span class="fl">0.90438723</span> <span class="fl">0.3646422</span> <span class="fl">0.5084133</span> <span class="fl">0.8977791</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12">[<span class="dv">2</span>,] <span class="fl">0.21867293</span> <span class="fl">0.2943476</span> <span class="fl">0.7989287</span> <span class="fl">0.8301341</span></a>
-<a class="sourceLine" id="cb3-13" data-line-number="13">[<span class="dv">3</span>,] <span class="fl">0.07001629</span> <span class="fl">0.8713567</span> <span class="fl">0.7155492</span> <span class="fl">0.4596290</span></a>
-<a class="sourceLine" id="cb3-14" data-line-number="14">[<span class="dv">4</span>,] <span class="fl">0.26613061</span> <span class="fl">0.1601859</span> <span class="fl">0.5715263</span> <span class="fl">0.2605381</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11">[<span class="dv">1</span>,] <span class="fl">0.69850220</span> <span class="fl">0.1775451</span> <span class="fl">0.9997620</span> <span class="fl">0.3302395</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12">[<span class="dv">2</span>,] <span class="fl">0.44802344</span> <span class="fl">0.2677061</span> <span class="fl">0.5291183</span> <span class="fl">0.5319600</span></a>
+<a class="sourceLine" id="cb3-13" data-line-number="13">[<span class="dv">3</span>,] <span class="fl">0.11281061</span> <span class="fl">0.7859931</span> <span class="fl">0.1843224</span> <span class="fl">0.5082031</span></a>
+<a class="sourceLine" id="cb3-14" data-line-number="14">[<span class="dv">4</span>,] <span class="fl">0.06885932</span> <span class="fl">0.2584333</span> <span class="fl">0.3525748</span> <span class="fl">0.4663825</span></a>
 <a class="sourceLine" id="cb3-15" data-line-number="15"></a>
 <a class="sourceLine" id="cb3-16" data-line-number="16">[[<span class="dv">2</span>]]</a>
-<a class="sourceLine" id="cb3-17" data-line-number="17">          [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]       [,<span class="dv">4</span>]</a>
-<a class="sourceLine" id="cb3-18" data-line-number="18">[<span class="dv">1</span>,] <span class="fl">0.2387400</span> <span class="fl">0.1303535</span> <span class="fl">0.7284823</span> <span class="fl">0.31915520</span></a>
-<a class="sourceLine" id="cb3-19" data-line-number="19">[<span class="dv">2</span>,] <span class="fl">0.4498885</span> <span class="fl">0.4361522</span> <span class="fl">0.7454647</span> <span class="fl">0.08233857</span></a>
-<a class="sourceLine" id="cb3-20" data-line-number="20">[<span class="dv">3</span>,] <span class="fl">0.8635088</span> <span class="fl">0.1216550</span> <span class="fl">0.4245539</span> <span class="fl">0.71814163</span></a>
-<a class="sourceLine" id="cb3-21" data-line-number="21">[<span class="dv">4</span>,] <span class="fl">0.9139371</span> <span class="fl">0.1822268</span> <span class="fl">0.1340453</span> <span class="fl">0.80042026</span></a>
+<a class="sourceLine" id="cb3-17" data-line-number="17">          [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb3-18" data-line-number="18">[<span class="dv">1</span>,] <span class="fl">0.1780416</span> <span class="fl">0.5200222</span> <span class="fl">0.2529570</span> <span class="fl">0.3889385</span></a>
+<a class="sourceLine" id="cb3-19" data-line-number="19">[<span class="dv">2</span>,] <span class="fl">0.1481525</span> <span class="fl">0.6705829</span> <span class="fl">0.5017979</span> <span class="fl">0.5251086</span></a>
+<a class="sourceLine" id="cb3-20" data-line-number="20">[<span class="dv">3</span>,] <span class="fl">0.2622753</span> <span class="fl">0.6955262</span> <span class="fl">0.8374061</span> <span class="fl">0.0634702</span></a>
+<a class="sourceLine" id="cb3-21" data-line-number="21">[<span class="dv">4</span>,] <span class="fl">0.1021948</span> <span class="fl">0.3525789</span> <span class="fl">0.1040711</span> <span class="fl">0.8807555</span></a>
 <a class="sourceLine" id="cb3-22" data-line-number="22"></a>
 <a class="sourceLine" id="cb3-23" data-line-number="23">[[<span class="dv">3</span>]]</a>
 <a class="sourceLine" id="cb3-24" data-line-number="24">          [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]</a>
-<a class="sourceLine" id="cb3-25" data-line-number="25">[<span class="dv">1</span>,] <span class="fl">0.6405174</span> <span class="fl">0.3874130</span> <span class="fl">0.5729551</span> <span class="fl">0.4494782</span></a>
-<a class="sourceLine" id="cb3-26" data-line-number="26">[<span class="dv">2</span>,] <span class="fl">0.3114526</span> <span class="fl">0.5997970</span> <span class="fl">0.6899550</span> <span class="fl">0.7786622</span></a>
-<a class="sourceLine" id="cb3-27" data-line-number="27">[<span class="dv">3</span>,] <span class="fl">0.1046261</span> <span class="fl">0.5441668</span> <span class="fl">0.3701166</span> <span class="fl">0.8644948</span></a>
-<a class="sourceLine" id="cb3-28" data-line-number="28">[<span class="dv">4</span>,] <span class="fl">0.3462881</span> <span class="fl">0.5445558</span> <span class="fl">0.3426068</span> <span class="fl">0.3823201</span></a>
+<a class="sourceLine" id="cb3-25" data-line-number="25">[<span class="dv">1</span>,] <span class="fl">0.3670412</span> <span class="fl">0.3999878</span> <span class="fl">0.3174614</span> <span class="fl">0.9978488</span></a>
+<a class="sourceLine" id="cb3-26" data-line-number="26">[<span class="dv">2</span>,] <span class="fl">0.8479710</span> <span class="fl">0.2133934</span> <span class="fl">0.2240350</span> <span class="fl">0.6557177</span></a>
+<a class="sourceLine" id="cb3-27" data-line-number="27">[<span class="dv">3</span>,] <span class="fl">0.2706483</span> <span class="fl">0.3020129</span> <span class="fl">0.2418417</span> <span class="fl">0.3454405</span></a>
+<a class="sourceLine" id="cb3-28" data-line-number="28">[<span class="dv">4</span>,] <span class="fl">0.2856225</span> <span class="fl">0.6728910</span> <span class="fl">0.4078787</span> <span class="fl">0.5999230</span></a>
 <a class="sourceLine" id="cb3-29" data-line-number="29"></a>
 <a class="sourceLine" id="cb3-30" data-line-number="30">[[<span class="dv">4</span>]]</a>
-<a class="sourceLine" id="cb3-31" data-line-number="31">          [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]      [,<span class="dv">4</span>]</a>
-<a class="sourceLine" id="cb3-32" data-line-number="32">[<span class="dv">1</span>,] <span class="fl">0.8213909</span> <span class="fl">0.7483524</span> <span class="fl">0.3122473</span> <span class="fl">0.3723607</span></a>
-<a class="sourceLine" id="cb3-33" data-line-number="33">[<span class="dv">2</span>,] <span class="fl">0.8635966</span> <span class="fl">0.3496820</span> <span class="fl">0.9422851</span> <span class="fl">0.2819267</span></a>
-<a class="sourceLine" id="cb3-34" data-line-number="34">[<span class="dv">3</span>,] <span class="fl">0.8822938</span> <span class="fl">0.4410637</span> <span class="fl">0.1736623</span> <span class="fl">0.3262985</span></a>
-<a class="sourceLine" id="cb3-35" data-line-number="35">[<span class="dv">4</span>,] <span class="fl">0.7110658</span> <span class="fl">0.5343968</span> <span class="fl">0.9122955</span> <span class="fl">0.4688708</span></a>
+<a class="sourceLine" id="cb3-31" data-line-number="31">           [,<span class="dv">1</span>]      [,<span class="dv">2</span>]      [,<span class="dv">3</span>]       [,<span class="dv">4</span>]</a>
+<a class="sourceLine" id="cb3-32" data-line-number="32">[<span class="dv">1</span>,] <span class="fl">0.52648494</span> <span class="fl">0.5476958</span> <span class="fl">0.2184762</span> <span class="fl">0.01428739</span></a>
+<a class="sourceLine" id="cb3-33" data-line-number="33">[<span class="dv">2</span>,] <span class="fl">0.31453649</span> <span class="fl">0.3975965</span> <span class="fl">0.5793868</span> <span class="fl">0.14642572</span></a>
+<a class="sourceLine" id="cb3-34" data-line-number="34">[<span class="dv">3</span>,] <span class="fl">0.79676476</span> <span class="fl">0.6663679</span> <span class="fl">0.9479459</span> <span class="fl">0.05412751</span></a>
+<a class="sourceLine" id="cb3-35" data-line-number="35">[<span class="dv">4</span>,] <span class="fl">0.07562388</span> <span class="fl">0.7169352</span> <span class="fl">0.4541034</span> <span class="fl">0.52916456</span></a>
 <a class="sourceLine" id="cb3-36" data-line-number="36"></a>
 <a class="sourceLine" id="cb3-37" data-line-number="37"></a>
 <a class="sourceLine" id="cb3-38" data-line-number="38"><span class="co"># Detectar número de núcleos lógicos</span></a>
@@ -1710,7 +1710,7 @@ div.tocify {
 <a class="sourceLine" id="cb3-54" data-line-number="54"></a>
 <a class="sourceLine" id="cb3-55" data-line-number="55"><span class="co"># ... outro exemplo</span></a>
 <a class="sourceLine" id="cb3-56" data-line-number="56"><span class="kw">parSapply</span>(cl, <span class="dt">X =</span> LISTA.TESTE.PAR, <span class="dt">FUN =</span> sum)</a>
-<a class="sourceLine" id="cb3-57" data-line-number="57">[<span class="dv">1</span>] <span class="fl">8.192237</span> <span class="fl">7.289064</span> <span class="fl">7.929406</span> <span class="fl">9.141789</span></a>
+<a class="sourceLine" id="cb3-57" data-line-number="57">[<span class="dv">1</span>] <span class="fl">6.720436</span> <span class="fl">6.483879</span> <span class="fl">7.149715</span> <span class="fl">6.985923</span></a>
 <a class="sourceLine" id="cb3-58" data-line-number="58"></a>
 <a class="sourceLine" id="cb3-59" data-line-number="59"><span class="co"># Encerrar o cluster</span></a>
 <a class="sourceLine" id="cb3-60" data-line-number="60"><span class="kw">stopCluster</span>(cl)</a>
@@ -1896,9 +1896,9 @@ div.tocify {
 <a class="sourceLine" id="cb4-6" data-line-number="6"></a>
 <a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co"># Note que cada nó do cluster inicializa com um seed, sem qualquer controle sobre o seed</span></a>
 <a class="sourceLine" id="cb4-8" data-line-number="8"><span class="kw">parSapply</span>(cl, <span class="dt">X =</span> VETOR.TESTE.PAR, <span class="dt">FUN =</span> <span class="cf">function</span>(x) <span class="kw">rnorm</span>(x))</a>
-<a class="sourceLine" id="cb4-9" data-line-number="9">[<span class="dv">1</span>]  <span class="fl">1.0839605</span> <span class="fl">-0.2643595</span>  <span class="fl">1.0351341</span>  <span class="fl">0.8491894</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9">[<span class="dv">1</span>] <span class="fl">-0.1616104</span>  <span class="fl">0.1738422</span>  <span class="fl">0.7989792</span> <span class="fl">-1.2064047</span></a>
 <a class="sourceLine" id="cb4-10" data-line-number="10"><span class="kw">parSapply</span>(cl, <span class="dt">X =</span> VETOR.TESTE.PAR, <span class="dt">FUN =</span> <span class="cf">function</span>(x) <span class="kw">rnorm</span>(x))</a>
-<a class="sourceLine" id="cb4-11" data-line-number="11">[<span class="dv">1</span>]  <span class="fl">0.7075584</span> <span class="fl">-0.8447905</span>  <span class="fl">0.8060588</span>  <span class="fl">1.3431405</span></a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">[<span class="dv">1</span>] <span class="fl">-0.1792399</span> <span class="fl">-0.7934772</span> <span class="fl">-1.0080370</span>  <span class="fl">0.4506706</span></a>
 <a class="sourceLine" id="cb4-12" data-line-number="12"></a>
 <a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co"># Encerrar o cluster</span></a>
 <a class="sourceLine" id="cb4-14" data-line-number="14"><span class="kw">stopCluster</span>(cl)</a>
@@ -1909,7 +1909,7 @@ div.tocify {
 <a class="sourceLine" id="cb4-19" data-line-number="19"><span class="co"># Criar cluster com 2 nós do tipo &quot;PSOCK&quot;</span></a>
 <a class="sourceLine" id="cb4-20" data-line-number="20">cl &lt;-<span class="st"> </span><span class="kw">makeCluster</span>(<span class="dv">2</span>, <span class="dt">type =</span> <span class="st">&quot;PSOCK&quot;</span>)</a>
 <a class="sourceLine" id="cb4-21" data-line-number="21"></a>
-<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co"># Atribuit um seed para cada nó do cluster</span></a>
+<a class="sourceLine" id="cb4-22" data-line-number="22"><span class="co"># Atribuir um seed para cada nó do cluster</span></a>
 <a class="sourceLine" id="cb4-23" data-line-number="23"><span class="co"># Note que ao resetar o seed os valores sorteador são os mesmos</span></a>
 <a class="sourceLine" id="cb4-24" data-line-number="24"><span class="kw">clusterSetRNGStream</span>(cl, <span class="dv">123</span>)</a>
 <a class="sourceLine" id="cb4-25" data-line-number="25"><span class="kw">parSapply</span>(cl, <span class="dt">X =</span> VETOR.TESTE.PAR, <span class="dt">FUN =</span> <span class="cf">function</span>(x) <span class="kw">rnorm</span>(x))</a>
@@ -1930,12 +1930,12 @@ div.tocify {
 <a class="sourceLine" id="cb4-40" data-line-number="40"><span class="co"># Note que cada nó parte com o seed inicializado na área de trabalho</span></a>
 <a class="sourceLine" id="cb4-41" data-line-number="41"><span class="co"># O primeiro e o terceiro números são iguas, assim como o segundo e o quarto...</span></a>
 <a class="sourceLine" id="cb4-42" data-line-number="42"><span class="kw">parSapply</span>(cl, <span class="dt">X =</span> VETOR.TESTE.PAR, <span class="dt">FUN =</span> <span class="cf">function</span>(x) <span class="kw">rnorm</span>(x))</a>
-<a class="sourceLine" id="cb4-43" data-line-number="43">[<span class="dv">1</span>] <span class="fl">-0.1149488</span>  <span class="fl">0.2929914</span> <span class="fl">-0.1149488</span>  <span class="fl">0.2929914</span></a>
+<a class="sourceLine" id="cb4-43" data-line-number="43">[<span class="dv">1</span>]  <span class="fl">0.6934040</span> <span class="fl">-0.5996949</span>  <span class="fl">0.6934040</span> <span class="fl">-0.5996949</span></a>
 <a class="sourceLine" id="cb4-44" data-line-number="44"><span class="kw">parSapply</span>(cl, <span class="dt">X =</span> VETOR.TESTE.PAR, <span class="dt">FUN =</span> <span class="cf">function</span>(x) <span class="kw">rnorm</span>(x))</a>
-<a class="sourceLine" id="cb4-45" data-line-number="45">[<span class="dv">1</span>]  <span class="fl">1.2088109</span> <span class="fl">-0.6168912</span>  <span class="fl">1.2088109</span> <span class="fl">-0.6168912</span></a>
+<a class="sourceLine" id="cb4-45" data-line-number="45">[<span class="dv">1</span>] <span class="fl">-1.2995561</span> <span class="fl">-0.1692872</span> <span class="fl">-1.2995561</span> <span class="fl">-0.1692872</span></a>
 <a class="sourceLine" id="cb4-46" data-line-number="46"><span class="co"># Note ainda que a sequência de valores sorteadas é a mesma fora do cluster</span></a>
 <a class="sourceLine" id="cb4-47" data-line-number="47"><span class="kw">rnorm</span>(VETOR.TESTE.PAR)</a>
-<a class="sourceLine" id="cb4-48" data-line-number="48">[<span class="dv">1</span>] <span class="fl">-0.1149488</span>  <span class="fl">0.2929914</span>  <span class="fl">1.2088109</span> <span class="fl">-0.6168912</span></a>
+<a class="sourceLine" id="cb4-48" data-line-number="48">[<span class="dv">1</span>]  <span class="fl">0.6934040</span> <span class="fl">-0.5996949</span> <span class="fl">-1.2995561</span> <span class="fl">-0.1692872</span></a>
 <a class="sourceLine" id="cb4-49" data-line-number="49"></a>
 <a class="sourceLine" id="cb4-50" data-line-number="50"><span class="co"># Encerrar o cluster</span></a>
 <a class="sourceLine" id="cb4-51" data-line-number="51"><span class="kw">stopCluster</span>(cl)</a>
@@ -1956,7 +1956,7 @@ div.tocify {
 <a class="sourceLine" id="cb4-66" data-line-number="66">[<span class="dv">1</span>] <span class="fl">-0.9685927</span>  <span class="fl">0.7061091</span> <span class="fl">-0.4094454</span>  <span class="fl">0.8909694</span></a>
 <a class="sourceLine" id="cb4-67" data-line-number="67"><span class="co"># Note que o seed da área de trabalho permance diferente nos aplicados nos nós</span></a>
 <a class="sourceLine" id="cb4-68" data-line-number="68"><span class="kw">rnorm</span>(VETOR.TESTE.PAR)</a>
-<a class="sourceLine" id="cb4-69" data-line-number="69">[<span class="dv">1</span>] <span class="fl">-0.8393088</span> <span class="fl">-1.0647510</span>  <span class="fl">0.3151204</span> <span class="fl">-0.7898876</span></a>
+<a class="sourceLine" id="cb4-69" data-line-number="69">[<span class="dv">1</span>]  <span class="fl">0.05822909</span>  <span class="fl">0.37129805</span> <span class="fl">-0.30247778</span>  <span class="fl">0.52437473</span></a>
 <a class="sourceLine" id="cb4-70" data-line-number="70"></a>
 <a class="sourceLine" id="cb4-71" data-line-number="71"><span class="co"># Encerrar o cluster</span></a>
 <a class="sourceLine" id="cb4-72" data-line-number="72"><span class="kw">stopCluster</span>(cl)</a></code></pre></div>
