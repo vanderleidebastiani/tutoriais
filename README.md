@@ -21,6 +21,8 @@
 
 * [Estatística básica em R](https://vanderleidebastiani.github.io/tutoriais)
 
+* [Guia de ajuda rápida](https://vanderleidebastiani.github.io/tutoriais)
+
 Por favor, avise-me se tiver dúvidas ou sugestões sobre os textos.
 
 [![Contact](https://img.shields.io/badge/Contact-e--mail-yellowgreen.svg)](mailto:vanderleidebastiani@yahoo.com.br?subject=Tutoriais) [![License](https://img.shields.io/github/license/vanderleidebastiani/tutoriais?color=red&label=License)](https://github.com/vanderleidebastiani/tutoriais/blob/master/LICENSE) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L3FJFN28EG332&source=url) ![GitHub last commit](https://img.shields.io/github/last-commit/vanderleidebastiani/tutoriais?label=Last%20commit)
