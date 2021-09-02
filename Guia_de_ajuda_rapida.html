@@ -230,7 +230,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Guia de ajuda rápida</h1>
 <h4 class="author">Vanderlei Júlio Debastiani (<a href="mailto:vanderleidebastiani@yahoo.com.br" class="email">vanderleidebastiani@yahoo.com.br</a>)</h4>
-<h4 class="date">01 Setembro 2021</h4>
+<h4 class="date">02 Setembro 2021</h4>
 
 </div>
 
@@ -239,8 +239,8 @@ div.tocify {
 <h1>Introdução</h1>
 <p>O texto reúne as seções de <em>Guia de ajuda rápida</em> dos demais textos e tutorais encontrados nas páginas. As funções são apenas agrupadas em grandes temas e brevemente comentadas, sendo que houve edições, adições e remoção das funções listadas nos textos principais. A ideia é que o leitor forme um vocabulário com as funções básicas e busque mais informações sobre seus argumentos e funcionalidades.</p>
 </div>
-<div id="guia-de-ajuda-rápida" class="section level1">
-<h1>Guia de ajuda rápida</h1>
+<div id="guia-de-ajuda" class="section level1">
+<h1>Guia de ajuda</h1>
 <pre class="text"><code>## Comentário
 # - Adicionar comentários
 
@@ -330,9 +330,9 @@ rbind()/rbind.data.frame() - Combinar vetores por linhas
 cbind()/cbind.data.frame() - Combinar vetores por colunas
 list() - Criar/converter para lista 
 unlist() - Simplificar lista para vetor
-is.numeric()/is.character()/is.logical()/is.POSIXct()/is.xxx) - Conferir tipos de dados (vetores)
+is.numeric()/is.character()/is.logical()/is.POSIXct()/is.xxx) - Conferir tipos de dados
 is.data.frame()/is.matrix()/is.list()/is.xxx) - Conferir tipo de estrutura
-as.numeric()/as.character()/as.logical()/as.POSIXct()/as.xxx) - Converter tipos de dados (vetores)
+as.numeric()/as.character()/as.logical()/as.POSIXct()/as.xxx) - Converter tipos de dados
 as.data.frame()/as.matrix()/as.list()/as.xxx) - Converter tipos de estrutura
 
 ## Vectors 
@@ -514,10 +514,10 @@ bbmle::Ictab() - Gerar tabelas de AIC, AICc e outros critérios de informação
 
 ## Variáveis aleatórias/distribuição de probabilidade
 sample() - Amostrar valores
-dbinom/dchisq/df/dlnorm/dnbinom/dnorm/dpois/dt/vunif/dxxx) - Obter densidade da distribuição (prefixo d)
-pbinom/pchisq/pf/plnorm/pnbinom/pnorm/ppois/pt/punif/pxxx) - Obter probabilidade da distribuição (prefixo p)
-qbinom/qchisq/qf/qlnorm/qnbinom/qnorm/qpois/qt/qunif/qxxx) - Obter quantil da distribuição (prefixo q)
-rbinom/rchisq/rf/rlnorm/rnbinom/rnorm/rpois/rt/runif/rxxx) - Gerar distribuição (prefixo r)
+dbinom/dchisq/df/dlnorm/dnbinom/dnorm/dpois/dt/vunif/dxxx) - Densidade da distribuição (d)
+pbinom/pchisq/pf/plnorm/pnbinom/pnorm/ppois/pt/punif/pxxx) - Probabilidade da distribuição (p)
+qbinom/qchisq/qf/qlnorm/qnbinom/qnorm/qpois/qt/qunif/qxxx) - Quantil da distribuição (q)
+rbinom/rchisq/rf/rlnorm/rnbinom/rnorm/rpois/rt/runif/rxxx) - Gerar distribuição (r)
 
 ## Funções e controle de fluxo
 if(condição) expressão - Controle de fluxo, SE
@@ -545,10 +545,11 @@ rm() - Remover objetos da área de trabalho
 ## Pacotes/funções
 install.packages() - Instalar pacotes
 devtools::install_github() - Instalar pacotes diretamente do GitHub
+update.packages() - Atualizar pacotes
 remove.packages() - Desistalar pacotes
 library()/require() - Carregar pacotes
 :: - Usar função específica do pacote (sem necessidade de carregar)
-detach(package:...) - Descarregar um pacote
+detach(package:xxx) - Descarregar um pacote
 source() - Carregar código R (funções) de arquivos
 
 ## Gráficos
