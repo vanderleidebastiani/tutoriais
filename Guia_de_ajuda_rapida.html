@@ -230,7 +230,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">Guia de ajuda rápida</h1>
 <h4 class="author">Vanderlei Júlio Debastiani (<a href="mailto:vanderleidebastiani@yahoo.com.br" class="email">vanderleidebastiani@yahoo.com.br</a>)</h4>
-<h4 class="date">02 Setembro 2021</h4>
+<h4 class="date">12 Setembro 2021</h4>
 
 </div>
 
@@ -241,20 +241,23 @@ div.tocify {
 </div>
 <div id="guia-de-ajuda" class="section level1">
 <h1>Guia de ajuda</h1>
-<pre class="text"><code>## Comentário
-# - Adicionar comentários
-
-## Ajudas
-? ou help() - Obter ajuda de funções
+<div id="comentários" class="section level2">
+<h2>Comentários</h2>
+<pre class="text"><code># - Adicionar comentários</code></pre>
+</div>
+<div id="ajudas" class="section level2">
+<h2>Ajudas</h2>
+<pre class="text"><code>? ou help() - Obter ajuda de funções
 ?? ou help.search() - Relizar buscar
 demo() - Demosntração de funcionalidades
 example() - Executar exemplo de funções
 data() - Obter dados para executar exemplos
 vignette() - Obter vinhetas (textos de ajuda/tutoriais)
-citation() - Obter citação do R ou pacote
-
-## Tipos de dados
-3.14 ou 4E-5 - Númerico (ponto usado como separador decimal)
+citation() - Obter citação do R ou pacote</code></pre>
+</div>
+<div id="tipos-de-dados" class="section level2">
+<h2>Tipos de dados</h2>
+<pre class="text"><code>3.14 ou 4E-5 - Númerico (ponto usado como separador decimal)
 &quot;A&quot; ou &quot;Estatística&quot; - Caracteres (pode conter acentos)
 &quot;2021/01/01&quot; - Datas e horas. Classes Date ou POSIXct
 FALSE ou F - Lógico falso
@@ -266,24 +269,27 @@ NULL - Especificar objeto nulo ou vazio
 is.numeric()/is.character()/is.logical() - Conferir tipos de dados
 is.na() - Conferir indeterminado
 is.finite()/is.infinite() - Conferir finito/infinito
-as.numeric()/as.character()/as.logical()/as.xxx) - Converter tipos de dados
-
-## Objetos
-&lt;- ou = - Atribuir objeto (direita para esquerda)
+as.numeric()/as.character()/as.logical()/as.xxx) - Converter tipos de dados</code></pre>
+</div>
+<div id="objetos" class="section level2">
+<h2>Objetos</h2>
+<pre class="text"><code>&lt;- ou = - Atribuir objeto (direita para esquerda)
 -&gt; - Atribuir objeto (esquerda para direita)
 str() - Conferir estrutura do objeto
 class() - Conferir/Atribuir classe do objeto
-inherits() - Conferir classe do objeto
-
-## Operadores aritméticos
-+ - Somar
+inherits() - Conferir classe do objeto</code></pre>
+</div>
+<div id="operadores-aritméticos" class="section level2">
+<h2>Operadores aritméticos</h2>
+<pre class="text"><code>+ - Somar
 - - Subtrair
 * - Multiplicar
 / - Dividir
-^ - Potêncializar (direita para esquerda)
-
-## Operações lógicas
-&lt; - Comparar, menor
+^ - Potêncializar (direita para esquerda)</code></pre>
+</div>
+<div id="operações-lógicas" class="section level2">
+<h2>Operações lógicas</h2>
+<pre class="text"><code>&lt; - Comparar, menor
 &gt; - Comparar, maior
 &lt;= - Comparar, menor ou igual
 &gt;= - Comparar, maior ou igual
@@ -293,57 +299,64 @@ inherits() - Conferir classe do objeto
 &amp; - Lógico, critério aditivo E. Operação elementar
 | - Lógico, critério aditivo OU. Operação elementar
 &amp;&amp; - Lógico, E
-|| - Lógico, OU
-
-## Operadores (pacote magrittr)
-%&gt;% - Encadeamento (pipe)
+|| - Lógico, OU</code></pre>
+</div>
+<div id="operadores-pacote-magrittr" class="section level2">
+<h2>Operadores (pacote magrittr)</h2>
+<pre class="text"><code>%&gt;% - Encadeamento (pipe)
 %$% - Selecionar variáveis pelo nome
 %&lt;&gt;% - Atribur diretamente
-%T&gt;% - Abrir braço no fluxo de encadeamento
-
-## Estruturas de dados
-vector() - Criar vector/listas
+%T&gt;% - Abrir braço no fluxo de encadeamento</code></pre>
+</div>
+<div id="estruturas-de-dados" class="section level2">
+<h2>Estruturas de dados</h2>
+<pre class="text"><code>vector() - Criar vector/listas
 factor() - Criar fator
 ordered() - Criar fator ordenado
 data.frame() - Criar tabela de dados (data.frame)
 matrix() - Criar matriz
-array() - Criar arranjo (array)
-
-## Indexação
-$ - Indexar vetores/listas pelo nome das variáveis/listas
+array() - Criar arranjo (array)</code></pre>
+</div>
+<div id="indexação" class="section level2">
+<h2>Indexação</h2>
+<pre class="text"><code>$ - Indexar vetores/listas pelo nome das variáveis/listas
 @ - Indexar na classe S4 
 [] - Indexar vetores/listas
 [ , , drop = FALSE] - Indexar data.frames/matrizes. Primeiro valor linha, segundo coluna
-[[]] - Indexar listas
-
-## Atributos das estruturas
-names() - Conferir/Atribuir nomes a vetores/listas
+[[]] - Indexar listas</code></pre>
+</div>
+<div id="atributos-das-estruturas" class="section level2">
+<h2>Atributos das estruturas</h2>
+<pre class="text"><code>names() - Conferir/Atribuir nomes a vetores/listas
 colnames() - Conferir/Atribuir nomes as linhas de data.frames/matrizes
 rownames() - Conferir/Atribuir nomes as colunas de data.frames/matrizes
 length() - Conferir comprimento de vetores/listas
 dim() - Conferir dimensões de data.frames/matrizes
 nrow()/ncol() - Conferir número de linhas/colunas de data.frames/matrizes
-head()/tail() - Conferir início/fim de data.frames/matrizes
-
-## Converção de dados/estruturas
-rbind()/rbind.data.frame() - Combinar vetores por linhas
+head()/tail() - Conferir início/fim de data.frames/matrizes</code></pre>
+</div>
+<div id="converção-de-dadosestruturas" class="section level2">
+<h2>Converção de dados/estruturas</h2>
+<pre class="text"><code>rbind()/rbind.data.frame() - Combinar vetores por linhas
 cbind()/cbind.data.frame() - Combinar vetores por colunas
 list() - Criar/converter para lista 
 unlist() - Simplificar lista para vetor
 is.numeric()/is.character()/is.logical()/is.POSIXct()/is.xxx) - Conferir tipos de dados
 is.data.frame()/is.matrix()/is.list()/is.xxx) - Conferir tipo de estrutura
 as.numeric()/as.character()/as.logical()/as.POSIXct()/as.xxx) - Converter tipos de dados
-as.data.frame()/as.matrix()/as.list()/as.xxx) - Converter tipos de estrutura
-
-## Vectors 
-c() - Concatenar valores em vetor
+as.data.frame()/as.matrix()/as.list()/as.xxx) - Converter tipos de estrutura</code></pre>
+</div>
+<div id="vectors" class="section level2">
+<h2>Vectors</h2>
+<pre class="text"><code>c() - Concatenar valores em vetor
 : - Gerar sequência numérica contínua
 seq()/seq_len() - Obter sequência regular
 rep() - Repetir valores
-rev() - Reverter elementos dos vetores
-
-## Funções matemáticas
-sqrt() - Obter raiz quadrada
+rev() - Reverter elementos dos vetores</code></pre>
+</div>
+<div id="funções-matemáticas" class="section level2">
+<h2>Funções matemáticas</h2>
+<pre class="text"><code>sqrt() - Obter raiz quadrada
 abs() - Obter valores absoluto
 log() - Obter logaritmo
 exp() - Obter função exponential
@@ -352,34 +365,38 @@ round() - Arredondar valores
 ceiling() - Parte inteira, teto
 floor() - Parte inteira, piso
 %/% - Parte inteira da divisão
-%% - Resto da divisão
-
-## Funções de grupos
-union() - União
+%% - Resto da divisão</code></pre>
+</div>
+<div id="funções-de-grupos" class="section level2">
+<h2>Funções de grupos</h2>
+<pre class="text"><code>union() - União
 intersect() - Insersecção
 setdiff() - Diferença
-setequal() - Igualdade
-
-## Funções trigonométricas
-sin() - Seno
+setequal() - Igualdade</code></pre>
+</div>
+<div id="funções-trigonométricas" class="section level2">
+<h2>Funções trigonométricas</h2>
+<pre class="text"><code>sin() - Seno
 cos() - Cosseno
 tan() - Tangente
 asin() - Arco seno
 acos() - Arco cosseno
-atan()/atan2() - Arco tangente
-
-## Funções númericas básicas
-max() - Obter máximo
+atan()/atan2() - Arco tangente</code></pre>
+</div>
+<div id="funções-númericas-básicas" class="section level2">
+<h2>Funções númericas básicas</h2>
+<pre class="text"><code>max() - Obter máximo
 min() - Obter mínimo
 sum() - Obter soma
 sort() - Ordenar valores
 order() - Obter posição da order dos valores
 cummax()/cummin()/cumprod()/cumsum() - Máximo/mínimo/produto/soma cumulativa
 range() - Obter amplitude dos valores
-diff() - Obter diferença da amplitude dos valores
-
-## Funções para caracteres (strings)
-nchar() - Contar número de caracteres
+diff() - Obter diferença da amplitude dos valores</code></pre>
+</div>
+<div id="funções-para-caracteres-strings" class="section level2">
+<h2>Funções para caracteres (strings)</h2>
+<pre class="text"><code>nchar() - Contar número de caracteres
 tolower()/toupper() - Transformar caracteres para minúsculas/maiúsculas
 paste()/paste0() - Concatenar caracteres em sequências regulares
 grep() - Índice  da correspondência de padrões
@@ -389,28 +406,31 @@ sub() - Substituição de padrões, primeira correspondência
 gsub() - Substituição de padrões, todas correspondências
 trimws() - Remover espaços em branco
 strsplit() - Dividir caracteres
-substr() - Extrair/substituir subcaracteres
-
-## Funções para factors 
-cut() - Converter variável númerica para fator
+substr() - Extrair/substituir subcaracteres</code></pre>
+</div>
+<div id="funções-para-factors" class="section level2">
+<h2>Funções para factors</h2>
+<pre class="text"><code>cut() - Converter variável númerica para fator
 findInterval() - Obter índices de intervalos
 levels() - Obter níveis de um fator
 nlevels() - Obter número de níveis
 interaction() - Interações de fatores
 reorder() - Reodenar fatores
-relevel() - Definir nível de referência
-
-## Expandir, dividir ou subamostrar dados
-subset() - Subconjuntos de vetores/data.frames/matrizes
+relevel() - Definir nível de referência</code></pre>
+</div>
+<div id="expandir-dividir-ou-subamostrar-dados" class="section level2">
+<h2>Expandir, dividir ou subamostrar dados</h2>
+<pre class="text"><code>subset() - Subconjuntos de vetores/data.frames/matrizes
 split() - Dividir em grupos
 combn() - Gerar combinações
 expand.grid() - Criar combinações de fatores
 complete.cases() - Buscar dados completos, sem valores faltantes (NA)
 na.omit() - Omitir dados faltantes (NA)
-na.exclude() - Excluir dados faltantes (NA)
-
-## Testes e buscas
-%in% - Operador de correspondência
+na.exclude() - Excluir dados faltantes (NA)</code></pre>
+</div>
+<div id="testes-e-buscas" class="section level2">
+<h2>Testes e buscas</h2>
+<pre class="text"><code>%in% - Operador de correspondência
 all.equal() - Testar se objetos são quase iguais 
 identical() - Testar se objetos são idênticos
 all() - Testar se todos valores são verdadeiros (TRUE)
@@ -420,10 +440,11 @@ duplicated() - Testar valores duplicados
 ifelse() - Aplicar teste condicional
 switch() - Selecionar uma expressao de uma lista de alternativas
 which() - Procurar posição (índice) conforme teste lógico
-match() - Correspondência entre vetores
-
-## Funções para data.frames (pacote dplyr)
-dplyr::slice() - Filtrar linhas usando posição
+match() - Correspondência entre vetores</code></pre>
+</div>
+<div id="funções-para-data.frames-pacote-dplyr" class="section level2">
+<h2>Funções para data.frames (pacote dplyr)</h2>
+<pre class="text"><code>dplyr::slice() - Filtrar linhas usando posição
 dplyr::filter() - Filtrar linhas com base em seus valores
 dplyr::select() - Selecionar variáveis com base em seus nomes
 dplyr::pull() - Selecionar variável e retornar vetor
@@ -438,29 +459,32 @@ dplyr::summarise() - Reduzir vários valores para em estátisticas descritivas
 dplyr::add_row() - Adicionar linhas usando o nome das variáveis
 dplyr::bind_rows()/dplyr::bind_cols() - Agrupar linhas/colunas
 merge()/dplyr::right_join()/dplyr::left_join() - Combinar data.frames
-dplyr::full_join()/dplyr::inner_join() - Combinar data.frames
-
-## Datas e tempos 
-date() - Obter data atual
+dplyr::full_join()/dplyr::inner_join() - Combinar data.frames</code></pre>
+</div>
+<div id="datas-e-tempos" class="section level2">
+<h2>Datas e tempos</h2>
+<pre class="text"><code>date() - Obter data atual
 format() - Formatar datas e horas
 ISOdate()/ISOdatetime() - Converter data e hora a partir de números
 strftime()/strptime() - Converter data e hora a partir de caracteres
 difftime() - Diferenças de tempo
 weekdays()/months()/quarters()/xxx - Obter dia da semana/mês/trimestre/xxx
-lubridate::hours()/lubridate::days()/lubridate::month()/lubridate::xxx - Obter horas/dias/meses/xxx
-
-## Funções para matrizes
-%*% - Multiplicar matrizes
+lubridate::hours()/lubridate::days()/lubridate::month()/lubridate::xxx - Obter horas/dias/meses/xxx</code></pre>
+</div>
+<div id="funções-para-matrizes" class="section level2">
+<h2>Funções para matrizes</h2>
+<pre class="text"><code>%*% - Multiplicar matrizes
 t() - Transpor data.frames/matrizes
 diag() - Obter diagonal da matrix
 crossprod - Produtos cruzados
 %o% / outer() - Produto externo/diádico
 %x% - Produto de Kronecker
 solve() - Inversa
-eigen()/qr()/svd() - Decomposições de matriz
-
-## Estatística básica
-mean() - Obter média
+eigen()/qr()/svd() - Decomposições de matriz</code></pre>
+</div>
+<div id="estatística-básica" class="section level2">
+<h2>Estatística básica</h2>
+<pre class="text"><code>mean() - Obter média
 median() - Obter mediana
 var() - Obter variância
 sd() - Obter desvio padrão
@@ -469,26 +493,29 @@ cov() - Obter covariação
 table() - Produzir tabelas de contingência
 rank() - Obter classificação (ranking)
 quantile() - Obter quantis/percentil
-choose() - Obter coeficiente binomial (número de combinações)
-
-## Estatística básica
-chisq.test() - Teste qui-quadrado
+choose() - Obter coeficiente binomial (número de combinações)</code></pre>
+</div>
+<div id="estatística-básica-1" class="section level2">
+<h2>Estatística básica</h2>
+<pre class="text"><code>chisq.test() - Teste qui-quadrado
 t.test() - Teste t
 cor.test() - Teste de correlação
 shapiro.test() - Teste de normalidade Shapiro
-car::ncvTest() - Teste desvio não constante
-
-## Fórmulas estatísticas
-~ - Fórmula, indicar fórmula
+car::ncvTest() - Teste desvio não constante</code></pre>
+</div>
+<div id="fórmulas-estatísticas" class="section level2">
+<h2>Fórmulas estatísticas</h2>
+<pre class="text"><code>~ - Fórmula, indicar fórmula
 + - Fórmula, inclusão de variável
 - - Fórmula, exclusão de variável
 * - Fórmula, inclusão de variáveis e suas interações
 / - Fórmula, aninhamento de variáveis
 | - Fórmula, condicionamento de variáveis
-I - Fórmula, inibir a interpretação dos operadores “+”, “-”, &quot;*“, ”/&quot; e “^” nas fórmulas
-
-## Modelagem estatística
-lm() - Ajustar um modelo linear 
+I - Fórmula, inibir a interpretação dos operadores “+”, “-”, &quot;*“, ”/&quot; e “^” nas fórmulas</code></pre>
+</div>
+<div id="modelagem-estatística" class="section level2">
+<h2>Modelagem estatística</h2>
+<pre class="text"><code>lm() - Ajustar um modelo linear 
 aov() - Ajustar a análise de variância
 glm() - Ajustar modelos lineares generalizados 
 nls() - Ajustar modelos de regressão não lineares 
@@ -510,17 +537,19 @@ deviance()  - Deviância do modelo
 AIC() - AIC do modelo
 logLik () - Log verossimilhança do modelo
 bbmle::mle2() - Estimar parâmetros pelo método de máxima verossimilhança
-bbmle::Ictab() - Gerar tabelas de AIC, AICc e outros critérios de informação
-
-## Variáveis aleatórias/distribuição de probabilidade
-sample() - Amostrar valores
+bbmle::Ictab() - Gerar tabelas de AIC, AICc e outros critérios de informação</code></pre>
+</div>
+<div id="variáveis-aleatóriasdistribuição-de-probabilidade" class="section level2">
+<h2>Variáveis aleatórias/distribuição de probabilidade</h2>
+<pre class="text"><code>sample() - Amostrar valores
 dbinom/dchisq/df/dlnorm/dnbinom/dnorm/dpois/dt/vunif/dxxx) - Densidade da distribuição (d)
 pbinom/pchisq/pf/plnorm/pnbinom/pnorm/ppois/pt/punif/pxxx) - Probabilidade da distribuição (p)
 qbinom/qchisq/qf/qlnorm/qnbinom/qnorm/qpois/qt/qunif/qxxx) - Quantil da distribuição (q)
-rbinom/rchisq/rf/rlnorm/rnbinom/rnorm/rpois/rt/runif/rxxx) - Gerar distribuição (r)
-
-## Funções e controle de fluxo
-if(condição) expressão - Controle de fluxo, SE
+rbinom/rchisq/rf/rlnorm/rnbinom/rnorm/rpois/rt/runif/rxxx) - Gerar distribuição (r)</code></pre>
+</div>
+<div id="funções-e-controle-de-fluxo" class="section level2">
+<h2>Funções e controle de fluxo</h2>
+<pre class="text"><code>if(condição) expressão - Controle de fluxo, SE
 if(condição) expressão.da.condição  else  expressão.alternativa - Controle de fluxo, SE/SENÃO
 for(variável in sequência) expressão - Controle de fluxo, LAÇO/LOOP.
 while(condição) expressão - Controle de fluxo, ENQUANTO
@@ -535,39 +564,44 @@ missing() - Função, testar se argumento da função existe
 message() - Função, mensagen de diagnóstico
 warning() - Função, mensagem de advertência
 stop() - Função, critério de parada e mensagem de erro
-try()/tryCatch() - Função, tentar função envelope
-
-# Área de trabalho (workspace)
-ls() - Listar objetos da área de trabalho
+try()/tryCatch() - Função, tentar função envelope</code></pre>
+</div>
+<div id="área-de-trabalho-workspace" class="section level2">
+<h2>Área de trabalho (workspace)</h2>
+<pre class="text"><code>ls() - Listar objetos da área de trabalho
 exists() - Conferir se objeto existe na área de trabalho
-rm() - Remover objetos da área de trabalho
-
-## Pacotes/funções
-install.packages() - Instalar pacotes
+rm() - Remover objetos da área de trabalho</code></pre>
+</div>
+<div id="pacotesfunções" class="section level2">
+<h2>Pacotes/funções</h2>
+<pre class="text"><code>install.packages() - Instalar pacotes
 devtools::install_github() - Instalar pacotes diretamente do GitHub
 update.packages() - Atualizar pacotes
 remove.packages() - Desistalar pacotes
 library()/require() - Carregar pacotes
 :: - Usar função específica do pacote (sem necessidade de carregar)
 detach(package:xxx) - Descarregar um pacote
-source() - Carregar código R (funções) de arquivos
-
-## Gráficos
-plot() - Função genéria para gráficos
+source() - Carregar código R (funções) de arquivos</code></pre>
+</div>
+<div id="gráficos" class="section level2">
+<h2>Gráficos</h2>
+<pre class="text"><code>plot() - Função genéria para gráficos
 hist() - Histogramas
 barplot() - Gráfico de barras
 boxplot() - Gráfico do tipo boxplot
-curve() - Gráficos de curvas, baseado em expressões
-
-## Saídas
-dput()/dget() - Exportar/Importar objeto em ASCII para arquivo
+curve() - Gráficos de curvas, baseado em expressões</code></pre>
+</div>
+<div id="saídas" class="section level2">
+<h2>Saídas</h2>
+<pre class="text"><code>dput()/dget() - Exportar/Importar objeto em ASCII para arquivo
 sink()/capture.output() - Capturar saídas para caracteres ou arquivo
 format() - Formatar elementos
 sprintf() - Formatar elementos
-expression() - Formatação especiais, notaçoes matemáticas e letras gregas
-
-## Pastas e arquivos
-getwd() - Obter localização da pasta de trabalho
+expression() - Formatação especiais, notaçoes matemáticas e letras gregas</code></pre>
+</div>
+<div id="pastas-e-arquivos" class="section level2">
+<h2>Pastas e arquivos</h2>
+<pre class="text"><code>getwd() - Obter localização da pasta de trabalho
 setwd() - Definir localização da pasta de trabalho
 dir() - Listar todos os arquivos da pasta
 list.files() - Listar arquivos da pasta
@@ -576,31 +610,35 @@ file.info() - Obter informações de arquivo
 file.exists() - Conferir se arquivo existe
 file.create()/file.rename()/file.copy()/file.remove() - Criar/renomear/copiar/remover arquivos
 file.choose() - Escolher arquivo interativamente
-download.file() - Baixar arquivos
-
-## Família Apply
-apply() - Aplicar funções nas margens de data.frames/matrizes
+download.file() - Baixar arquivos</code></pre>
+</div>
+<div id="família-apply" class="section level2">
+<h2>Família Apply</h2>
+<pre class="text"><code>apply() - Aplicar funções nas margens de data.frames/matrizes
 tapply() - Dividir e aplicar funções a cada subconjunto
 sweep() - Percorrer uma matriz aplicando uma estatística em cada margem
 sapply() - Aplicar funções a cada elemento de um vetor
 lapply() - Aplicar funções a cada elemento de um vetor, retornando lista
 mapply() - Aplicar funções a um ou mais vetores
-replicate() - Replicar uma expressão
-
-## Importar e exportar dados
-read.csv()/read.table() - Importar tabelas
+replicate() - Replicar uma expressão</code></pre>
+</div>
+<div id="importar-e-exportar-dados" class="section level2">
+<h2>Importar e exportar dados</h2>
+<pre class="text"><code>read.csv()/read.table() - Importar tabelas
 write.csv()/write.table() - Exportar tabelas
 readLines() - Importar texto (normalmente dados com formatos variados)
 writeLines() - Exportar texto (normalmente dados com formatos variados)
 readRDS() - Importar objeto do R
 saveRDS() - Exportar objeto do R
 save.image() - Salvar área de trabalho
-load() - Carregar área de trabalho
-
-# Depuração (debugging)
-browser() - Interromper a execução para inspeção
+load() - Carregar área de trabalho</code></pre>
+</div>
+<div id="depuração-debugging" class="section level2">
+<h2>Depuração (debugging)</h2>
+<pre class="text"><code>browser() - Interromper a execução para inspeção
 recover() - Recuperar/navegar no erro
 traceback() - Inspeccionar sequência do erro</code></pre>
+</div>
 </div>
 <div id="conclusão" class="section level1">
 <h1>Conclusão</h1>
